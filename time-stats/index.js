@@ -56,5 +56,5 @@ function compareTimer (first, second) {
   compare('timer/' + first, 'timer/' + second, 'TimerFire', false)
 }
 
-compareXHR('xhr_patched.json', 'xhr_not_patched.json')
-compareTimer('timers_patched.json', 'timers_not_patched.json')
+compareXHR('xhr_flags_set.json', 'xhr_full_zone.json')
+compareTimer('timers_flag_set.json', 'timers_full_zone.json')
