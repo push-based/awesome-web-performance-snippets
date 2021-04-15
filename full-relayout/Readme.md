@@ -17,3 +17,5 @@ Can be run as bookmarklet: yes
 Can be run in console: yes
 1. paste snippet
 2. hit enter
+
+![full-page-relayout-logs](./images/full-page-relayout-logs.png)
