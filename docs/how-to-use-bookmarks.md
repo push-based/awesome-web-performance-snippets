@@ -2,7 +2,7 @@
 
 To use a code snippet as bookmark:
 1. Minify code using for example [javascript-minifier](https://javascript-minifier.com/)
-2. Create bookmark snipet
+2. Create bookmark snippet
   1. prefix it with `javascript:`
   2. wrap it inside an [IIFE](https://developer.mozilla.org/de/docs/Glossary/IIFE) `(()=>{ ... })();`
   
