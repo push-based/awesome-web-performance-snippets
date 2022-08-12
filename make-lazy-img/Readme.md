@@ -1,6 +1,6 @@
 ## Description
 
-Get's all images and iframe's of the page and it's loading attributes. 
+Add `loading="lazy"` to all images and iframe's on the page.
 
 ## Usage
 
