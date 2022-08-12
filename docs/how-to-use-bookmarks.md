@@ -17,8 +17,9 @@ Example:
   2. Right click on the bookmark panel
   3. Add Page
   4. Insert title and snippet
-  [Bookmark Title](../bookmark-edit.png)
-   
+  [Bookmark Title](./images/bookmarks-edit.png)
 
 
-
+**hint**
+The bookmarked script will only be executed when you visit a page. If you e.g. open
+Chrome and no page is open, the script will not be executed.
