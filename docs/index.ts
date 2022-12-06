@@ -8,7 +8,7 @@ import {dirname} from "path";
     let readmeContent: string = readFileSync('./Readme.md', 'utf8');
     const bookMarkContent: string = loadSnippets(SNIPPETS_DIR)
         .map(({fileName, javascript}) => {
-            const h2 = `## [${toBookletName(dirname(fileName))}](../${fileName})  ` + NEW_LINE;
+            const h2 = `## [${toBookletName(dirname(fileName))}](https://github.com/push-based/web-performance-tools/tree/master/${fileName})  ` + NEW_LINE;
             const snippet = "```javascript  " + NEW_LINE + javascript + "```  " + NEW_LINE
             return h2 + snippet + '  ' + NEW_LINE;
         }).join('');

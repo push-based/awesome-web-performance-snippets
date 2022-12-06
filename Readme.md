@@ -2,7 +2,7 @@
 
 <!-- START-SNIPPETS -->
 
-## [Check lazy img](../snippets\check-lazy-img\index.js)  
+## [Check lazy img](https://github.com/push-based/web-performance-tools/tree/master/snippets\check-lazy-img\index.js)  
 ```javascript  
 const imgs = document.querySelectorAll('img');
 const eager = Array.from(imgs)
@@ -12,7 +12,7 @@ console.log(eager+ ' of ' + imgs.length + ' img\'s eager (LCP included)');
 document.title= eager+ ' of ' + imgs.length + ' img\'s eager (LCP included)';
 ```  
   
-## [Full relayout](../snippets\full-relayout\index.js)  
+## [Full relayout](https://github.com/push-based/web-performance-tools/tree/master/snippets\full-relayout\index.js)  
 ```javascript  
 if(window.__rxa_full_relayout_listener === true) { console.log('You clicked too fast');}
 window.performance.mark('relayout-start');
@@ -31,14 +31,14 @@ setTimeout(() => {
 });
 ```  
   
-## [Gathering styles](../snippets\gathering-styles\index.js)  
+## [Gathering styles](https://github.com/push-based/web-performance-tools/tree/master/snippets\gathering-styles\index.js)  
 ```javascript  
 console.log(Array.from(document.querySelectorAll('style'))
     .map(a => a.innerText)
     .reduce((a,b) => a + b));
 ```  
   
-## [Get Attribute Directives](../snippets\getAttributeDirectives\index.js)  
+## [Get Attribute Directives](https://github.com/push-based/web-performance-tools/tree/master/snippets\getAttributeDirectives\index.js)  
 ```javascript  
 function getAttributeDirectives() {
   const { name, showSummaryInDOM, appPrefixes, mode } = initializeFlow();
@@ -260,7 +260,7 @@ function getAttributeDirectives() {
 }
 ```  
   
-## [Get Components Nodes](../snippets\getComponentsNodes\index.js)  
+## [Get Components Nodes](https://github.com/push-based/web-performance-tools/tree/master/snippets\getComponentsNodes\index.js)  
 ```javascript  
 function index() {
   const {
@@ -560,7 +560,7 @@ function index() {
 }
 ```  
   
-## [Get DOMEvent Listeners](../snippets\getDOMEventListeners\index.js)  
+## [Get DOMEvent Listeners](https://github.com/push-based/web-performance-tools/tree/master/snippets\getDOMEventListeners\index.js)  
 ```javascript  
 function getDOMEventListeners() {
   // Get all elements with event listeners
@@ -661,7 +661,7 @@ function getDOMEventListeners() {
 }
 ```  
   
-## [Get Nodes Info](../snippets\getNodesInfo\index.js)  
+## [Get Nodes Info](https://github.com/push-based/web-performance-tools/tree/master/snippets\getNodesInfo\index.js)  
 ```javascript  
 function index(root = document.body) {
   const allNodes = [...root.querySelectorAll("*")];
@@ -787,20 +787,20 @@ function index(root = document.body) {
 }
 ```  
   
-## [Make lazy img](../snippets\make-lazy-img\index.js)  
+## [Make lazy img](https://github.com/push-based/web-performance-tools/tree/master/snippets\make-lazy-img\index.js)  
 ```javascript  
 const imgs = document.querySelectorAll('img');
 Array.from(imgs)
     .forEach(i => i.setAttribute('loading', 'lazy'));
 ```  
   
-## [Re dom](../snippets\re-dom\index.js)  
+## [Re dom](https://github.com/push-based/web-performance-tools/tree/master/snippets\re-dom\index.js)  
 ```javascript  
 const bi = document.body.innerHTML; document.body.innerHTML = '';
 setTimeout(() => document.body.innerHTML = bi, 400);
 ```  
   
-## [Scroll up down](../snippets\scroll-up-down\index.js)  
+## [Scroll up down](https://github.com/push-based/web-performance-tools/tree/master/snippets\scroll-up-down\index.js)  
 ```javascript  
 const scrollHeight = document.documentElement.scrollHeight;
 
@@ -818,6 +818,8 @@ console.log('scroll done!');
 ```  
   
 <!-- END-SNIPPETS -->
+
+
 
 
 
