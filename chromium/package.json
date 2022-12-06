@@ -1,0 +1,12 @@
+{
+  "name": "@push-based/perf-bookmarks-chromium",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "michael Hladky",
+  "license": "mit",
+  "dependencies": {},
+  "devDependencies": {
+    "puppeteer": "^19.3.0"
+  }
+}

@@ -6,7 +6,8 @@
   "scripts": {
     "bookmarks": "ts-node chromium/index.ts",
     "time-stats": "node time-stats/index.js",
-    "docs:update": "ts-node docs/index.ts"
+    "docs:update": "ts-node docs/index.ts",
+    "build": "tsc -p ./chromium/.tsconfig.json"
   },
   "author": "",
   "license": "ISC",

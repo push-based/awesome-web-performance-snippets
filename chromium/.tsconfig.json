@@ -1,7 +1,18 @@
 {
   "compilerOptions": {
-    "lib": ["es2019", "es2020.bigint", "es2020.string", "es2020.symbol.wellknown"],
+    "rootDir": ".",
+    "outDir": "../dist/chromium",
+    "lib": [
+      "es2019",
+      "es2020.bigint",
+      "es2020.string",
+      "es2020.symbol.wellknown"
+    ],
     "module": "commonjs",
-    "target": "es2019"
-  }
+    "target": "es2019",
+    "allowJs": true
+  },
+  "include": [
+    "**/index.js"
+  ]
 }
