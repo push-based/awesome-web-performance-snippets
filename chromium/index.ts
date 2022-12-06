@@ -5,6 +5,7 @@ import {dirname} from "path";
 
 (async () => {
     const userDataDir = (process.argv as any).p || USER_DATA_DIR;
+    const url = (process.argv as any).u || '';
     createBookmarkFile({
         bookmarkBar: loadSnippets('./snippets')
             .map(({fileName, javascript}) => ({name: toBookletName(dirname(fileName)), javascript})),
@@ -15,5 +16,6 @@ import {dirname} from "path";
         userDataDir
     });
     const page = await browser.newPage();
+    (url && page.goto(url));
     console.log('Chromium launched!')
 })()
