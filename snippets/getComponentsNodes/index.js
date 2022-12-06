@@ -1,11 +1,4 @@
-/**
- * Gets information about all components in the page or specific component type
- * To run it as bookmarklet:
- * - Minify code using for example https://javascript-minifier.com/
- * - Wrap result in `javascript:(minification_result)();`
- * - Create new bookmark and paste wrapped result in URL field.
- */
-function getComponentsNodes() {
+function index() {
   const {
     name,
     showSummaryInDOM,

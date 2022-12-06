@@ -1,6 +1,3 @@
-/**
- * To use it as bookmark: how-to-use-bookmarks.md
- */
 if(window.__rxa_full_relayout_listener === true) { console.log('You clicked too fast');}
 window.performance.mark('relayout-start');
 document.body.style.zoom === '1' ? document.body.style.zoom = '1.01' : document.body.style.zoom = '1';

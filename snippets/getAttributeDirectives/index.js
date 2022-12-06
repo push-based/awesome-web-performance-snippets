@@ -1,10 +1,3 @@
-/**
- * Gets information about all attribute directives in the page or specific attribute directive type
- * To run it as bookmarklet:
- * - Minify code using for example https://javascript-minifier.com/
- * - Wrap result in `javascript:(minification_result)();`
- * - Create new bookmark and paste wrapped result in URL field.
- */
 function getAttributeDirectives() {
   const { name, showSummaryInDOM, appPrefixes, mode } = initializeFlow();
 

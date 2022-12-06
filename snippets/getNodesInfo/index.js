@@ -1,17 +1,4 @@
-/**
- * Gets estimations for DOM nodes that are part of the layout of the body or specific DOM node.
- * Will include:
- * - Summary (number of DOM nodes, number of nodes that will be processed by the browser, number of DOM nodes that are not processed by the browser (hidden nodes)).
- * - Summary for DOM nodes that can be excluded from layout by applying display: none in addition to other hiding mechanisms.
- *
- * IMPORTANT: If you use this script as bookmarklet it will always get information for document.body. If used from console directly any DOM element can be passed.
- *
- * To run it as bookmarklet:
- * - Minify code using for example https://javascript-minifier.com/
- * - Wrap result in `javascript:(minification_result)();`
- * - Create new bookmark and paste wrapped result in URL field.
- */
-function getNodesInfo(root = document.body) {
+function index(root = document.body) {
   const allNodes = [...root.querySelectorAll("*")];
   const notProcessed = allNodes.filter((n) => isHidden(n));
   const processed = allNodes.filter((n) => !isHidden(n));

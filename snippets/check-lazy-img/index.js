@@ -1,6 +1,3 @@
-/**
- * To use it as bookmark: how-to-use-bookmarks.md
- */
 const imgs = document.querySelectorAll('img');
 const eager = Array.from(imgs)
     .map(i => i.getAttribute('loading'))
