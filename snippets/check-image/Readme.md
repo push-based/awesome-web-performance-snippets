@@ -7,5 +7,7 @@ List all image resources and sort by (name, transferSize, encodedBodySize, decod
 
 [More Info](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming)
 
+The original script got extended to show all loading errors.
+
 ## Usage
 
