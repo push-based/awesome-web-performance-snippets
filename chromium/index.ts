@@ -2,10 +2,14 @@ import * as pptr from 'puppeteer';
 import {createBookmarkFile, loadSnippets, toBookletName} from "./bookmarks/utils";
 import {USER_DATA_DIR} from "./constants";
 import {dirname} from "path";
+import {rmdirSync} from "fs";
+import {Browser} from "puppeteer";
 
 (async () => {
     const userDataDir = (process.argv as any).p || USER_DATA_DIR;
-    const url = (process.argv as any).u || '';
+    console.info('userDataDir: ', userDataDir);
+    const url = (process.argv as any)[2] || '';
+    console.info('URL: ', process.argv);
     createBookmarkFile({
         bookmarkBar: loadSnippets('./snippets')
             .map(({fileName, javascript}) => ({name: toBookletName(dirname(fileName)), javascript})),
@@ -15,7 +19,14 @@ import {dirname} from "path";
         headless: false,
         userDataDir
     });
+
     const page = await browser.newPage();
-    (url && page.goto(url));
-    console.log('Chromium launched!')
+    if(url) {
+        await page.goto(url)
+    } else {
+        console.info('No URL given to navigate');
+    }
+    console.log('Chromium launched!');
+
+
 })()

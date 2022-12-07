@@ -1,6 +1,17 @@
-# Web Performance Snippets
+# Awesome Web Performance Snippets
 
-To use is as bookmarks in a fresh chromium run' ``npm run bookmarks`;
+## Third Party Sources
+
+Included scripts from other open source authors and repositories:
+- [webperf-snippets](https://github.com/nucliweb/webperf-snippets) from [Joan León](https://joanleon.dev/)
+- [header-check](https://github.com/csswizardry/ct) from [Harry Roberts](https://csswizardry.com/)
+
+## Run in [Chromium](https://www.chromium.org/chromium-projects/)
+
+To use is as bookmarks in a fresh chromium:
+
+1. run `npm i`
+2. run: `npm run bookmarks`;
 
 <!-- START-SNIPPETS -->
 
