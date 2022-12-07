@@ -1,5 +1,7 @@
 # Web Performance Snippets
 
+To use is as bookmarks in a fresh chromium run' ``npm run bookmarks`;
+
 <!-- START-SNIPPETS -->
 
 ## [Check lazy img](https://github.com/push-based/web-performance-tools/tree/master/snippets\check-lazy-img\index.js)  
