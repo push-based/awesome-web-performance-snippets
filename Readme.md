@@ -6,12 +6,29 @@ Included scripts from other open source authors and repositories:
 - [webperf-snippets](https://github.com/nucliweb/webperf-snippets) from [Joan León](https://joanleon.dev/)
 - [header-check](https://github.com/csswizardry/ct) from [Harry Roberts](https://csswizardry.com/)
 
-## Run in [Chromium](https://www.chromium.org/chromium-projects/)
+
+## How to use?
+
+### How to use it as javascript bookmarks
+- https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-bookmarks.md
+
+### Snippet
+
+### Console
+
+To use is in the console:
+1. Open the DevTools (<kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>I</kbd> )
+2. Open the Console Tab
+3. Copy snippet by clicking the copy icon on the code box
+4. Past the content in the (<kbd>CTRL</kbd> + <kbd>C</kbd>) console and hit <kbd>ENTER</kbd> 
+
+### Run in [Chromium](https://www.chromium.org/chromium-projects/)
 
 To use is as bookmarks in a fresh chromium:
 
 1. run `npm i`
 2. run: `npm run bookmarks`;
+
 
 <!-- START-SNIPPETS -->
 
