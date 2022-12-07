@@ -1,25 +1,16 @@
+# How to use snippets in the console
 
+copy the script you like, e.g.
 
-To use a code snippet as bookmark:
-1. Minify code using for example [javascript-minifier](https://javascript-minifier.com/)
-2. Create bookmark snippet
-  1. prefix it with `javascript:`
-  2. wrap it inside an [IIFE](https://developer.mozilla.org/de/docs/Glossary/IIFE) `(()=>{ ... })();`
-  
-Example:  
-`javascript:(()=>{ console.log('logged in bookmark') })();`
+```js
+const imgs = document.querySelectorAll('img');
+const eager = Array.from(imgs)
+    .map(i => i.getAttribute('loading'))
+    .filter(l => !l).length;
+console.log(eager+ ' of ' + imgs.length + ' img\'s eager (LCP included)');
+document.title= eager+ ' of ' + imgs.length + ' img\'s eager (LCP included)';
+```
 
-3. Create a new bookmark and paste wrapped result in URL field.
+Open the dev tools and paste it into your console. Execute the script by hitting `ENTER`
 
-4. Add Bookmark
-  1. Show bookmarks 
-  `Settings => Bookmarks => Show bookmarks` or `STRG+SHIFT+B`
-  2. Right click on the bookmark panel
-  3. Add Page
-  4. Insert title and snippet
-  [Bookmark Title](./images/bookmarks-edit.png)
-
-
-**hint**
-The bookmarked script will only be executed when you visit a page. If you e.g. open
-Chrome and no page is open, the script will not be executed.
+![console execution](https://user-images.githubusercontent.com/4904455/206262209-ad67fc96-ae3c-4b5b-afe8-e6847af7cc93.png)
