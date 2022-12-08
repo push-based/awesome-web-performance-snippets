@@ -2,7 +2,7 @@
 
 ## Description
 
-You can fins a detailled description in Harrys repository called [ct](https://github.com/csswizardry/ct#readme).
+You can fins a detailed description in Harrys repository called [ct](https://github.com/csswizardry/ct#readme).
 
 ## How to use it
 
