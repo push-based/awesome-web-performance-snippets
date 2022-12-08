@@ -16,6 +16,634 @@ Included scripts from other open source authors and repositories:
 
 <!-- START-SNIPPETS -->
 
+## [Check first and third party script](https://github.com/push-based/web-performance-tools/tree/master/snippets\check-first-and-third-party-script\index.js)  
+```javascript  
+// ex: katespade.com - list firsty party subdomains in HOSTS array
+const HOSTS = ["assets.katespade.com"];
+
+function getScriptInfo() {
+    const resourceListEntries = performance.getEntriesByType("resource");
+    // set for first party scripts
+    const first = [];
+    // set for third party scripts
+    const third = [];
+
+    resourceListEntries.forEach((resource) => {
+        // check for initiator type
+        const value = "initiatorType" in resource;
+        if (value) {
+            if (resource.initiatorType === "script") {
+                const { host } = new URL(resource.name);
+                // check if resource url host matches location.host = first party script
+                if (host === location.host || HOSTS.includes(host)) {
+                    const json = resource.toJSON();
+                    first.push({ ...json, type: "First Party" });
+                } else {
+                    // add to third party script
+                    const json = resource.toJSON();
+                    third.push({ ...json, type: "Third Party" });
+                }
+            }
+        }
+    });
+
+    const scripts = {
+        firstParty: [{ name: "no data" }],
+        thirdParty: [{ name: "no data" }],
+    };
+
+    if (first.length) {
+        scripts.firstParty = first;
+    }
+
+    if (third.length) {
+        scripts.thirdParty = third;
+    }
+
+    return scripts;
+}
+
+const { firstParty, thirdParty } = getScriptInfo();
+
+console.groupCollapsed("FIRST PARTY SCRIPTS");
+console.table(firstParty);
+console.groupEnd();
+console.groupCollapsed("THIRD PARTY SCRIPTS");
+console.table(thirdParty);
+console.groupEnd();
+
+/*
+Choose which properties to display
+https://developer.mozilla.org/en-US/docs/Web/API/console/table
+
+console.groupCollapsed("FIRST PARTY SCRIPTS");
+console.table(firstParty, ["name", "nextHopProtocol"]);
+console.groupEnd();
+console.groupCollapsed("THIRD PARTY SCRIPTS", ["name", "nextHopProtocol"]);
+console.table(thirdParty);
+console.groupEnd();
+*/
+```  
+  
+## [Check first and third party script timings](https://github.com/push-based/web-performance-tools/tree/master/snippets\check-first-and-third-party-script-timings\index.js)  
+```javascript  
+function createUniqueLists(firstParty, thirdParty) {
+    function getUniqueListBy(arr, key) {
+        return [...new Map(arr.map((item) => [item[key], item])).values()];
+    }
+
+    const firstPartyList = getUniqueListBy(firstParty, ["name"]);
+    const thirdPartyList = getUniqueListBy(thirdParty, ["name"]);
+
+    return { firstPartyList, thirdPartyList };
+
+}
+
+const { firstPartyList, thirdPartyList } = createUniqueLists(
+    firstParty,
+    thirdParty
+);
+
+
+
+function calculateTimings(party, type) {
+    const partyChoice = party === "first" ? firstParty : thirdParty;
+
+    const timingChoices = {
+        DNS_TIME: ["domainLookupEnd", "domainLookupStart"],
+        TCP_HANDSHAKE: ["connectEnd", "connectStart"],
+        RESPONSE_TIME: ["responseEnd", "responseStart"],
+        SECURE_CONNECTION_TIME: ["connectEnd", "secureConnectionStart", 0],
+        FETCH_UNTIL_RESPONSE: ["responseEnd", "fetchStart", 0],
+        REQ_START_UNTIL_RES_END: ["responseEnd", "requestStart", 0],
+        START_UNTIL_RES_END: ["responseEnd", "startTime", 0],
+        REDIRECT_TIME: ["redirectEnd", "redirectStart"],
+    };
+
+    function handleChoices(timingEnd, timingStart, num) {
+        if (!num) {
+            return timingEnd - timingStart;
+        }
+
+        if (timingStart > 0) {
+            return timingEnd - timingStart;
+        }
+
+        return 0;
+    }
+
+    const timings = partyChoice.map((script) => {
+        const [timingEnd, timingStart, num] = timingChoices[type];
+        const endValue = script[timingEnd];
+        const startValue = script[timingStart];
+        return {
+            name: script.name,
+            [type]: handleChoices(endValue, startValue, num),
+        };
+    });
+
+    return timings;
+}
+
+// Available Options
+const timingOptions = [
+    "DNS_TIME",
+    "TCP_HANDSHAKE",
+    "RESPONSE_TIME",
+    "SECURE_CONNECTION_TIME",
+    "FETCH_UNTIL_RESPONSE",
+    "REQ_START_UNTIL_RES_END",
+    "START_UNTIL_RES_END",
+    "REDIRECT_TIME",
+];
+
+// run em all!
+// https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API#timing_resource_loading_phases
+
+timingOptions.forEach((timing) => {
+    console.groupCollapsed(`FIRST PARTY: ${timing}`);
+    console.table(calculateTimings("first", timing));
+    console.groupEnd();
+    console.groupCollapsed(`THIRD PARTY: ${timing}`);
+    console.table(calculateTimings("third", timing));
+    console.groupEnd();
+});
+
+// choose your battle - arg1 is string either "first" or "third", arg2 is string timing option listed above.
+
+console.table(calculateTimings("first", "REQ_START_UNTIL_RES_END"));
+```  
+  
+## [Check header](https://github.com/push-based/web-performance-tools/tree/master/snippets\check-header\index.js)  
+```javascript  
+(function () {
+    var ct = document.createElement('style');
+    ct.innerText = `
+    /*!==========================================================================
+   #CT.CSS
+   ========================================================================== */
+
+/*!
+ * ct.css – Let’s take a look inside your <head>…
+ *
+ * © Harry Roberts 2021 – twitter.com/csswizardry
+ */
+
+
+
+
+
+/**
+ * It’s slightly easier to remember topics than it is colours. Set up some
+ * custom properties for use later on.
+ */
+
+head {
+  --ct-is-problematic: solid;
+  --ct-is-affected: dashed;
+  --ct-notify: #0bce6b;
+  --ct-warn: #ffa400;
+  --ct-error: #ff4e42;
+}
+
+
+
+
+
+/**
+ * Show the <head> and set up the items we might be interested in.
+ */
+
+head,
+head script,
+head script:not([src])[async],
+head script:not([src])[defer],
+head style, head [rel="stylesheet"],
+head script ~ meta[http-equiv="content-security-policy"],
+head > meta[charset]:not(:nth-child(-n+5)) {
+  display: block;
+}
+
+head script,
+head style, head [rel="stylesheet"],
+head title,
+head script ~ meta[http-equiv="content-security-policy"],
+head > meta[charset]:not(:nth-child(-n+5)) {
+  margin: 5px;
+  padding: 5px;
+  border-width: 5px;
+  background-color: white;
+  color: #333;
+}
+
+head ::before,
+head script, head style {
+  font: 16px/1.5 monospace, monospace;
+  display: block;
+}
+
+head ::before {
+  font-weight: bold;
+}
+
+
+
+
+
+/**
+ * External Script and Style
+ */
+
+head script[src],
+head link[rel="stylesheet"] {
+  border-style: var(--ct-is-problematic);
+  border-color: var(--ct-warn);
+}
+
+  head script[src]::before {
+    content: "[Blocking Script – " attr(src) "]"
+  }
+
+  head link[rel="stylesheet"]::before {
+    content: "[Blocking Stylesheet – " attr(href) "]"
+  }
+
+
+
+
+
+/**
+ * Inline Script and Style.
+ */
+
+head style:not(:empty),
+head script:not(:empty) {
+  max-height: 5em;
+  overflow: auto;
+  background-color: #ffd;
+  white-space: pre;
+  border-color: var(--ct-notify);
+  border-style: var(--ct-is-problematic);
+}
+
+  head script:not(:empty)::before {
+    content: "[Inline Script] ";
+  }
+
+  head style:not(:empty)::before {
+    content: "[Inline Style] ";
+  }
+
+
+
+
+
+/**
+ * Blocked Title.
+ *
+ * These selectors are generally more complex because the Key Selector (\`title\`)
+ * depends on the specific conditions of preceding JS--we can’t cast a wide net
+ * and narrow it down later as we can when targeting elements directly.
+ */
+
+head script[src]:not([async]):not([defer]):not([type=module]) ~ title,
+head script:not(:empty) ~ title {
+  display: block;
+  border-style: var(--ct-is-affected);
+  border-color: var(--ct-error);
+}
+
+  head script[src]:not([async]):not([defer]):not([type=module]) ~ title::before,
+  head script:not(:empty) ~ title::before {
+    content: "[<title> blocked by JS] ";
+  }
+
+
+
+
+
+/**
+ * Blocked Scripts.
+ *
+ * These selectors are generally more complex because the Key Selector
+ * (\`script\`) depends on the specific conditions of preceding CSS--we can’t cast
+ * a wide net and narrow it down later as we can when targeting elements
+ * directly.
+ */
+
+head [rel="stylesheet"]:not([media="print"]):not(.ct) ~ script,
+head style:not(:empty) ~ script {
+  border-style: var(--ct-is-affected);
+  border-color: var(--ct-warn);
+}
+
+  head [rel="stylesheet"]:not([media="print"]):not(.ct) ~ script::before,
+  head style:not(:empty) ~ script::before {
+    content: "[JS blocked by CSS – " attr(src) "]";
+  }
+
+
+
+
+
+/**
+ * Using both \`async\` and \`defer\` is redundant (an anti-pattern, even). Let’s
+ * flag that.
+ */
+
+head script[src][src][async][defer] {
+  display: block;
+  border-style: var(--ct-is-problematic);
+  border-color: var(--ct-warn);
+}
+
+  head script[src][src][async][defer]::before {
+    content: "[async and defer is redundant: prefer defer – " attr(src) "]";
+  }
+
+
+
+
+
+/**
+ * Async and defer simply do not work on inline scripts. It won’t do any harm,
+ * but it’s useful to know about.
+ */
+head script:not([src])[async],
+head script:not([src])[defer] {
+  border-style: var(--ct-is-problematic);
+  border-color: var(--ct-warn);
+}
+
+  head script:not([src])[async]::before {
+    content: "The async attribute is redundant on inline scripts"
+  }
+
+  head script:not([src])[defer]::before {
+    content: "The defer attribute is redundant on inline scripts"
+  }
+
+
+
+
+
+/**
+ * Third Party blocking resources.
+ *
+ * Expect false-positives here… it’s a crude proxy at best.
+ *
+ * Selector-chaining (e.g. \`[src][src]\`) is used to bump up specificity.
+ */
+
+head script[src][src][src^="//"],
+head script[src][src][src^="http"],
+head [rel="stylesheet"][href^="//"],
+head [rel="stylesheet"][href^="http"] {
+  border-style: var(--ct-is-problematic);
+  border-color: var(--ct-error);
+}
+
+  head script[src][src][src^="//"]::before,
+  head script[src][src][src^="http"]::before {
+    content: "[Third Party Blocking Script – " attr(src) "]";
+  }
+
+  head [rel="stylesheet"][href^="//"]::before,
+  head [rel="stylesheet"][href^="http"]::before {
+    content: "[Third Party Blocking Stylesheet – " attr(href) "]";
+  }
+
+
+
+
+
+/**
+ * Mid-HEAD CSP disables the Preload Scanner
+ */
+
+head script ~ meta[http-equiv="content-security-policy"] {
+  border-style: var(--ct-is-problematic);
+  border-color: var(--ct-error);
+}
+
+  head script ~ meta[http-equiv="content-security-policy"]::before {
+    content: "[Meta CSP defined after JS]"
+  }
+
+
+
+
+
+/**
+ * Charset should appear as early as possible
+ */
+head > meta[charset]:not(:nth-child(-n+5)) {
+  border-style: var(--ct-is-problematic);
+  border-color: var(--ct-warn);
+}
+
+head > meta[charset]:not(:nth-child(-n+5))::before {
+  content: "[Charset should appear as early as possible]";
+}
+
+
+
+
+
+/**
+ * Hide all irrelevant or non-matching scripts and styles (including ct.css).
+ *
+ * We’re done!
+ */
+
+link[rel="stylesheet"][media="print"],
+link[rel="stylesheet"].ct, style.ct,
+script[async], script[defer], script[type=module] {
+  display: none;
+}
+    `;
+    ct.classList.add('ct');
+    document.head.appendChild(ct);
+}());
+```  
+  
+## [Check image](https://github.com/push-based/web-performance-tools/tree/master/snippets\check-image\index.js)  
+```javascript  
+const bgUrlChecker = /(url\(["'])([A-Za-z0-9$.:/_\-~]*)(["']\))(?!data:$)/g;
+const base64UrlChecker = /(url\(["'])(data:)([A-Za-z0-9$.:/_\-~]*)/g;
+const srcChecker = /(src=["'])([A-Za-z0-9$.:/_\-~]*)(["'])/g;
+
+const bgSRule = 'background';
+const bgImgSRule = 'background-image';
+const s = (tag, pseudoElt) => window.getComputedStyle(tag, pseudoElt || null);
+
+
+function isInViewPort(tag, addHeight, addWidth) {
+    addHeight = addHeight | 0;
+    addWidth = addWidth | addHeight;
+    const positionTop = parseInt(tag.getBoundingClientRect().top);
+    const positionLeft = parseInt(tag.getBoundingClientRect().top);
+    return positionTop < window.innerHeight + addHeight && positionTop !== 0 && positionLeft < window.innerWidth + addWidth && positionLeft !== 0;
+}
+
+const getImgRelevantRules = (tag) => {
+    const res = {
+        withBgImgNodes: new Map(),
+        withBgDataImgNodes: new Map()
+    };
+
+    [null, '::before', '::after']
+        .map((pseudoElt) => {
+            const backgroundVal = s(tag, pseudoElt).getPropertyValue(bgSRule);
+            const backgroundImageVal = s(tag, pseudoElt).getPropertyValue(bgImgSRule);
+
+            let matchBg = bgUrlChecker.exec(backgroundVal) || bgUrlChecker.exec(backgroundImageVal);
+            let matchBgB64 = base64UrlChecker.exec(backgroundVal) || base64UrlChecker.exec(backgroundImageVal);
+
+            if (matchBg) {
+                res.withBgImgNodes.set(matchBg[2], tag);
+            } else if (matchBgB64) {
+                res.withBgDataImgNodes.set(matchBgB64[3], tag);
+            }
+        });
+
+    return res;
+};
+
+const msgNotLazyLoaded = "❌ not lazy loaded";
+const msgNotEagerLoaded = "❌ not eager loaded";
+const msgDontUseBgImage = "❌ don't use bg image";
+const msgDontUseBgDataImage = "❌ don't use data:<format>";
+const msgOk = "🆗";
+const msgUnknown = "Case not implemented";
+
+function getImgs() {
+    const imgs = new Map();
+
+    const resourceListEntries = performance.getEntriesByType("resource");
+    resourceListEntries.forEach(
+        ({
+             name,
+             transferSize,
+             encodedBodySize,
+             decodedBodySize,
+             initiatorType,
+         }) => {
+            if (initiatorType == "img") {
+                imgs.set(name, {
+                    name,
+                    transferSize,
+                    decodedBodySize,
+                    encodedBodySize
+                });
+            }
+        }
+    );
+
+    return imgs;
+}
+
+function getBgImgs(doc) {
+
+    const withBgImgNames = new Set();
+    const withBgImgNodes = new Map();
+    const withBgDataImgNames = new Set();
+    const withBgDataImgNodes = new Map();
+
+    Array.from(doc.querySelectorAll('body *'))
+        .forEach((tag) => {
+            const badRules = getImgRelevantRules(tag);
+            Array.from(badRules.withBgImgNodes.entries()).forEach(([url, _]) => {
+                withBgImgNodes.set(url, tag);
+                withBgImgNames.add(url);
+            });
+            Array.from(badRules.withBgDataImgNodes.entries()).forEach(([url, _]) => {
+                withBgDataImgNodes.set(url, tag);
+                withBgDataImgNames.add(url);
+            });
+        })
+
+    return { withBgImgNodes, withBgImgNames, withBgDataImgNodes, withBgDataImgNames};
+}
+
+function findImagesAndLoadingAttribute(doc) {
+    const imgs = doc.querySelectorAll('img');
+    let lazyLoadedAboveTheFoldNodes = new Map();
+    let lazyLoadedAboveTheFoldNames = new Set();
+    let eagerLoadedBelowTheFoldNodes = new Map();
+    let eagerLoadedBelowTheFoldNames = new Set();
+
+    imgs.forEach((tag) => {
+        const inViewPort = isInViewPort(tag);
+        const matchSrc = srcChecker.exec(tag.attributes.src.value);
+
+        const url = tag.attributes.src.value;
+        const isLazy = tag.attributes.loading;
+        if (isLazy && inViewPort) {
+            lazyLoadedAboveTheFoldNodes.set(url, tag);
+            lazyLoadedAboveTheFoldNames.add(url);
+        } else if (!isLazy && !inViewPort) {
+            eagerLoadedBelowTheFoldNodes.set(url, tag);
+            eagerLoadedBelowTheFoldNames.add(url);
+        }
+    });
+    return { lazyLoadedAboveTheFoldNames, lazyLoadedAboveTheFoldNodes, eagerLoadedBelowTheFoldNames, eagerLoadedBelowTheFoldNodes };
+}
+
+const {
+    lazyLoadedAboveTheFoldNodes,
+    lazyLoadedAboveTheFoldNames,
+    eagerLoadedBelowTheFoldNodes,
+    eagerLoadedBelowTheFoldNames
+} = findImagesAndLoadingAttribute(document);
+
+const {
+    withBgDataImgNames,
+    withBgDataImgNodes,
+    withBgImgNames,
+    withBgImgNodes
+} = getBgImgs(document);
+
+const networkImgs = getImgs();
+
+const allNames = Array.from(new Set([
+        ...lazyLoadedAboveTheFoldNames,
+        ...eagerLoadedBelowTheFoldNames,
+        ...withBgImgNames,
+        ...withBgDataImgNames
+    ]
+));
+
+console.table(Array.from(allNames).map((name) => {
+    const e = {name};
+    const loadingError = eagerLoadedBelowTheFoldNames.has(name) ? msgNotEagerLoaded :
+        lazyLoadedAboveTheFoldNames.has(name) ? msgNotLazyLoaded :
+            withBgImgNames.has(name) ? msgDontUseBgImage :
+                withBgDataImgNames.has(name) ? msgDontUseBgDataImage :
+                    !networkImgs.has(name) ? msgOk : msgUnknown;
+
+    e.loading = loadingError;
+
+    switch (loadingError) {
+        case msgNotEagerLoaded:
+            e.tag = eagerLoadedBelowTheFoldNodes.get(name);
+            break;
+        case msgNotLazyLoaded:
+            e.tag = lazyLoadedAboveTheFoldNodes.get(name);
+            break;
+        case msgDontUseBgImage:
+            e.tag = withBgImgNodes.get(name);
+            break;
+        case msgDontUseBgDataImage:
+            e.tag = withBgDataImgNodes.get(name);
+            break;
+        case msgUnknown:
+            break;
+    }
+    return e;
+}));
+```  
+  
 ## [Check lazy img](https://github.com/push-based/web-performance-tools/tree/master/snippets\check-lazy-img\index.js)  
 ```javascript  
 const imgs = document.querySelectorAll('img');
@@ -24,6 +652,93 @@ const eager = Array.from(imgs)
     .filter(l => !l).length;
 console.log(eager+ ' of ' + imgs.length + ' img\'s eager (LCP included)');
 document.title= eager+ ' of ' + imgs.length + ' img\'s eager (LCP included)';
+```  
+  
+## [Ckeck above the fold lazy loaded images](https://github.com/push-based/web-performance-tools/tree/master/snippets\ckeck-above-the-fold-lazy-loaded-images\index.js)  
+```javascript  
+function findATFLazyLoadedImages() {
+    const lazy = document.querySelectorAll('[loading="lazy"], [data-src]');
+    let lazyImages = [];
+    lazy.forEach((tag) => {
+        const position = parseInt(tag.getBoundingClientRect().top);
+        if (position < window.innerHeight && position !== 0) {
+            lazyImages = [...lazyImages, tag];
+        }
+    });
+    return lazyImages.length > 0 ? lazyImages : false;
+}
+
+console.log(findATFLazyLoadedImages());
+```  
+  
+## [Cls](https://github.com/push-based/web-performance-tools/tree/master/snippets\cls\index.js)  
+```javascript  
+function genColor() {
+  let n = (Math.random() * 0xfffff * 1000000).toString(16);
+  return "#" + n.slice(0, 6);
+}
+
+// console.log(shifts) to see full list of shifts above threshold
+const shifts = [];
+
+// threshold ex: 0.05
+// Layout Shifts will be grouped by color.
+// All nodes attributed to the shift will have a border with the corresponding color
+// Shift value will be added above parent node.
+// Will have all details related to that shift in dropdown
+// Useful for single page applications and finding shifts after initial load
+
+function findShifts(threshold) {
+  return new PerformanceObserver((list) => {
+    list.getEntries().forEach((entry) => {
+      if (entry.value > threshold && !entry.hadRecentInput) {
+        const color = genColor();
+        shifts.push(entry);
+        console.log(shifts);
+
+        const valueNode = document.createElement("details");
+        valueNode.innerHTML = `
+<summary>Layout Shift: ${entry.value}</summary>
+<pre>${JSON.stringify(entry, null, 2)}</pre>
+`;
+valueNode.style = `color: ${color};`;
+entry.sources.forEach((source) => {
+source.node.parentNode.insertBefore(valueNode, source.node);
+source.node.style = `border: 2px ${color} solid`;
+});
+}
+});
+});
+}
+
+findShifts(0.05).observe({ entryTypes: ["layout-shift"] });
+```  
+  
+## [Cumulative layout shift](https://github.com/push-based/web-performance-tools/tree/master/snippets\cumulative-layout-shift\index.js)  
+```javascript  
+try {
+    let cumulativeLayoutShiftScore = 0;
+    const observer = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+            if (!entry.hadRecentInput) {
+                cumulativeLayoutShiftScore += entry.value;
+            }
+        }
+    });
+
+    observer.observe({ type: "layout-shift", buffered: true });
+
+    document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "hidden") {
+            observer.takeRecords();
+            observer.disconnect();
+
+            console.log(`CLS: ${cumulativeLayoutShiftScore}`);
+        }
+    });
+} catch (e) {
+    console.log(`Browser doesn't support this API`);
+}
 ```  
   
 ## [Full relayout](https://github.com/push-based/web-performance-tools/tree/master/snippets\full-relayout\index.js)  
@@ -801,6 +1516,68 @@ function index(root = document.body) {
 }
 ```  
   
+## [Lcp](https://github.com/push-based/web-performance-tools/tree/master/snippets\lcp\index.js)  
+```javascript  
+/**
+ * PerformanceObserver
+ */
+const po = new PerformanceObserver((list) => {
+    let entries = list.getEntries();
+
+    entries = dedupe(entries, "startTime");
+
+    /**
+     * Print all entries of LCP
+     */
+    entries.forEach((item, i) => {
+        console.dir(item);
+        console.log(
+            `${i + 1} current LCP item : ${item.element}: ${item.startTime}`
+        );
+        /**
+         * Highlight LCP elements on the page
+         */
+        item.element ? (item.element.style = "border: 5px dotted blue;") : console.warn('LCP not highlighted');
+    });
+
+    /**
+     * LCP is the lastEntry in getEntries Array
+     */
+    const lastEntry = entries[entries.length - 1];
+    /**
+     * Print final LCP
+     */
+    console.log(`LCP is: ${lastEntry.startTime}`);
+});
+
+/**
+ * Start observing for largest-contentful-paint
+ * buffered true getEntries prior to this script execution
+ */
+po.observe({ type: "largest-contentful-paint", buffered: true });
+
+function dedupe(arr, key) {
+    return [...new Map(arr.map((item) => [item[key], item])).values()];
+}
+```  
+  
+## [Long task](https://github.com/push-based/web-performance-tools/tree/master/snippets\long-task\index.js)  
+```javascript  
+try {
+  // Create the performance observer.
+  const po = new PerformanceObserver((list) => {
+    for (const entry of list.getEntries()) {
+      // Log the entry and all associated details.
+      console.table(entry.toJSON());
+    }
+  });
+  // Start listening for `longtask` entries to be dispatched.
+  po.observe({type: 'longtask', buffered: true});
+} catch (e) {
+  console.log(`The browser doesn't support this API`)
+}
+```  
+  
 ## [Make lazy img](https://github.com/push-based/web-performance-tools/tree/master/snippets\make-lazy-img\index.js)  
 ```javascript  
 const imgs = document.querySelectorAll('img');
@@ -812,6 +1589,43 @@ Array.from(imgs)
 ```javascript  
 const bi = document.body.innerHTML; document.body.innerHTML = '';
 setTimeout(() => document.body.innerHTML = bi, 400);
+```  
+  
+## [Resources hints](https://github.com/push-based/web-performance-tools/tree/master/snippets\resources-hints\index.js)  
+```javascript  
+const rels = [
+    "preload",
+    "prefetch",
+    "preconnect",
+    "dns-prefetch",
+    "preconnect dns-prefetch",
+    "prerender",
+    "modulepreload",
+];
+
+rels.forEach((element) => {
+    const linkElements = document.querySelectorAll(`link[rel="${element}"]`);
+    const dot = linkElements.length > 0 ? "🟩" : "🟥";
+    console.log(`${dot} ${element}`);
+    linkElements.forEach((el) => console.log(el));
+});
+```  
+  
+## [Scripts loading](https://github.com/push-based/web-performance-tools/tree/master/snippets\scripts-loading\index.js)  
+```javascript  
+const scripts = document.querySelectorAll('script[src]');
+
+const scriptsLoading = [...scripts].map((obj) => {
+    let newObj = {};
+    newObj = {
+        src: obj.src,
+        async: obj.async,
+        defer: obj.defer,
+        'render blocking': obj.async || obj.defer ? '' : '🟥'
+    };
+    return newObj;
+});
+console.table(scriptsLoading);
 ```  
   
 ## [Scroll up down](https://github.com/push-based/web-performance-tools/tree/master/snippets\scroll-up-down\index.js)  
@@ -831,7 +1645,48 @@ setTimeout(() => window.scroll({
 console.log('scroll done!');
 ```  
   
+## [Time to first byte all](https://github.com/push-based/web-performance-tools/tree/master/snippets\time-to-first-byte-all\index.js)  
+```javascript  
+new PerformanceObserver((entryList) => {
+    const entries = entryList.getEntries();
+    const resourcesLoaded = [...entries].map((entry) => {
+        let obj= {};
+        // Some resources may have a responseStart value of 0, due
+        // to the resource being cached, or a cross-origin resource
+        // being served without a Timing-Allow-Origin header set.
+        if (entry.responseStart > 0) {
+            obj = {
+                'TTFB (ms)': entry.responseStart,
+                Resource: entry.name
+            }
+        }
+        return obj
+    })
+    console.table(resourcesLoaded)
+}).observe({
+    type: 'resource',
+    buffered: true
+})
+```  
+  
+## [Time to first byte document](https://github.com/push-based/web-performance-tools/tree/master/snippets\time-to-first-byte-document\index.js)  
+```javascript  
+new PerformanceObserver((entryList) => {
+    const [pageNav] = entryList.getEntriesByType('navigation')
+    console.log(`TTFB (ms): ${pageNav.responseStart}`)
+}).observe({
+    type: 'navigation',
+    buffered: true
+})
+```  
+  
+## [Xxx](https://github.com/push-based/web-performance-tools/tree/master/snippets\xxx\index.js)  
+```javascript  
+```  
+  
 <!-- END-SNIPPETS -->
+
+
 
 
 
