@@ -20,7 +20,6 @@ You can use it as a base measurement to compare against global CSS improvements.
 
 ![full-page-relayout-comparison](images/full-page-relayout-comparison.png)
 
-
 ## How to use it
 
 General usage description for all supported techniques can be found in the following table.
@@ -29,15 +28,10 @@ General usage description for all supported techniques can be found in the follo
 | ----------- | ---------- |
 | [Bookmark](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-bookmarks)         |      ✔    | 
 | [Console Tab](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-console-tab.md) |      ✔    | 
-| [Sources Tab](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-sources-tab.md) |      ❌    | 
-| [Chromium](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-chromium.md)       |      ❌    | 
+| [Sources Tab](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-sources-tab.md) |      ✔    | 
+| [Chromium](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-chromium.md)       |      ✔    | 
 
 # Credits
 
-The network part is borrowed from:
-Author: _Joan León_  
-Source: _[github.com/csswizardry/ct](https://github.com/csswizardry/ct)_  
-
-Additional loading checks are implemented by:
 Author: _Michael Hladky - push-based.io_  
 Source: _[github.com/push-based/web-performance-tools](www.github.com/push-based/web-performance-tools)_  
