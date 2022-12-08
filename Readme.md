@@ -14,14 +14,6 @@ Included scripts from other open source authors and repositories:
 - [how-to-use-it-with-bookmarks](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-bookmarks.md)
 - [how-to-use-it-with-chromium](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-chromium.md)
 
-### Run in [Chromium](https://www.chromium.org/chromium-projects/)
-
-To use is as bookmarks in a fresh chromium:
-
-1. run `npm i`
-2. run: `npm run bookmarks`;
-
-
 <!-- START-SNIPPETS -->
 
 ## [Check lazy img](https://github.com/push-based/web-performance-tools/tree/master/snippets\check-lazy-img\index.js)  
