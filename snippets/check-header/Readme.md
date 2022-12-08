@@ -1,9 +1,7 @@
 ## Description
 
 > Note: 
-> This snippet is borrowed from [github.com/nucliweb/webperf-snippets](https://github.com/csswizardry/ct).
-
-Observes (also from the past) and logg's the [LCP](web.dev/lcp).
+> This snippet is borrowed from [github.com/csswizardry/ct](https://github.com/csswizardry/ct).
 
 ## Usage
 
