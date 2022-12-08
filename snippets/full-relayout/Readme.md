@@ -14,7 +14,11 @@ you can and get rough estimations about the different parts of the DOM.
 2. Execute the script over one of the given options
 3. Stop the recording and analyze the flames
 
-![full-page-relayout-logs](images/full-page-relayout.png)
+![full-page-relayout](images/full-page-relayout.png)
+
+You can use it as a base measurement to compare against global CSS improvements.
+
+![full-page-relayout-comparison](images/full-page-relayout-comparison.png)
 
 
 ## How to use it
