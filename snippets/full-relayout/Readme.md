@@ -11,7 +11,7 @@ you can and get rough estimations about the different parts of the DOM.
 ## Usage
 
 1. Start the recording in the performance tab
-2. Execute the script over one of the given options
+2. Execute the script over one of the given options multiple times in a row with a small break inbetween
 3. Stop the recording and analyze the flames
 
 ![full-page-relayout](images/full-page-relayout.png)
