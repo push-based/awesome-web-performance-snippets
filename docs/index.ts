@@ -8,7 +8,16 @@ import {dirname} from "path";
     let readmeContent: string = readFileSync('./Readme.md', 'utf8');
     const bookMarkContent: string = loadSnippets(SNIPPETS_DIR)
         .map(({fileName, javascript}) => {
-            const h2 = `## [${toBookletName(dirname(fileName))}](https://github.com/push-based/web-performance-tools/tree/master/${fileName})  ` + NEW_LINE;
+            const title = toBookletName(dirname(fileName));
+            const folder = fileName
+                // split at wrong separator
+                .split('\\')
+                // remove file from path
+                .slice(0, -1)
+                // join with proper forward slash for url
+                .join('/');
+
+            const h2 = `## [${title}](https://github.com/push-based/web-performance-tools/tree/master/${folder})  ` + NEW_LINE;
             const snippet = "```javascript  " + NEW_LINE + javascript + "```  " + NEW_LINE
             return h2 + snippet + '  ' + NEW_LINE;
         }).join('');

@@ -1,12 +1,14 @@
-# Check first and third party script
+# Check image usage
 
 ## Description
 
-List all scripts using PerformanceResourceTiming API and separating them by first and third party
+List all image resources (also background images in styles) and checks if they are used correctly.
 
-[More Info](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming)
-
-[Info On CORS](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API#coping_with_cors)
+It checks:
+- asset format (url vs. inline base64/svg)
+- loading technique
+- viewport position
+- [transferesize](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming) 
 
 ## How to use it
 
@@ -21,5 +23,11 @@ General usage description for all supported techniques can be found in the follo
 
 # Credits
 
+The network part is borrowed from:
 Author: _Joan León_  
-Source: _[github.com/nucliweb/webperf-snippets](https://github.com/nucliweb/webperf-snippets/blob/main/README.md#first-and-third-party-script-info)_  
+Source: _[github.com/csswizardry/ct](https://github.com/csswizardry/ct)_  
+
+Additional loading checks are implemented by:
+Author: _Michael Hladky - push-based.io_  
+Source: _[github.com/push-based/web-performance-tools](www.github.com/push-based/web-performance-tools)_  
+

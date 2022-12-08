@@ -1,12 +1,8 @@
-# Check first and third party script
+# Check above the fold lazy loaded images
 
 ## Description
 
-List all scripts using PerformanceResourceTiming API and separating them by first and third party
-
-[More Info](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming)
-
-[Info On CORS](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API#coping_with_cors)
+List all images that have loading="lazy" or [data-src] (lazy loading via JS) above the fold
 
 ## How to use it
 
@@ -21,5 +17,6 @@ General usage description for all supported techniques can be found in the follo
 
 # Credits
 
-Author: _Joan León_  
-Source: _[github.com/nucliweb/webperf-snippets](https://github.com/nucliweb/webperf-snippets/blob/main/README.md#first-and-third-party-script-info)_  
+Author: _Estela Franco_  
+Source: _[github.com/nucliweb/webperf-snippets](https://github.com/nucliweb/webperf-snippets/blob/main/README.md#find-above-the-fold-lazy-loaded-images)_  
+

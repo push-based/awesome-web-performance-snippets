@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "bookmarks": "ts-node chromium/index.ts",
-    "time-stats": "node time-stats/index.js",
+    "chromium:serve": "ts-node chromium/index.ts",
     "docs:update": "ts-node docs/index.ts",
-    "build": "tsc -p ./chromium/.tsconfig.json"
+    "chromium:build": "tsc -p ./chromium/.tsconfig.json",
+    "time-stats": "node snippets/time-stats/index.js"
   },
   "author": "",
   "license": "ISC",
