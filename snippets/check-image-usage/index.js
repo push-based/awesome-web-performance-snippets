@@ -4,6 +4,7 @@ const srcChecker = /(src=["'])([A-Za-z0-9$.:/_\-~]*)(["'])(?!data:$)/g;
 
 const bgSRule = 'background';
 const bgImgSRule = 'background-image';
+
 const msgNotLazyLoaded = "❌ not lazy loaded";
 const msgNotEagerLoaded = "❌ not eager loaded";
 const msgDontUseBgImage = "❌ don't use bg image";
@@ -12,13 +13,47 @@ const msgNotDisplayed = "⚠ fetched but not displayed";
 const msgUnknown = "⚠ Case not implemented";
 const msgOk = "🆗";
 
-function isInViewPort(tag, addHeight, addWidth) {
-    addHeight = addHeight | 0;
-    addWidth = addWidth | addHeight;
-    const positionTop = parseInt(tag.getBoundingClientRect().top);
-    const positionLeft = parseInt(tag.getBoundingClientRect().top);
-    return positionTop < window.innerHeight + addHeight && positionTop !== 0 &&
-        positionLeft < window.innerWidth + addWidth && positionLeft !== 0;
+function fixUsage(imgs) {
+    let l = '';
+    imgs.forEach(i => {
+        switch (i.error) {
+            case msgNotEagerLoaded:
+                l = "eager";
+                break;
+            case msgNotLazyLoaded:
+                l = "lazy";
+                break;
+        }
+        l && i.tag.setAttribute('loading', l);
+    });
+}
+
+function highlightElements(imgs) {
+    let s = '';
+    imgs.forEach(i => {
+        switch (i.error) {
+            case msgNotEagerLoaded:
+                s = 'outline: 3px red solid;';
+                break;
+            case msgNotLazyLoaded:
+                s = 'outline: 3px red dotted;';
+                break;
+            case msgDontUseBgDataImage:
+                s = 'outline: 3px red dashed;';
+                break;
+            case msgDontUseBgImage:
+                s = 'outline: 3px red dashed;';
+                break;
+        }
+        s && i.tag.setAttribute('style', s);
+    });
+}
+
+function isInViewPort(tag) {
+    tag.offsetTop < window.innerHeight &&
+    tag.offsetTop > -tag.offsetHeight &&
+    tag.offsetLeft > -tag.offsetWidth &&
+    tag.offsetLeft < window.innerWidth
 }
 
 function styles(tag, pseudoElt) {
@@ -157,22 +192,24 @@ const allNames = Array.from(new Set([
 
 function enrichData() {
     return Array.from(allNames).map((url) => {
+
         let imgData = {
-            url,
             tag: 'n/a',
+            url,
+            error: '',
             transferSize: '?',
-            decodedBodySize: '?',
-            encodedBodySize: '?'
+            decodedBodySize: '?'
         };
 
+        let errorDetected = true;
         switch (true) {
             case eagerLoadedBelowTheFoldNames.has(url):
                 imgData.tag = eagerLoadedBelowTheFoldNodes.get(url);
-                imgData.error = msgNotEagerLoaded;
+                imgData.error = msgNotLazyLoaded;
                 break;
             case lazyLoadedAboveTheFoldNames.has(url):
                 imgData.tag = lazyLoadedAboveTheFoldNodes.get(url);
-                imgData.error = msgNotLazyLoaded;
+                imgData.error = msgNotEagerLoaded;
                 break;
             case withBgImgNames.has(url):
                 imgData.tag = withBgImgNodes.get(url);
@@ -183,21 +220,25 @@ function enrichData() {
                 imgData.error = msgDontUseBgDataImage;
                 imgData.transferSize = 0;
                 imgData.decodedBodySize = url.length * 1.02;
-                imgData.encodedBodySize = url.length * 1.02;
                 break;
             default:
-                imgData.error = msgNotDisplayed;
+                errorDetected = false;
         }
 
         if (networkImgs.has(url)) {
             const {transferSize, decodedBodySize, encodedBodySize} = networkImgs.get(url);
-            imgData = {...imgData, transferSize, decodedBodySize, encodedBodySize};
-        } else {
-            // imgData.error = msgUnknown;
+            imgData = {...imgData, transferSize, decodedBodySize};
+
+            if (!errorDetected) {
+                imgData.error = msgOk;
+            }
         }
-        imgData.tag.setAttribute('style', 'outline: 3px red solid;')
+
         return imgData;
     });
 }
 
-console.table(enrichData());
+const d = enrichData();
+highlightElements(d);
+fixUsage(d);
+console.table(d);
