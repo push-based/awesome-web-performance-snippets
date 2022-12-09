@@ -17,8 +17,12 @@ Use case: add currect layiloading to images
 
 1. load the page and wait until network is satteled
 2. execute the script and count the loaded images
-3. modify the HTML and add lazy loading wherever it fit's
+<img width="216" alt="loading-lazy_before" src="https://user-images.githubusercontent.com/10064416/206700058-8270f18b-5316-45a0-8e1f-1a5b203bdee3.PNG">
+3. modify the HTML and add lazy loading wherever it fit's. Here we used the "check images usage" snippet to do it
+<img width="595" alt="loading1" src="https://user-images.githubusercontent.com/10064416/206700054-a322b91d-5977-43f9-be50-ea55c3286a42.PNG">
 4. execute the script and count the loaded images
+<img width="283" alt="loading-lazy_after" src="https://user-images.githubusercontent.com/10064416/206700055-4b6f34b9-6735-4907-901a-c31f59246ae6.PNG">
+
 
 ## How to use it
 
