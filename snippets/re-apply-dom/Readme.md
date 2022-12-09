@@ -15,7 +15,7 @@ It can be used to test lazy loading of images and other improvements on the dom 
 
 Use case: add currect layiloading to images 
 
-1. load the page and wait until network is satteled
+1. load the page and wait until network is saddeled
 2. execute the script and count the loaded images
 <img width="216" alt="loading-lazy_before" src="https://user-images.githubusercontent.com/10064416/206700058-8270f18b-5316-45a0-8e1f-1a5b203bdee3.PNG">
 3. modify the HTML and add lazy loading wherever it fit's. Here we used the "check images usage" snippet to do it
@@ -32,8 +32,8 @@ General usage description for all supported techniques can be found in the follo
 | ----------- | ---------- |
 | [Bookmark](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-bookmarks)         |      ✔    | 
 | [Console Tab](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-console-tab.md) |      ✔    | 
-| [Sources Tab](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-sources-tab.md) |      ❌    | 
-| [Chromium](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-chromium.md)       |      ❌    | 
+| [Sources Tab](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-sources-tab.md) |      ✔    | 
+| [Chromium](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-chromium.md)       |      ✔    | 
 
 # Credits
 
