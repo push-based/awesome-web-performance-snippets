@@ -1667,6 +1667,13 @@ Array.from(imgs)
     .forEach(i => i.setAttribute('loading', 'lazy'));
 ```  
   
+## [Re apply dom](https://github.com/push-based/web-performance-tools/tree/master/snippets/re-apply-dom)  
+```javascript  
+const bi = document.body.innerHTML;
+document.body.innerHTML = '';
+setTimeout(() => document.body.innerHTML = bi, 350);
+```  
+  
 ## [Re dom](https://github.com/push-based/web-performance-tools/tree/master/snippets/re-dom)  
 ```javascript  
 const bi = document.body.innerHTML; document.body.innerHTML = '';
@@ -1767,6 +1774,8 @@ new PerformanceObserver((entryList) => {
 ```  
   
 <!-- END-SNIPPETS -->
+
+
 
 
 
