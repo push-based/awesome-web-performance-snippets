@@ -670,9 +670,7 @@ function findImagesAndLoadingAttribute(doc) {
 
     imgs.forEach((tag) => {
         const inViewPort = isInViewPort(tag);
-        const url = tag.attributes.src ? tag.attributes.src.value : null;
-        // Ignore images without URL, they could be handled by custom javascript lazy loading technique
-        if (!url) return;
+        const url = tag.attributes.src.value;
         const isLazy = tag.attributes.loading === 'lazy';
         if (isLazy && inViewPort) {
             lazyLoadedAboveTheFoldNodes.set(url, tag);
@@ -1776,6 +1774,8 @@ new PerformanceObserver((entryList) => {
 ```  
   
 <!-- END-SNIPPETS -->
+
+
 
 
 
