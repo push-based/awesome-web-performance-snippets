@@ -97,7 +97,7 @@ function getNetworkImgs() {
         ({
              name,
              transferSize,
-             encodedBodySize,
+            // encodedBodySize,
              decodedBodySize,
              initiatorType,
          }) => {
@@ -106,7 +106,7 @@ function getNetworkImgs() {
                     name,
                     transferSize,
                     decodedBodySize,
-                    encodedBodySize
+               //     encodedBodySize
                 });
             }
         }
@@ -149,10 +149,10 @@ function findImagesAndLoadingAttribute(doc) {
     imgs.forEach((tag) => {
         const inViewPort = isInViewPort(tag);
         const url = tag.attributes.src ? tag.attributes.src.value : null;
-        
+
         // Ignore images without URL since they might be handled by custom javaScript lazy loading technique.
         if (!url) return;
-        
+
         const isLazy = tag.attributes.loading === 'lazy';
         if (isLazy && inViewPort) {
             lazyLoadedAboveTheFoldNodes.set(url, tag);
@@ -193,6 +193,23 @@ const allNames = Array.from(new Set([
         ...withBgDataImgNames
     ]
 ));
+
+function enrichSizeUsage(imgData) {
+    return Promise.all(imgData.map((i, idx) => {
+        return new Promise((r) => {
+            const img = new Image;
+            const wRetain= i.tag.width;
+            const hRetain= i.tag.height;
+            img.onload = function() {
+                // mutation!!!
+                imgData[idx].imgDisplayDiff= `${wRetain}/${hRetain} to ${img.width}/${img.height}`;
+                r();
+            };
+            img.onerror = r;
+            img.src = i.url;
+        })
+    })).then(() => imgData);
+}
 
 function enrichData() {
     return Array.from(allNames).map((url) => {
@@ -243,6 +260,7 @@ function enrichData() {
 }
 
 const d = enrichData();
+
 highlightElements(d);
 fixUsage(d);
-console.table(d);
+enrichSizeUsage(d).then(console.table);
