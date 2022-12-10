@@ -201,7 +201,7 @@ function enrichSizeUsage(imgData) {
             const wRetain= i.tag.width;
             const hRetain= i.tag.height;
             img.onload = function() {
-                // mutation!!!
+                // mutation!
                 imgData[idx].imgDisplayDiff= `${wRetain}/${hRetain} to ${img.width}/${img.height}`;
                 r();
             };
