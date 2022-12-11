@@ -2,11 +2,47 @@
 
 Gathers all style tags of the page and aggregates them to one string.
 
-## Usage
+## How to use it
 
-Can be run as bookmarklet: yes
-1. click bookmark
+<!-- START-HOW_TO[] -->
 
-Can be run in console: yes
-1. paste snippet
-2. hit enter
+
+
+
+### Bookmark Snippet
+
+Copy this code snippet into the bookmark to use it.
+
+
+
+```javascript
+
+javascript:(() => {console.log(Array.from(document.querySelectorAll('style'))
+    .map(a => a.innerText)
+    .reduce((a, b) => a + b));
+)()
+``` 
+
+
+
+
+### Console Tab Snippet
+
+Copy this code snippet into the DevTools console Tab to use it.
+
+
+
+```javascript
+
+console.log(Array.from(document.querySelectorAll('style'))
+    .map(a => a.innerText)
+    .reduce((a, b) => a + b));
+
+``` 
+
+
+
+
+<!-- END-HOW_TO -->
+
+

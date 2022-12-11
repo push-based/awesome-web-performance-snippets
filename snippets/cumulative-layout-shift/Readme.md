@@ -1,4 +1,4 @@
-# 
+# Cumulative Layout Shift
 
 ## Description
 
@@ -6,14 +6,84 @@ TODO
 
 ## How to use it
 
-General usage description for all supported techniques can be found in the following table.
+<!-- START-HOW_TO[] -->
 
-| Technique   | Is Usable  |
-| ----------- | ---------- |
-| [Bookmark](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-bookmarks)         |      ✔    | 
-| [Console Tab](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-console-tab.md) |      ✔    | 
-| [Sources Tab](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-sources-tab.md) |      ❌    | 
-| [Chromium](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-chromium.md)       |      ❌    | 
+
+
+
+### Bookmark Snippet
+
+Copy this code snippet into the bookmark to use it.
+
+
+
+```javascript
+
+javascript:(() => {try {
+    let cumulativeLayoutShiftScore = 0;
+    const observer = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+            if (!entry.hadRecentInput) {
+                cumulativeLayoutShiftScore += entry.value;
+            }
+        }
+    });
+    observer.observe({ type: "layout-shift", buffered: true });
+    document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "hidden") {
+            observer.takeRecords();
+            observer.disconnect();
+            console.log(`CLS: ${cumulativeLayoutShiftScore}`);
+        }
+    });
+}
+catch (e) {
+    console.log(`Browser doesn't support this API`);
+}
+)()
+``` 
+
+
+
+
+### Console Tab Snippet
+
+Copy this code snippet into the DevTools console Tab to use it.
+
+
+
+```javascript
+
+try {
+    let cumulativeLayoutShiftScore = 0;
+    const observer = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+            if (!entry.hadRecentInput) {
+                cumulativeLayoutShiftScore += entry.value;
+            }
+        }
+    });
+    observer.observe({ type: "layout-shift", buffered: true });
+    document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "hidden") {
+            observer.takeRecords();
+            observer.disconnect();
+            console.log(`CLS: ${cumulativeLayoutShiftScore}`);
+        }
+    });
+}
+catch (e) {
+    console.log(`Browser doesn't support this API`);
+}
+
+``` 
+
+
+
+
+<!-- END-HOW_TO -->
+
+
 
 # Credits
 

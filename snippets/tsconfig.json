@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "../dist/snippets",
+    "lib": [
+      "es2019",
+      "dom"
+    ],
+    "module": "commonjs",
+    "target": "es2019",
+    "allowJs": true
+  },
+  "include": [
+    "**/index.js", "**/index.ts"
+  ],
+  "exclude": ["SNIPPET_TEMPLATE/**"]
+}

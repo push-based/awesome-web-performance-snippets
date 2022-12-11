@@ -1,12 +1,13 @@
 import {loadSnippets, toBookletName} from "../chromium/bookmarks/utils";
-import {SNIPPETS_DIR} from "../chromium/constants";
 import {readFileSync, writeFileSync} from "fs";
 import {NEW_LINE, SNIPPET_AREA_END, SNIPPET_AREA_START} from "./constants";
 import {dirname} from "path";
+import {toConsoleSnippet} from "../snippets";
+import {SNIPPETS_DIST} from "../snippets/constants";
 
 (() => {
     let readmeContent: string = readFileSync('./Readme.md', 'utf8');
-    const bookMarkContent: string = loadSnippets(SNIPPETS_DIR)
+    const bookMarkContent: string = loadSnippets(SNIPPETS_DIST)
         .map(({fileName, javascript}) => {
             const title = toBookletName(dirname(fileName));
             const folder = fileName
@@ -18,7 +19,7 @@ import {dirname} from "path";
                 .join('/');
 
             const h2 = `## [${title}](https://github.com/push-based/web-performance-tools/tree/master/${folder})  ` + NEW_LINE;
-            const snippet = "```javascript  " + NEW_LINE + javascript + "```  " + NEW_LINE
+            const snippet = toConsoleSnippet(javascript)
             return h2 + snippet + '  ' + NEW_LINE;
         }).join('');
 

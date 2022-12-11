@@ -6,10 +6,11 @@
   "scripts": {
     "chromium:serve": "ts-node chromium/index.ts",
     "docs:update": "ts-node docs/index.ts",
-    "chromium:build": "tsc -p ./chromium/.tsconfig.json",
-    "time-stats": "node snippets/time-stats/index.js"
+    "snippets:build": "ts-node snippets/index.ts",
+    "chromium:build": "tsc -p chromium/tsconfig.json",
+    "time-stats": "node time-stats/index.js"
   },
-  "author": "",
+  "author": "Michael.Hladky@push-based.io",
   "license": "ISC",
   "dependencies": {
     "lodash": "^4.17.21"

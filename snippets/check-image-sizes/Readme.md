@@ -8,14 +8,87 @@ List all image resources (also background images in styles) and checks if they a
 
 ## How to use it
 
-General usage description for all supported techniques can be found in the following table.
+<!-- START-HOW_TO[bookmark,console-tab,sources-tab,chromium] -->
+
 
 | Technique   | Is Usable  |
 | ----------- | ---------- |
-| [Bookmark](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-bookmarks)         |      ✔    | 
+| [Bookmark](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-bookmarks) |      ✔    | 
 | [Console Tab](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-console-tab.md) |      ✔    | 
-| [Sources Tab](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-sources-tab.md) |      ❌    | 
-| [Chromium](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-chromium.md)       |      ❌    | 
+| [Sources Tab](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-sources-tab.md) |      ✔    | 
+| [Chromium](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-chromium.md)       |      ✔    |
+    
+
+
+### Bookmark Snippet
+
+Copy this code snippet into the bookmark to use it.
+
+
+
+```javascript
+
+javascript:(() => {function getImgs(sortBy) {
+    const imgs = [];
+    const resourceListEntries = performance.getEntriesByType("resource");
+    resourceListEntries.forEach(({ name, transferSize, encodedBodySize, decodedBodySize, initiatorType, }) => {
+        if (initiatorType == "img") {
+            imgs.push({
+                name,
+                transferSize,
+                decodedBodySize,
+                encodedBodySize,
+            });
+        }
+    });
+    const imgList = imgs.sort((a, b) => {
+        return b[sortBy] - a[sortBy];
+    });
+    return imgList;
+}
+console.table(getImgs("encodedBodySize"));
+)()
+``` 
+
+
+
+
+### Console Tab Snippet
+
+Copy this code snippet into the DevTools console Tab to use it.
+
+
+
+```javascript
+
+function getImgs(sortBy) {
+    const imgs = [];
+    const resourceListEntries = performance.getEntriesByType("resource");
+    resourceListEntries.forEach(({ name, transferSize, encodedBodySize, decodedBodySize, initiatorType, }) => {
+        if (initiatorType == "img") {
+            imgs.push({
+                name,
+                transferSize,
+                decodedBodySize,
+                encodedBodySize,
+            });
+        }
+    });
+    const imgList = imgs.sort((a, b) => {
+        return b[sortBy] - a[sortBy];
+    });
+    return imgList;
+}
+console.table(getImgs("encodedBodySize"));
+
+``` 
+
+
+
+
+<!-- END-HOW_TO -->
+
+
 
 # Credits
 

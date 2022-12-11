@@ -5,5 +5,74 @@
 
 List all the <scripts> in the DOM and show a table to see if are loaded async and/or defer
 
-## Usage
+## How to use it
+
+<!-- START-HOW_TO[bookmark,console-tab,sources-tab,chromium] -->
+
+
+| Technique   | Is Usable  |
+| ----------- | ---------- |
+| [Bookmark](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-bookmarks) |      ✔    | 
+| [Console Tab](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-console-tab.md) |      ✔    | 
+| [Sources Tab](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-sources-tab.md) |      ✔    | 
+| [Chromium](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-chromium.md)       |      ✔    |
+    
+
+
+### Bookmark Snippet
+
+Copy this code snippet into the bookmark to use it.
+
+
+
+```javascript
+
+javascript:(() => {const scripts = document.querySelectorAll('script[src]');
+const scriptsLoading = [...scripts].map((obj) => {
+    let newObj = {};
+    newObj = {
+        src: obj.src,
+        async: obj.async,
+        defer: obj.defer,
+        'render blocking': obj.async || obj.defer ? '' : '🟥'
+    };
+    return newObj;
+});
+console.table(scriptsLoading);
+)()
+``` 
+
+
+
+
+### Console Tab Snippet
+
+Copy this code snippet into the DevTools console Tab to use it.
+
+
+
+```javascript
+
+const scripts = document.querySelectorAll('script[src]');
+const scriptsLoading = [...scripts].map((obj) => {
+    let newObj = {};
+    newObj = {
+        src: obj.src,
+        async: obj.async,
+        defer: obj.defer,
+        'render blocking': obj.async || obj.defer ? '' : '🟥'
+    };
+    return newObj;
+});
+console.table(scriptsLoading);
+
+``` 
+
+
+
+
+<!-- END-HOW_TO -->
+
+
+
 
