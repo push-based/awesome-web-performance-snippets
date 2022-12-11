@@ -44,7 +44,7 @@ ${js}
 ${NEW_LINE}`;
 }
 export function toBookmarkSnippet(c: string, cfg?: {h: string}): string {
-    const h = cfg.h || '###';
+    const h = cfg?.h || '###';
     // @TODO add compression
     return `
 ${h} Bookmark Snippet${NEW_LINE}
@@ -55,7 +55,7 @@ ${NEW_LINE}
 }
 
 export function toConsoleSnippet(c: string, cfg?: {h: string}): string {
-    const h = cfg.h || '###';
+    const h = cfg?.h || '###';
     return `
 ${h} Console Tab Snippet${NEW_LINE}
 ${NEW_LINE}
