@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "../dist/snippets",
+    "lib": [
+      "es2019",
+      "dom"
+    ],
+    "module": "ES2020",
+    "target": "ES2020",
+    "allowJs": true
+  },
+  "include": [
+    "./**/index.js",
+    "./**/index.ts"
+  ],
+  "exclude": [
+    "./*.*",
+    "_SNIPPET_TEMPLATE/**"
+  ]
+}

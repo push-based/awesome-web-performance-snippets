@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "chromium:serve": "ts-node chromium/index.ts",
+    "chromium:serve": "ts-node chromium/bin.ts",
     "docs:update": "ts-node docs/index.ts",
-    "chromium:build": "tsc -p ./chromium/.tsconfig.json",
-    "time-stats": "node snippets/time-stats/index.js"
+    "docs:build": "npm run snippets:build && npm run docs:update",
+    "snippets:compile": "tsc -p ./snippets/tsconfig.lib.json",
+    "snippets:update": "ts-node snippets/bin.ts -p ./snippets/tsconfig.docs.json",
+    "snippets:build": "npm run snippets:compile && npm run snippets:update",
+    "chromium:build": "tsc -p chromium/tsconfig.json",
+    "time-stats": "node time-stats/index.js"
   },
-  "author": "",
+  "author": "Michael.Hladky@push-based.io",
   "license": "ISC",
   "dependencies": {
     "lodash": "^4.17.21"

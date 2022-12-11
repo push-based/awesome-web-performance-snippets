@@ -1,14 +1,14 @@
-import {loadSnippets, toBookletName} from "../chromium/bookmarks/utils";
-import {SNIPPETS_DIR} from "../chromium/constants";
+import {loadSnippets, toBookletName} from "../chromium";
 import {readFileSync, writeFileSync} from "fs";
 import {NEW_LINE, SNIPPET_AREA_END, SNIPPET_AREA_START} from "./constants";
 import {dirname} from "path";
+import {SNIPPETS_DIST, toConsoleSnippet} from "../snippets";
 
 (() => {
     let readmeContent: string = readFileSync('./Readme.md', 'utf8');
-    const bookMarkContent: string = loadSnippets(SNIPPETS_DIR)
+    const bookMarkContent: string = loadSnippets(SNIPPETS_DIST)
         .map(({fileName, javascript}) => {
-            const title = toBookletName(dirname(fileName));
+            const title = toBookletName(dirname(fileName).split('/').pop());
             const folder = fileName
                 // split at wrong separator
                 .split('\\')
@@ -17,9 +17,9 @@ import {dirname} from "path";
                 // join with proper forward slash for url
                 .join('/');
 
-            const h2 = `## [${title}](https://github.com/push-based/web-performance-tools/tree/master/${folder})  ` + NEW_LINE;
-            const snippet = "```javascript  " + NEW_LINE + javascript + "```  " + NEW_LINE
-            return h2 + snippet + '  ' + NEW_LINE;
+            const h2 = `## [${title}](https://github.com/push-based/web-performance-tools/tree/master/${folder})` + NEW_LINE;
+            const snippet = toConsoleSnippet(javascript)
+            return h2 + snippet;
         }).join('');
 
     if (bookMarkContent !== '') {
@@ -29,9 +29,9 @@ import {dirname} from "path";
         }
         const [content, end] = _.split(SNIPPET_AREA_END);
         readmeContent = start +
-            SNIPPET_AREA_START + NEW_LINE + NEW_LINE +
+            SNIPPET_AREA_START + NEW_LINE +
             bookMarkContent +
-            SNIPPET_AREA_END + NEW_LINE + NEW_LINE +
+            SNIPPET_AREA_END + NEW_LINE +
             end;
         writeFileSync('./Readme.md', readmeContent, 'utf8');
     }

@@ -1,8 +1,13 @@
+import {EntryType} from "perf_hooks";
+
 // ex: katespade.com - list firsty party subdomains in HOSTS array
 const HOSTS = ["assets.katespade.com"];
 
-function getScriptInfo() {
-    const resourceListEntries = performance.getEntriesByType("resource");
+function getScriptInfo():  {
+    firstParty: { name: string }[],
+    thirdParty: { name: string }[]
+} {
+    const resourceListEntries = performance.getEntriesByType("resource" as EntryType);
     // set for first party scripts
     const first = [];
     // set for third party scripts
@@ -16,12 +21,10 @@ function getScriptInfo() {
                 const { host } = new URL(resource.name);
                 // check if resource url host matches location.host = first party script
                 if (host === location.host || HOSTS.includes(host)) {
-                    const json = resource.toJSON();
-                    first.push({ ...json, type: "First Party" });
+                    first.push({ ...resource.toJSON(), type: "First Party" });
                 } else {
                     // add to third party script
-                    const json = resource.toJSON();
-                    third.push({ ...json, type: "Third Party" });
+                    third.push({ ...resource.toJSON(), type: "Third Party" });
                 }
             }
         }
