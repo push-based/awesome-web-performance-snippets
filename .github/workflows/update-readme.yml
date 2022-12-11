@@ -2,10 +2,11 @@
 # https://github.com/firebase/firebase-tools
 
 name: Update readme on merge
-'on':
+on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 jobs:
   build:
     runs-on: ubuntu-latest
