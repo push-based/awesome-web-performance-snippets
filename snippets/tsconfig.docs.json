@@ -1,14 +1,16 @@
 {
   "ts-node": {
-    "extends": ".tsconfig.json",
+    "extends": "./tsconfig.base.json",
     "compilerOptions": {
-      "outDir": "../dist/snippets",
       "lib": [
-        "es2019"
-      ]
+        "es2019",
+        "es2020"
+      ],
+      "module": "commonjs",
+      "target": "es2019"
     },
     "include": [
-      "index.ts"
+      "./bin.ts"
     ]
   }
 }

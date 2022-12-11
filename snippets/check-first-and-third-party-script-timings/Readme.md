@@ -44,20 +44,34 @@ Copy this code snippet into the bookmark to use it.
 
 
 
+<details>
+
+<summary>Bookmark Snippet</summary>
+
+
 ```javascript
 
-javascript:(() => {function createUniqueLists(firstParty, thirdParty) {
-    function getUniqueListBy(arr, key) {
-        return [...new Map(arr.map((item) => [item[key], item])).values()];
+javascript:(() => {var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
     }
-    const firstPartyList = getUniqueListBy(firstParty, ["name"]);
-    const thirdPartyList = getUniqueListBy(thirdParty, ["name"]);
-    return { firstPartyList, thirdPartyList };
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
+function createUniqueLists(firstParty, thirdParty) {
+    function getUniqueListBy(arr, key) {
+        return __spreadArray([], new Map(arr.map(function (item) { return [item[key], item]; })).values(), true);
+    }
+    var firstPartyList = getUniqueListBy(firstParty, ["name"]);
+    var thirdPartyList = getUniqueListBy(thirdParty, ["name"]);
+    return { firstPartyList: firstPartyList, thirdPartyList: thirdPartyList };
 }
-const { firstPartyList, thirdPartyList } = createUniqueLists(firstParty, thirdParty);
+var _a = createUniqueLists(firstParty, thirdParty), firstPartyList = _a.firstPartyList, thirdPartyList = _a.thirdPartyList;
 function calculateTimings(party, type) {
-    const partyChoice = party === "first" ? firstParty : thirdParty;
-    const timingChoices = {
+    var partyChoice = party === "first" ? firstParty : thirdParty;
+    var timingChoices = {
         DNS_TIME: ["domainLookupEnd", "domainLookupStart"],
         TCP_HANDSHAKE: ["connectEnd", "connectStart"],
         RESPONSE_TIME: ["responseEnd", "responseStart"],
@@ -65,7 +79,7 @@ function calculateTimings(party, type) {
         FETCH_UNTIL_RESPONSE: ["responseEnd", "fetchStart", 0],
         REQ_START_UNTIL_RES_END: ["responseEnd", "requestStart", 0],
         START_UNTIL_RES_END: ["responseEnd", "startTime", 0],
-        REDIRECT_TIME: ["redirectEnd", "redirectStart"],
+        REDIRECT_TIME: ["redirectEnd", "redirectStart"]
     };
     function handleChoices(timingEnd, timingStart, num) {
         if (!num) {
@@ -76,19 +90,21 @@ function calculateTimings(party, type) {
         }
         return 0;
     }
-    const timings = partyChoice.map((script) => {
-        const [timingEnd, timingStart, num] = timingChoices[type];
-        const endValue = script[timingEnd];
-        const startValue = script[timingStart];
-        return {
-            name: script.name,
-            [type]: handleChoices(endValue, startValue, num),
-        };
+    var timings = partyChoice.map(function (script) {
+        var _a;
+        var _b = timingChoices[type], timingEnd = _b[0], timingStart = _b[1], num = _b[2];
+        var endValue = script[timingEnd];
+        var startValue = script[timingStart];
+        return _a = {
+                name: script.name
+            },
+            _a[type] = handleChoices(endValue, startValue, num),
+            _a;
     });
     return timings;
 }
 // Available Options
-const timingOptions = [
+var timingOptions = [
     "DNS_TIME",
     "TCP_HANDSHAKE",
     "RESPONSE_TIME",
@@ -100,11 +116,11 @@ const timingOptions = [
 ];
 // run em all!
 // https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API#timing_resource_loading_phases
-timingOptions.forEach((timing) => {
-    console.groupCollapsed(`FIRST PARTY: ${timing}`);
+timingOptions.forEach(function (timing) {
+    console.groupCollapsed("FIRST PARTY: ".concat(timing));
     console.table(calculateTimings("first", timing));
     console.groupEnd();
-    console.groupCollapsed(`THIRD PARTY: ${timing}`);
+    console.groupCollapsed("THIRD PARTY: ".concat(timing));
     console.table(calculateTimings("third", timing));
     console.groupEnd();
 });
@@ -116,26 +132,45 @@ console.table(calculateTimings("first", "REQ_START_UNTIL_RES_END"));
 
 
 
+</details>
+
+
+
+
 ### Console Tab Snippet
 
 Copy this code snippet into the DevTools console Tab to use it.
 
 
 
+<details>
+
+<summary>Console Tab Snippet</summary>
+
+
 ```javascript
 
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
 function createUniqueLists(firstParty, thirdParty) {
     function getUniqueListBy(arr, key) {
-        return [...new Map(arr.map((item) => [item[key], item])).values()];
+        return __spreadArray([], new Map(arr.map(function (item) { return [item[key], item]; })).values(), true);
     }
-    const firstPartyList = getUniqueListBy(firstParty, ["name"]);
-    const thirdPartyList = getUniqueListBy(thirdParty, ["name"]);
-    return { firstPartyList, thirdPartyList };
+    var firstPartyList = getUniqueListBy(firstParty, ["name"]);
+    var thirdPartyList = getUniqueListBy(thirdParty, ["name"]);
+    return { firstPartyList: firstPartyList, thirdPartyList: thirdPartyList };
 }
-const { firstPartyList, thirdPartyList } = createUniqueLists(firstParty, thirdParty);
+var _a = createUniqueLists(firstParty, thirdParty), firstPartyList = _a.firstPartyList, thirdPartyList = _a.thirdPartyList;
 function calculateTimings(party, type) {
-    const partyChoice = party === "first" ? firstParty : thirdParty;
-    const timingChoices = {
+    var partyChoice = party === "first" ? firstParty : thirdParty;
+    var timingChoices = {
         DNS_TIME: ["domainLookupEnd", "domainLookupStart"],
         TCP_HANDSHAKE: ["connectEnd", "connectStart"],
         RESPONSE_TIME: ["responseEnd", "responseStart"],
@@ -143,7 +178,7 @@ function calculateTimings(party, type) {
         FETCH_UNTIL_RESPONSE: ["responseEnd", "fetchStart", 0],
         REQ_START_UNTIL_RES_END: ["responseEnd", "requestStart", 0],
         START_UNTIL_RES_END: ["responseEnd", "startTime", 0],
-        REDIRECT_TIME: ["redirectEnd", "redirectStart"],
+        REDIRECT_TIME: ["redirectEnd", "redirectStart"]
     };
     function handleChoices(timingEnd, timingStart, num) {
         if (!num) {
@@ -154,19 +189,21 @@ function calculateTimings(party, type) {
         }
         return 0;
     }
-    const timings = partyChoice.map((script) => {
-        const [timingEnd, timingStart, num] = timingChoices[type];
-        const endValue = script[timingEnd];
-        const startValue = script[timingStart];
-        return {
-            name: script.name,
-            [type]: handleChoices(endValue, startValue, num),
-        };
+    var timings = partyChoice.map(function (script) {
+        var _a;
+        var _b = timingChoices[type], timingEnd = _b[0], timingStart = _b[1], num = _b[2];
+        var endValue = script[timingEnd];
+        var startValue = script[timingStart];
+        return _a = {
+                name: script.name
+            },
+            _a[type] = handleChoices(endValue, startValue, num),
+            _a;
     });
     return timings;
 }
 // Available Options
-const timingOptions = [
+var timingOptions = [
     "DNS_TIME",
     "TCP_HANDSHAKE",
     "RESPONSE_TIME",
@@ -178,11 +215,11 @@ const timingOptions = [
 ];
 // run em all!
 // https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API#timing_resource_loading_phases
-timingOptions.forEach((timing) => {
-    console.groupCollapsed(`FIRST PARTY: ${timing}`);
+timingOptions.forEach(function (timing) {
+    console.groupCollapsed("FIRST PARTY: ".concat(timing));
     console.table(calculateTimings("first", timing));
     console.groupEnd();
-    console.groupCollapsed(`THIRD PARTY: ${timing}`);
+    console.groupCollapsed("THIRD PARTY: ".concat(timing));
     console.table(calculateTimings("third", timing));
     console.groupEnd();
 });
@@ -194,7 +231,20 @@ console.table(calculateTimings("first", "REQ_START_UNTIL_RES_END"));
 
 
 
+</details>
+
+
+
+
 <!-- END-HOW_TO -->
+
+
+
+
+
+
+
+
 
 
 

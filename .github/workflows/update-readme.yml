@@ -21,11 +21,11 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - name: Update snippets in main readme
-        run: npm run docs:update
+        run: npm run docs:build
       - name: Commit measures
         uses: EndBug/add-and-commit@v7
         with:
           author_name: push-based-bot
           author_email: opensource@push-based.io
           message: 'Update snippets in main readme'
-          add: './Readme.md'
+          add: '*'

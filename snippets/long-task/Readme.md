@@ -25,24 +25,35 @@ Copy this code snippet into the bookmark to use it.
 
 
 
+<details>
+
+<summary>Bookmark Snippet</summary>
+
+
 ```javascript
 
 javascript:(() => {try {
     // Create the performance observer.
-    const po = new PerformanceObserver((list) => {
-        for (const entry of list.getEntries()) {
+    var po_1 = new PerformanceObserver(function (list) {
+        for (var _i = 0, _a = list.getEntries(); _i < _a.length; _i++) {
+            var entry = _a[_i];
             // Log the entry and all associated details.
             console.table(entry.toJSON());
         }
     });
     // Start listening for `longtask` entries to be dispatched.
-    po.observe({ type: 'longtask', buffered: true });
+    po_1.observe({ type: 'longtask', buffered: true });
 }
 catch (e) {
-    console.log(`The browser doesn't support this API`);
+    console.log("The browser doesn't support this API");
 }
 )()
 ``` 
+
+
+
+
+</details>
 
 
 
@@ -53,21 +64,27 @@ Copy this code snippet into the DevTools console Tab to use it.
 
 
 
+<details>
+
+<summary>Console Tab Snippet</summary>
+
+
 ```javascript
 
 try {
     // Create the performance observer.
-    const po = new PerformanceObserver((list) => {
-        for (const entry of list.getEntries()) {
+    var po_1 = new PerformanceObserver(function (list) {
+        for (var _i = 0, _a = list.getEntries(); _i < _a.length; _i++) {
+            var entry = _a[_i];
             // Log the entry and all associated details.
             console.table(entry.toJSON());
         }
     });
     // Start listening for `longtask` entries to be dispatched.
-    po.observe({ type: 'longtask', buffered: true });
+    po_1.observe({ type: 'longtask', buffered: true });
 }
 catch (e) {
-    console.log(`The browser doesn't support this API`);
+    console.log("The browser doesn't support this API");
 }
 
 ``` 
@@ -75,6 +92,19 @@ catch (e) {
 
 
 
+</details>
+
+
+
+
 <!-- END-HOW_TO -->
+
+
+
+
+
+
+
+
 
 

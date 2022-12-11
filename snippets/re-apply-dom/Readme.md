@@ -42,13 +42,23 @@ Copy this code snippet into the bookmark to use it.
 
 
 
+<details>
+
+<summary>Bookmark Snippet</summary>
+
+
 ```javascript
 
-javascript:(() => {const bi = document.body.innerHTML;
+javascript:(() => {var bi = document.body.innerHTML;
 document.body.innerHTML = '';
-setTimeout(() => document.body.innerHTML = bi, 350);
+setTimeout(function () { return document.body.innerHTML = bi; }, 350);
 )()
 ``` 
+
+
+
+
+</details>
 
 
 
@@ -59,18 +69,36 @@ Copy this code snippet into the DevTools console Tab to use it.
 
 
 
+<details>
+
+<summary>Console Tab Snippet</summary>
+
+
 ```javascript
 
-const bi = document.body.innerHTML;
+var bi = document.body.innerHTML;
 document.body.innerHTML = '';
-setTimeout(() => document.body.innerHTML = bi, 350);
+setTimeout(function () { return document.body.innerHTML = bi; }, 350);
 
 ``` 
 
 
 
 
+</details>
+
+
+
+
 <!-- END-HOW_TO -->
+
+
+
+
+
+
+
+
 
 
 

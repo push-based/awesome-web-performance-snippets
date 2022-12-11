@@ -18,11 +18,16 @@ Copy this code snippet into the bookmark to use it.
 
 
 
+<details>
+
+<summary>Bookmark Snippet</summary>
+
+
 ```javascript
 
-javascript:(() => {new PerformanceObserver((entryList) => {
-    const [pageNav] = entryList.getEntriesByType('navigation');
-    console.log(`TTFB (ms): ${pageNav.responseStart}`);
+javascript:(() => {new PerformanceObserver(function (entryList) {
+    var pageNav = entryList.getEntriesByType('navigation')[0];
+    console.log("TTFB (ms): ".concat(pageNav.responseStart));
 }).observe({
     type: 'navigation',
     buffered: true
@@ -33,17 +38,27 @@ javascript:(() => {new PerformanceObserver((entryList) => {
 
 
 
+</details>
+
+
+
+
 ### Console Tab Snippet
 
 Copy this code snippet into the DevTools console Tab to use it.
 
 
 
+<details>
+
+<summary>Console Tab Snippet</summary>
+
+
 ```javascript
 
-new PerformanceObserver((entryList) => {
-    const [pageNav] = entryList.getEntriesByType('navigation');
-    console.log(`TTFB (ms): ${pageNav.responseStart}`);
+new PerformanceObserver(function (entryList) {
+    var pageNav = entryList.getEntriesByType('navigation')[0];
+    console.log("TTFB (ms): ".concat(pageNav.responseStart));
 }).observe({
     type: 'navigation',
     buffered: true
@@ -54,7 +69,20 @@ new PerformanceObserver((entryList) => {
 
 
 
+</details>
+
+
+
+
 <!-- END-HOW_TO -->
+
+
+
+
+
+
+
+
 
 
 

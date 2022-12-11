@@ -16,21 +16,31 @@ Copy this code snippet into the bookmark to use it.
 
 
 
+<details>
+
+<summary>Bookmark Snippet</summary>
+
+
 ```javascript
 
-javascript:(() => {const scrollHeight = document.documentElement.scrollHeight;
+javascript:(() => {var scrollHeight = document.documentElement.scrollHeight;
 window.scroll({
     top: scrollHeight,
     behavior: 'smooth'
 });
 // wait for a second, then scroll back up
-setTimeout(() => window.scroll({
+setTimeout(function () { return window.scroll({
     top: 0,
     behavior: 'smooth'
-}), 3000);
+}); }, 3000);
 console.log('scroll done!');
 )()
 ``` 
+
+
+
+
+</details>
 
 
 
@@ -41,18 +51,23 @@ Copy this code snippet into the DevTools console Tab to use it.
 
 
 
+<details>
+
+<summary>Console Tab Snippet</summary>
+
+
 ```javascript
 
-const scrollHeight = document.documentElement.scrollHeight;
+var scrollHeight = document.documentElement.scrollHeight;
 window.scroll({
     top: scrollHeight,
     behavior: 'smooth'
 });
 // wait for a second, then scroll back up
-setTimeout(() => window.scroll({
+setTimeout(function () { return window.scroll({
     top: 0,
     behavior: 'smooth'
-}), 3000);
+}); }, 3000);
 console.log('scroll done!');
 
 ``` 
@@ -60,7 +75,20 @@ console.log('scroll done!');
 
 
 
+</details>
+
+
+
+
 <!-- END-HOW_TO -->
+
+
+
+
+
+
+
+
 
 
 

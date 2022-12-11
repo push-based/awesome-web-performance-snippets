@@ -2,8 +2,7 @@ import * as pptr from 'puppeteer';
 import {createBookmarkFile, loadSnippets, toBookletName} from "./bookmarks/utils";
 import {USER_DATA_DIR} from "./constants";
 import {dirname} from "path";
-import {rmdirSync} from "fs";
-import {Browser} from "puppeteer";
+import {SNIPPETS_ROOT} from "../snippets";
 
 (async () => {
     const userDataDir = (process.argv as any).p || USER_DATA_DIR;
@@ -11,7 +10,7 @@ import {Browser} from "puppeteer";
     const url = (process.argv as any)[2] || '';
     console.info('URL: ', process.argv);
     createBookmarkFile({
-        bookmarkBar: loadSnippets('./snippets')
+        bookmarkBar: loadSnippets(SNIPPETS_ROOT)
             .map(({fileName, javascript}) => ({name: toBookletName(dirname(fileName)), javascript})),
         userDataDir
     });

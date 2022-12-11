@@ -30,23 +30,48 @@ Copy this code snippet into the bookmark to use it.
 
 
 
+<details>
+
+<summary>Bookmark Snippet</summary>
+
+
 ```javascript
 
-javascript:(() => {const bgUrlChecker = /(url\(["'])([A-Za-z0-9$.:/_\-~]*)(["']\))(?!data:$)/g;
-const base64UrlChecker = /(url\(["'])(data:)([A-Za-z0-9$.:/_\-~]*)/g;
-const srcChecker = /(src=["'])([A-Za-z0-9$.:/_\-~]*)(["'])(?!data:$)/g;
-const bgSRule = 'background';
-const bgImgSRule = 'background-image';
-const msgNotLazyLoaded = "❌ not lazy loaded";
-const msgNotEagerLoaded = "❌ not eager loaded";
-const msgDontUseBgImage = "❌ don't use bg image";
-const msgDontUseBgDataImage = "❌ don't use data:<format>";
-const msgNotDisplayed = "⚠ fetched but not displayed";
-const msgUnknown = "⚠ Case not implemented";
-const msgOk = "🆗";
+javascript:(() => {var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
+var bgUrlChecker = /(url\(["'])([A-Za-z0-9$.:/_\-~]*)(["']\))(?!data:$)/g;
+var base64UrlChecker = /(url\(["'])(data:)([A-Za-z0-9$.:/_\-~]*)/g;
+var srcChecker = /(src=["'])([A-Za-z0-9$.:/_\-~]*)(["'])(?!data:$)/g;
+var bgSRule = 'background';
+var bgImgSRule = 'background-image';
+var msgNotLazyLoaded = "❌ not lazy loaded";
+var msgNotEagerLoaded = "❌ not eager loaded";
+var msgDontUseBgImage = "❌ don't use bg image";
+var msgDontUseBgDataImage = "❌ don't use data:<format>";
+var msgNotDisplayed = "⚠ fetched but not displayed";
+var msgUnknown = "⚠ Case not implemented";
+var msgOk = "🆗";
 function fixUsage(imgs) {
-    let l = '';
-    imgs.forEach(i => {
+    var l = '';
+    imgs.forEach(function (i) {
         switch (i.error) {
             case msgNotEagerLoaded:
                 l = "eager";
@@ -59,8 +84,8 @@ function fixUsage(imgs) {
     });
 }
 function highlightElements(imgs) {
-    let s = '';
-    imgs.forEach(i => {
+    var s = '';
+    imgs.forEach(function (i) {
         switch (i.error) {
             case msgNotEagerLoaded:
                 s = 'outline: 3px red solid;';
@@ -88,20 +113,20 @@ function styles(tag, pseudoElt) {
     return window.getComputedStyle(tag, pseudoElt || null);
 }
 function getImgRelevantRules(tag) {
-    const res = {
+    var res = {
         withBgImgNodes: new Map(),
         withBgDataImgNodes: new Map()
     };
-    let matchBgB64 = base64UrlChecker.exec(tag.attributes.src);
+    var matchBgB64 = base64UrlChecker.exec(tag.attributes.src);
     if (matchBgB64) {
         res.withBgImgNodes.set(matchBgB64[3], tag);
     }
     [null, '::before', '::after']
-        .map((pseudoElt) => {
-        const backgroundVal = styles(tag, pseudoElt).getPropertyValue(bgSRule);
-        const backgroundImageVal = styles(tag, pseudoElt).getPropertyValue(bgImgSRule);
-        let matchBg = bgUrlChecker.exec(backgroundVal) || bgUrlChecker.exec(backgroundImageVal);
-        let matchBgB64 = base64UrlChecker.exec(backgroundVal) || base64UrlChecker.exec(backgroundImageVal);
+        .map(function (pseudoElt) {
+        var backgroundVal = styles(tag, pseudoElt).getPropertyValue(bgSRule);
+        var backgroundImageVal = styles(tag, pseudoElt).getPropertyValue(bgImgSRule);
+        var matchBg = bgUrlChecker.exec(backgroundVal) || bgUrlChecker.exec(backgroundImageVal);
+        var matchBgB64 = base64UrlChecker.exec(backgroundVal) || base64UrlChecker.exec(backgroundImageVal);
         if (matchBg) {
             res.withBgImgNodes.set(matchBg[2], tag);
         }
@@ -112,50 +137,53 @@ function getImgRelevantRules(tag) {
     return res;
 }
 function getNetworkImgs() {
-    const imgs = new Map();
-    const resourceListEntries = performance.getEntriesByType("resource");
-    resourceListEntries.forEach(({ name, transferSize, initiatorType, }) => {
+    var imgs = new Map();
+    var resourceListEntries = performance.getEntriesByType("resource");
+    resourceListEntries.forEach(function (_a) {
+        var name = _a.name, transferSize = _a.transferSize, initiatorType = _a.initiatorType;
         if (initiatorType == "img") {
             imgs.set(name, {
-                name,
-                transferSize
+                name: name,
+                transferSize: transferSize
             });
         }
     });
     return imgs;
 }
 function getImgsWithBackground(doc) {
-    const withBgImgNames = new Set();
-    const withBgImgNodes = new Map();
-    const withBgDataImgNames = new Set();
-    const withBgDataImgNodes = new Map();
+    var withBgImgNames = new Set();
+    var withBgImgNodes = new Map();
+    var withBgDataImgNames = new Set();
+    var withBgDataImgNodes = new Map();
     Array.from(doc.querySelectorAll('body *'))
-        .forEach((tag) => {
-        const badRules = getImgRelevantRules(tag);
-        Array.from(badRules.withBgImgNodes.entries()).forEach(([url, _]) => {
+        .forEach(function (tag) {
+        var badRules = getImgRelevantRules(tag);
+        Array.from(badRules.withBgImgNodes.entries()).forEach(function (_a) {
+            var url = _a[0], _ = _a[1];
             withBgImgNodes.set(url, tag);
             withBgImgNames.add(url);
         });
-        Array.from(badRules.withBgDataImgNodes.entries()).forEach(([url, _]) => {
+        Array.from(badRules.withBgDataImgNodes.entries()).forEach(function (_a) {
+            var url = _a[0], _ = _a[1];
             withBgDataImgNodes.set(url, tag);
             withBgDataImgNames.add(url);
         });
     });
-    return { withBgImgNodes, withBgImgNames, withBgDataImgNodes, withBgDataImgNames };
+    return { withBgImgNodes: withBgImgNodes, withBgImgNames: withBgImgNames, withBgDataImgNodes: withBgDataImgNodes, withBgDataImgNames: withBgDataImgNames };
 }
 function findImagesAndLoadingAttribute(doc) {
-    const imgs = doc.querySelectorAll('img');
-    const lazyLoadedAboveTheFoldNodes = new Map();
-    const lazyLoadedAboveTheFoldNames = new Set();
-    const eagerLoadedBelowTheFoldNodes = new Map();
-    const eagerLoadedBelowTheFoldNames = new Set();
-    imgs.forEach((tag) => {
-        const inViewPort = isInViewPort(tag);
-        const url = tag.attributes.src ? tag.attributes.src.value : null;
+    var imgs = doc.querySelectorAll('img');
+    var lazyLoadedAboveTheFoldNodes = new Map();
+    var lazyLoadedAboveTheFoldNames = new Set();
+    var eagerLoadedBelowTheFoldNodes = new Map();
+    var eagerLoadedBelowTheFoldNames = new Set();
+    imgs.forEach(function (tag) {
+        var inViewPort = isInViewPort(tag);
+        var url = tag.attributes.src ? tag.attributes.src.value : null;
         // Ignore images without URL since they might be handled by custom javaScript lazy loading technique.
         if (!url)
             return;
-        const isLazy = tag.attributes.loading === 'lazy';
+        var isLazy = tag.attributes.loading === 'lazy';
         if (isLazy && inViewPort) {
             lazyLoadedAboveTheFoldNodes.set(url, tag);
             lazyLoadedAboveTheFoldNames.add(url);
@@ -166,46 +194,41 @@ function findImagesAndLoadingAttribute(doc) {
         }
     });
     return {
-        lazyLoadedAboveTheFoldNames,
-        lazyLoadedAboveTheFoldNodes,
-        eagerLoadedBelowTheFoldNames,
-        eagerLoadedBelowTheFoldNodes
+        lazyLoadedAboveTheFoldNames: lazyLoadedAboveTheFoldNames,
+        lazyLoadedAboveTheFoldNodes: lazyLoadedAboveTheFoldNodes,
+        eagerLoadedBelowTheFoldNames: eagerLoadedBelowTheFoldNames,
+        eagerLoadedBelowTheFoldNodes: eagerLoadedBelowTheFoldNodes
     };
 }
-const { lazyLoadedAboveTheFoldNodes, lazyLoadedAboveTheFoldNames, eagerLoadedBelowTheFoldNodes, eagerLoadedBelowTheFoldNames } = findImagesAndLoadingAttribute(document);
-const { withBgDataImgNames, withBgDataImgNodes, withBgImgNames, withBgImgNodes } = getImgsWithBackground(document);
-const networkImgs = getNetworkImgs();
-const allNames = Array.from(new Set([
-    ...lazyLoadedAboveTheFoldNames,
-    ...eagerLoadedBelowTheFoldNames,
-    ...withBgImgNames,
-    ...withBgDataImgNames
-]));
+var _a = findImagesAndLoadingAttribute(document), lazyLoadedAboveTheFoldNodes = _a.lazyLoadedAboveTheFoldNodes, lazyLoadedAboveTheFoldNames = _a.lazyLoadedAboveTheFoldNames, eagerLoadedBelowTheFoldNodes = _a.eagerLoadedBelowTheFoldNodes, eagerLoadedBelowTheFoldNames = _a.eagerLoadedBelowTheFoldNames;
+var _b = getImgsWithBackground(document), withBgDataImgNames = _b.withBgDataImgNames, withBgDataImgNodes = _b.withBgDataImgNodes, withBgImgNames = _b.withBgImgNames, withBgImgNodes = _b.withBgImgNodes;
+var networkImgs = getNetworkImgs();
+var allNames = Array.from(new Set(__spreadArray(__spreadArray(__spreadArray(__spreadArray([], lazyLoadedAboveTheFoldNames, true), eagerLoadedBelowTheFoldNames, true), withBgImgNames, true), withBgDataImgNames, true)));
 function enrichSizeUsage(imgData) {
-    return Promise.all(imgData.map((i, idx) => {
-        return new Promise((r) => {
-            const img = new Image;
-            const wRetain = i.tag.width;
-            const hRetain = i.tag.height;
+    return Promise.all(imgData.map(function (i, idx) {
+        return new Promise(function (r) {
+            var img = new Image;
+            var wRetain = i.tag.width;
+            var hRetain = i.tag.height;
             img.onload = function () {
                 // mutation!
-                imgData[idx].imgDisplayDiff = `${wRetain}/${hRetain} to ${img.width}/${img.height}`;
+                imgData[idx].imgDisplayDiff = "".concat(wRetain, "/").concat(hRetain, " to ").concat(img.width, "/").concat(img.height);
                 r();
             };
             img.onerror = r;
             img.src = i.url;
         });
-    })).then(() => imgData);
+    })).then(function () { return imgData; });
 }
 function enrichData() {
-    return Array.from(allNames).map((url) => {
-        let imgData = {
+    return Array.from(allNames).map(function (url) {
+        var imgData = {
             tag: 'n/a',
-            url,
+            url: url,
             error: '',
             transferSize: '?'
         };
-        let errorDetected = true;
+        var errorDetected = true;
         switch (true) {
             case eagerLoadedBelowTheFoldNames.has(url):
                 imgData.tag = eagerLoadedBelowTheFoldNodes.get(url);
@@ -228,8 +251,8 @@ function enrichData() {
                 errorDetected = false;
         }
         if (networkImgs.has(url)) {
-            const { transferSize, decodedBodySize, encodedBodySize } = networkImgs.get(url);
-            imgData = { ...imgData, transferSize, decodedBodySize };
+            var _a = networkImgs.get(url), transferSize = _a.transferSize, decodedBodySize = _a.decodedBodySize, encodedBodySize = _a.encodedBodySize;
+            imgData = __assign(__assign({}, imgData), { transferSize: transferSize, decodedBodySize: decodedBodySize });
             if (!errorDetected) {
                 imgData.error = msgOk;
             }
@@ -237,12 +260,17 @@ function enrichData() {
         return imgData;
     });
 }
-const d = enrichData();
+var d = enrichData();
 highlightElements(d);
 fixUsage(d);
 enrichSizeUsage(d).then(console.table);
 )()
 ``` 
+
+
+
+
+</details>
 
 
 
@@ -253,23 +281,48 @@ Copy this code snippet into the DevTools console Tab to use it.
 
 
 
+<details>
+
+<summary>Console Tab Snippet</summary>
+
+
 ```javascript
 
-const bgUrlChecker = /(url\(["'])([A-Za-z0-9$.:/_\-~]*)(["']\))(?!data:$)/g;
-const base64UrlChecker = /(url\(["'])(data:)([A-Za-z0-9$.:/_\-~]*)/g;
-const srcChecker = /(src=["'])([A-Za-z0-9$.:/_\-~]*)(["'])(?!data:$)/g;
-const bgSRule = 'background';
-const bgImgSRule = 'background-image';
-const msgNotLazyLoaded = "❌ not lazy loaded";
-const msgNotEagerLoaded = "❌ not eager loaded";
-const msgDontUseBgImage = "❌ don't use bg image";
-const msgDontUseBgDataImage = "❌ don't use data:<format>";
-const msgNotDisplayed = "⚠ fetched but not displayed";
-const msgUnknown = "⚠ Case not implemented";
-const msgOk = "🆗";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
+var bgUrlChecker = /(url\(["'])([A-Za-z0-9$.:/_\-~]*)(["']\))(?!data:$)/g;
+var base64UrlChecker = /(url\(["'])(data:)([A-Za-z0-9$.:/_\-~]*)/g;
+var srcChecker = /(src=["'])([A-Za-z0-9$.:/_\-~]*)(["'])(?!data:$)/g;
+var bgSRule = 'background';
+var bgImgSRule = 'background-image';
+var msgNotLazyLoaded = "❌ not lazy loaded";
+var msgNotEagerLoaded = "❌ not eager loaded";
+var msgDontUseBgImage = "❌ don't use bg image";
+var msgDontUseBgDataImage = "❌ don't use data:<format>";
+var msgNotDisplayed = "⚠ fetched but not displayed";
+var msgUnknown = "⚠ Case not implemented";
+var msgOk = "🆗";
 function fixUsage(imgs) {
-    let l = '';
-    imgs.forEach(i => {
+    var l = '';
+    imgs.forEach(function (i) {
         switch (i.error) {
             case msgNotEagerLoaded:
                 l = "eager";
@@ -282,8 +335,8 @@ function fixUsage(imgs) {
     });
 }
 function highlightElements(imgs) {
-    let s = '';
-    imgs.forEach(i => {
+    var s = '';
+    imgs.forEach(function (i) {
         switch (i.error) {
             case msgNotEagerLoaded:
                 s = 'outline: 3px red solid;';
@@ -311,20 +364,20 @@ function styles(tag, pseudoElt) {
     return window.getComputedStyle(tag, pseudoElt || null);
 }
 function getImgRelevantRules(tag) {
-    const res = {
+    var res = {
         withBgImgNodes: new Map(),
         withBgDataImgNodes: new Map()
     };
-    let matchBgB64 = base64UrlChecker.exec(tag.attributes.src);
+    var matchBgB64 = base64UrlChecker.exec(tag.attributes.src);
     if (matchBgB64) {
         res.withBgImgNodes.set(matchBgB64[3], tag);
     }
     [null, '::before', '::after']
-        .map((pseudoElt) => {
-        const backgroundVal = styles(tag, pseudoElt).getPropertyValue(bgSRule);
-        const backgroundImageVal = styles(tag, pseudoElt).getPropertyValue(bgImgSRule);
-        let matchBg = bgUrlChecker.exec(backgroundVal) || bgUrlChecker.exec(backgroundImageVal);
-        let matchBgB64 = base64UrlChecker.exec(backgroundVal) || base64UrlChecker.exec(backgroundImageVal);
+        .map(function (pseudoElt) {
+        var backgroundVal = styles(tag, pseudoElt).getPropertyValue(bgSRule);
+        var backgroundImageVal = styles(tag, pseudoElt).getPropertyValue(bgImgSRule);
+        var matchBg = bgUrlChecker.exec(backgroundVal) || bgUrlChecker.exec(backgroundImageVal);
+        var matchBgB64 = base64UrlChecker.exec(backgroundVal) || base64UrlChecker.exec(backgroundImageVal);
         if (matchBg) {
             res.withBgImgNodes.set(matchBg[2], tag);
         }
@@ -335,50 +388,53 @@ function getImgRelevantRules(tag) {
     return res;
 }
 function getNetworkImgs() {
-    const imgs = new Map();
-    const resourceListEntries = performance.getEntriesByType("resource");
-    resourceListEntries.forEach(({ name, transferSize, initiatorType, }) => {
+    var imgs = new Map();
+    var resourceListEntries = performance.getEntriesByType("resource");
+    resourceListEntries.forEach(function (_a) {
+        var name = _a.name, transferSize = _a.transferSize, initiatorType = _a.initiatorType;
         if (initiatorType == "img") {
             imgs.set(name, {
-                name,
-                transferSize
+                name: name,
+                transferSize: transferSize
             });
         }
     });
     return imgs;
 }
 function getImgsWithBackground(doc) {
-    const withBgImgNames = new Set();
-    const withBgImgNodes = new Map();
-    const withBgDataImgNames = new Set();
-    const withBgDataImgNodes = new Map();
+    var withBgImgNames = new Set();
+    var withBgImgNodes = new Map();
+    var withBgDataImgNames = new Set();
+    var withBgDataImgNodes = new Map();
     Array.from(doc.querySelectorAll('body *'))
-        .forEach((tag) => {
-        const badRules = getImgRelevantRules(tag);
-        Array.from(badRules.withBgImgNodes.entries()).forEach(([url, _]) => {
+        .forEach(function (tag) {
+        var badRules = getImgRelevantRules(tag);
+        Array.from(badRules.withBgImgNodes.entries()).forEach(function (_a) {
+            var url = _a[0], _ = _a[1];
             withBgImgNodes.set(url, tag);
             withBgImgNames.add(url);
         });
-        Array.from(badRules.withBgDataImgNodes.entries()).forEach(([url, _]) => {
+        Array.from(badRules.withBgDataImgNodes.entries()).forEach(function (_a) {
+            var url = _a[0], _ = _a[1];
             withBgDataImgNodes.set(url, tag);
             withBgDataImgNames.add(url);
         });
     });
-    return { withBgImgNodes, withBgImgNames, withBgDataImgNodes, withBgDataImgNames };
+    return { withBgImgNodes: withBgImgNodes, withBgImgNames: withBgImgNames, withBgDataImgNodes: withBgDataImgNodes, withBgDataImgNames: withBgDataImgNames };
 }
 function findImagesAndLoadingAttribute(doc) {
-    const imgs = doc.querySelectorAll('img');
-    const lazyLoadedAboveTheFoldNodes = new Map();
-    const lazyLoadedAboveTheFoldNames = new Set();
-    const eagerLoadedBelowTheFoldNodes = new Map();
-    const eagerLoadedBelowTheFoldNames = new Set();
-    imgs.forEach((tag) => {
-        const inViewPort = isInViewPort(tag);
-        const url = tag.attributes.src ? tag.attributes.src.value : null;
+    var imgs = doc.querySelectorAll('img');
+    var lazyLoadedAboveTheFoldNodes = new Map();
+    var lazyLoadedAboveTheFoldNames = new Set();
+    var eagerLoadedBelowTheFoldNodes = new Map();
+    var eagerLoadedBelowTheFoldNames = new Set();
+    imgs.forEach(function (tag) {
+        var inViewPort = isInViewPort(tag);
+        var url = tag.attributes.src ? tag.attributes.src.value : null;
         // Ignore images without URL since they might be handled by custom javaScript lazy loading technique.
         if (!url)
             return;
-        const isLazy = tag.attributes.loading === 'lazy';
+        var isLazy = tag.attributes.loading === 'lazy';
         if (isLazy && inViewPort) {
             lazyLoadedAboveTheFoldNodes.set(url, tag);
             lazyLoadedAboveTheFoldNames.add(url);
@@ -389,46 +445,41 @@ function findImagesAndLoadingAttribute(doc) {
         }
     });
     return {
-        lazyLoadedAboveTheFoldNames,
-        lazyLoadedAboveTheFoldNodes,
-        eagerLoadedBelowTheFoldNames,
-        eagerLoadedBelowTheFoldNodes
+        lazyLoadedAboveTheFoldNames: lazyLoadedAboveTheFoldNames,
+        lazyLoadedAboveTheFoldNodes: lazyLoadedAboveTheFoldNodes,
+        eagerLoadedBelowTheFoldNames: eagerLoadedBelowTheFoldNames,
+        eagerLoadedBelowTheFoldNodes: eagerLoadedBelowTheFoldNodes
     };
 }
-const { lazyLoadedAboveTheFoldNodes, lazyLoadedAboveTheFoldNames, eagerLoadedBelowTheFoldNodes, eagerLoadedBelowTheFoldNames } = findImagesAndLoadingAttribute(document);
-const { withBgDataImgNames, withBgDataImgNodes, withBgImgNames, withBgImgNodes } = getImgsWithBackground(document);
-const networkImgs = getNetworkImgs();
-const allNames = Array.from(new Set([
-    ...lazyLoadedAboveTheFoldNames,
-    ...eagerLoadedBelowTheFoldNames,
-    ...withBgImgNames,
-    ...withBgDataImgNames
-]));
+var _a = findImagesAndLoadingAttribute(document), lazyLoadedAboveTheFoldNodes = _a.lazyLoadedAboveTheFoldNodes, lazyLoadedAboveTheFoldNames = _a.lazyLoadedAboveTheFoldNames, eagerLoadedBelowTheFoldNodes = _a.eagerLoadedBelowTheFoldNodes, eagerLoadedBelowTheFoldNames = _a.eagerLoadedBelowTheFoldNames;
+var _b = getImgsWithBackground(document), withBgDataImgNames = _b.withBgDataImgNames, withBgDataImgNodes = _b.withBgDataImgNodes, withBgImgNames = _b.withBgImgNames, withBgImgNodes = _b.withBgImgNodes;
+var networkImgs = getNetworkImgs();
+var allNames = Array.from(new Set(__spreadArray(__spreadArray(__spreadArray(__spreadArray([], lazyLoadedAboveTheFoldNames, true), eagerLoadedBelowTheFoldNames, true), withBgImgNames, true), withBgDataImgNames, true)));
 function enrichSizeUsage(imgData) {
-    return Promise.all(imgData.map((i, idx) => {
-        return new Promise((r) => {
-            const img = new Image;
-            const wRetain = i.tag.width;
-            const hRetain = i.tag.height;
+    return Promise.all(imgData.map(function (i, idx) {
+        return new Promise(function (r) {
+            var img = new Image;
+            var wRetain = i.tag.width;
+            var hRetain = i.tag.height;
             img.onload = function () {
                 // mutation!
-                imgData[idx].imgDisplayDiff = `${wRetain}/${hRetain} to ${img.width}/${img.height}`;
+                imgData[idx].imgDisplayDiff = "".concat(wRetain, "/").concat(hRetain, " to ").concat(img.width, "/").concat(img.height);
                 r();
             };
             img.onerror = r;
             img.src = i.url;
         });
-    })).then(() => imgData);
+    })).then(function () { return imgData; });
 }
 function enrichData() {
-    return Array.from(allNames).map((url) => {
-        let imgData = {
+    return Array.from(allNames).map(function (url) {
+        var imgData = {
             tag: 'n/a',
-            url,
+            url: url,
             error: '',
             transferSize: '?'
         };
-        let errorDetected = true;
+        var errorDetected = true;
         switch (true) {
             case eagerLoadedBelowTheFoldNames.has(url):
                 imgData.tag = eagerLoadedBelowTheFoldNodes.get(url);
@@ -451,8 +502,8 @@ function enrichData() {
                 errorDetected = false;
         }
         if (networkImgs.has(url)) {
-            const { transferSize, decodedBodySize, encodedBodySize } = networkImgs.get(url);
-            imgData = { ...imgData, transferSize, decodedBodySize };
+            var _a = networkImgs.get(url), transferSize = _a.transferSize, decodedBodySize = _a.decodedBodySize, encodedBodySize = _a.encodedBodySize;
+            imgData = __assign(__assign({}, imgData), { transferSize: transferSize, decodedBodySize: decodedBodySize });
             if (!errorDetected) {
                 imgData.error = msgOk;
             }
@@ -460,7 +511,7 @@ function enrichData() {
         return imgData;
     });
 }
-const d = enrichData();
+var d = enrichData();
 highlightElements(d);
 fixUsage(d);
 enrichSizeUsage(d).then(console.table);
@@ -470,7 +521,20 @@ enrichSizeUsage(d).then(console.table);
 
 
 
+</details>
+
+
+
+
 <!-- END-HOW_TO -->
+
+
+
+
+
+
+
+
 
 
 

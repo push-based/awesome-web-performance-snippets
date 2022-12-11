@@ -40,12 +40,22 @@ Copy this code snippet into the bookmark to use it.
 
 
 
+<details>
+
+<summary>Bookmark Snippet</summary>
+
+
 ```javascript
 
-javascript:(() => {const b = document.body;
+javascript:(() => {var b = document.body;
 b.style.zoom === '1' ? b.style.zoom = '1.01' : b.style.zoom = '1';
 )()
 ``` 
+
+
+
+
+</details>
 
 
 
@@ -56,9 +66,14 @@ Copy this code snippet into the DevTools console Tab to use it.
 
 
 
+<details>
+
+<summary>Console Tab Snippet</summary>
+
+
 ```javascript
 
-const b = document.body;
+var b = document.body;
 b.style.zoom === '1' ? b.style.zoom = '1.01' : b.style.zoom = '1';
 
 ``` 
@@ -66,7 +81,20 @@ b.style.zoom === '1' ? b.style.zoom = '1.01' : b.style.zoom = '1';
 
 
 
+</details>
+
+
+
+
 <!-- END-HOW_TO -->
+
+
+
+
+
+
+
+
 
 
 

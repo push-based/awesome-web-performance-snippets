@@ -18,20 +18,34 @@ Copy this code snippet into the bookmark to use it.
 
 
 
+<details>
+
+<summary>Bookmark Snippet</summary>
+
+
 ```javascript
 
-javascript:(() => {/**
+javascript:(() => {var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
+/**
  * PerformanceObserver
  */
-const po = new PerformanceObserver((list) => {
-    let entries = list.getEntries();
+var po = new PerformanceObserver(function (list) {
+    var entries = list.getEntries();
     entries = dedupe(entries, "startTime");
     /**
      * Print all entries of LCP
      */
-    entries.forEach((item, i) => {
+    entries.forEach(function (item, i) {
         console.dir(item);
-        console.log(`${i + 1} current LCP item : ${item.element}: ${item.startTime}`);
+        console.log("".concat(i + 1, " current LCP item : ").concat(item.element, ": ").concat(item.startTime));
         /**
          * Highlight LCP elements on the page
          */
@@ -40,11 +54,11 @@ const po = new PerformanceObserver((list) => {
     /**
      * LCP is the lastEntry in getEntries Array
      */
-    const lastEntry = entries[entries.length - 1];
+    var lastEntry = entries[entries.length - 1];
     /**
      * Print final LCP
      */
-    console.log(`LCP is: ${lastEntry.startTime}`);
+    console.log("LCP is: ".concat(lastEntry.startTime));
 });
 /**
  * Start observing for largest-contentful-paint
@@ -52,10 +66,15 @@ const po = new PerformanceObserver((list) => {
  */
 po.observe({ type: "largest-contentful-paint", buffered: true });
 function dedupe(arr, key) {
-    return [...new Map(arr.map((item) => [item[key], item])).values()];
+    return __spreadArray([], new Map(arr.map(function (item) { return [item[key], item]; })).values(), true);
 }
 )()
 ``` 
+
+
+
+
+</details>
 
 
 
@@ -66,20 +85,34 @@ Copy this code snippet into the DevTools console Tab to use it.
 
 
 
+<details>
+
+<summary>Console Tab Snippet</summary>
+
+
 ```javascript
 
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
 /**
  * PerformanceObserver
  */
-const po = new PerformanceObserver((list) => {
-    let entries = list.getEntries();
+var po = new PerformanceObserver(function (list) {
+    var entries = list.getEntries();
     entries = dedupe(entries, "startTime");
     /**
      * Print all entries of LCP
      */
-    entries.forEach((item, i) => {
+    entries.forEach(function (item, i) {
         console.dir(item);
-        console.log(`${i + 1} current LCP item : ${item.element}: ${item.startTime}`);
+        console.log("".concat(i + 1, " current LCP item : ").concat(item.element, ": ").concat(item.startTime));
         /**
          * Highlight LCP elements on the page
          */
@@ -88,11 +121,11 @@ const po = new PerformanceObserver((list) => {
     /**
      * LCP is the lastEntry in getEntries Array
      */
-    const lastEntry = entries[entries.length - 1];
+    var lastEntry = entries[entries.length - 1];
     /**
      * Print final LCP
      */
-    console.log(`LCP is: ${lastEntry.startTime}`);
+    console.log("LCP is: ".concat(lastEntry.startTime));
 });
 /**
  * Start observing for largest-contentful-paint
@@ -100,7 +133,7 @@ const po = new PerformanceObserver((list) => {
  */
 po.observe({ type: "largest-contentful-paint", buffered: true });
 function dedupe(arr, key) {
-    return [...new Map(arr.map((item) => [item[key], item])).values()];
+    return __spreadArray([], new Map(arr.map(function (item) { return [item[key], item]; })).values(), true);
 }
 
 ``` 
@@ -108,6 +141,19 @@ function dedupe(arr, key) {
 
 
 
+</details>
+
+
+
+
 <!-- END-HOW_TO -->
+
+
+
+
+
+
+
+
 
 

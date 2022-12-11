@@ -15,13 +15,23 @@ Copy this code snippet into the bookmark to use it.
 
 
 
+<details>
+
+<summary>Bookmark Snippet</summary>
+
+
 ```javascript
 
-javascript:(() => {const imgs = document.querySelectorAll('img');
+javascript:(() => {var imgs = document.querySelectorAll('img');
 Array.from(imgs)
-    .forEach(i => i.setAttribute('loading', 'lazy'));
+    .forEach(function (i) { return i.setAttribute('loading', 'lazy'); });
 )()
 ``` 
+
+
+
+
+</details>
 
 
 
@@ -32,17 +42,35 @@ Copy this code snippet into the DevTools console Tab to use it.
 
 
 
+<details>
+
+<summary>Console Tab Snippet</summary>
+
+
 ```javascript
 
-const imgs = document.querySelectorAll('img');
+var imgs = document.querySelectorAll('img');
 Array.from(imgs)
-    .forEach(i => i.setAttribute('loading', 'lazy'));
+    .forEach(function (i) { return i.setAttribute('loading', 'lazy'); });
 
 ``` 
 
 
 
 
+</details>
+
+
+
+
 <!-- END-HOW_TO -->
+
+
+
+
+
+
+
+
 
 

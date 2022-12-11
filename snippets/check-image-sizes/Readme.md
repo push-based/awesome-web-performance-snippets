@@ -26,22 +26,28 @@ Copy this code snippet into the bookmark to use it.
 
 
 
+<details>
+
+<summary>Bookmark Snippet</summary>
+
+
 ```javascript
 
 javascript:(() => {function getImgs(sortBy) {
-    const imgs = [];
-    const resourceListEntries = performance.getEntriesByType("resource");
-    resourceListEntries.forEach(({ name, transferSize, encodedBodySize, decodedBodySize, initiatorType, }) => {
+    var imgs = [];
+    var resourceListEntries = performance.getEntriesByType("resource");
+    resourceListEntries.forEach(function (_a) {
+        var name = _a.name, transferSize = _a.transferSize, encodedBodySize = _a.encodedBodySize, decodedBodySize = _a.decodedBodySize, initiatorType = _a.initiatorType;
         if (initiatorType == "img") {
             imgs.push({
-                name,
-                transferSize,
-                decodedBodySize,
-                encodedBodySize,
+                name: name,
+                transferSize: transferSize,
+                decodedBodySize: decodedBodySize,
+                encodedBodySize: encodedBodySize
             });
         }
     });
-    const imgList = imgs.sort((a, b) => {
+    var imgList = imgs.sort(function (a, b) {
         return b[sortBy] - a[sortBy];
     });
     return imgList;
@@ -53,28 +59,39 @@ console.table(getImgs("encodedBodySize"));
 
 
 
+</details>
+
+
+
+
 ### Console Tab Snippet
 
 Copy this code snippet into the DevTools console Tab to use it.
 
 
 
+<details>
+
+<summary>Console Tab Snippet</summary>
+
+
 ```javascript
 
 function getImgs(sortBy) {
-    const imgs = [];
-    const resourceListEntries = performance.getEntriesByType("resource");
-    resourceListEntries.forEach(({ name, transferSize, encodedBodySize, decodedBodySize, initiatorType, }) => {
+    var imgs = [];
+    var resourceListEntries = performance.getEntriesByType("resource");
+    resourceListEntries.forEach(function (_a) {
+        var name = _a.name, transferSize = _a.transferSize, encodedBodySize = _a.encodedBodySize, decodedBodySize = _a.decodedBodySize, initiatorType = _a.initiatorType;
         if (initiatorType == "img") {
             imgs.push({
-                name,
-                transferSize,
-                decodedBodySize,
-                encodedBodySize,
+                name: name,
+                transferSize: transferSize,
+                decodedBodySize: decodedBodySize,
+                encodedBodySize: encodedBodySize
             });
         }
     });
-    const imgList = imgs.sort((a, b) => {
+    var imgList = imgs.sort(function (a, b) {
         return b[sortBy] - a[sortBy];
     });
     return imgList;
@@ -86,7 +103,20 @@ console.table(getImgs("encodedBodySize"));
 
 
 
+</details>
+
+
+
+
 <!-- END-HOW_TO -->
+
+
+
+
+
+
+
+
 
 
 

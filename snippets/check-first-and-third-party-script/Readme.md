@@ -28,38 +28,52 @@ Copy this code snippet into the bookmark to use it.
 
 
 
+<details>
+
+<summary>Bookmark Snippet</summary>
+
+
 ```javascript
 
-javascript:(() => {// ex: katespade.com - list firsty party subdomains in HOSTS array
-const HOSTS = ["assets.katespade.com"];
+javascript:(() => {var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+// ex: katespade.com - list firsty party subdomains in HOSTS array
+var HOSTS = ["assets.katespade.com"];
 function getScriptInfo() {
-    const resourceListEntries = performance.getEntriesByType("resource");
+    var resourceListEntries = performance.getEntriesByType("resource");
     // set for first party scripts
-    const first = [];
+    var first = [];
     // set for third party scripts
-    const third = [];
-    resourceListEntries.forEach((resource) => {
+    var third = [];
+    resourceListEntries.forEach(function (resource) {
         // check for initiator type
-        const value = "initiatorType" in resource;
+        var value = "initiatorType" in resource;
         if (value) {
             if (resource.initiatorType === "script") {
-                const { host } = new URL(resource.name);
+                var host = new URL(resource.name).host;
                 // check if resource url host matches location.host = first party script
                 if (host === location.host || HOSTS.includes(host)) {
-                    const json = resource.toJSON();
-                    first.push({ ...json, type: "First Party" });
+                    first.push(__assign(__assign({}, resource.toJSON()), { type: "First Party" }));
                 }
                 else {
                     // add to third party script
-                    const json = resource.toJSON();
-                    third.push({ ...json, type: "Third Party" });
+                    third.push(__assign(__assign({}, resource.toJSON()), { type: "Third Party" }));
                 }
             }
         }
     });
-    const scripts = {
+    var scripts = {
         firstParty: [{ name: "no data" }],
-        thirdParty: [{ name: "no data" }],
+        thirdParty: [{ name: "no data" }]
     };
     if (first.length) {
         scripts.firstParty = first;
@@ -69,13 +83,14 @@ function getScriptInfo() {
     }
     return scripts;
 }
-const { firstParty, thirdParty } = getScriptInfo();
+var _a = getScriptInfo(), firstParty = _a.firstParty, thirdParty = _a.thirdParty;
 console.groupCollapsed("FIRST PARTY SCRIPTS");
 console.table(firstParty);
 console.groupEnd();
 console.groupCollapsed("THIRD PARTY SCRIPTS");
 console.table(thirdParty);
 console.groupEnd();
+export {};
 /*
 Choose which properties to display
 https://developer.mozilla.org/en-US/docs/Web/API/console/table
@@ -93,44 +108,63 @@ console.groupEnd();
 
 
 
+</details>
+
+
+
+
 ### Console Tab Snippet
 
 Copy this code snippet into the DevTools console Tab to use it.
 
 
 
+<details>
+
+<summary>Console Tab Snippet</summary>
+
+
 ```javascript
 
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 // ex: katespade.com - list firsty party subdomains in HOSTS array
-const HOSTS = ["assets.katespade.com"];
+var HOSTS = ["assets.katespade.com"];
 function getScriptInfo() {
-    const resourceListEntries = performance.getEntriesByType("resource");
+    var resourceListEntries = performance.getEntriesByType("resource");
     // set for first party scripts
-    const first = [];
+    var first = [];
     // set for third party scripts
-    const third = [];
-    resourceListEntries.forEach((resource) => {
+    var third = [];
+    resourceListEntries.forEach(function (resource) {
         // check for initiator type
-        const value = "initiatorType" in resource;
+        var value = "initiatorType" in resource;
         if (value) {
             if (resource.initiatorType === "script") {
-                const { host } = new URL(resource.name);
+                var host = new URL(resource.name).host;
                 // check if resource url host matches location.host = first party script
                 if (host === location.host || HOSTS.includes(host)) {
-                    const json = resource.toJSON();
-                    first.push({ ...json, type: "First Party" });
+                    first.push(__assign(__assign({}, resource.toJSON()), { type: "First Party" }));
                 }
                 else {
                     // add to third party script
-                    const json = resource.toJSON();
-                    third.push({ ...json, type: "Third Party" });
+                    third.push(__assign(__assign({}, resource.toJSON()), { type: "Third Party" }));
                 }
             }
         }
     });
-    const scripts = {
+    var scripts = {
         firstParty: [{ name: "no data" }],
-        thirdParty: [{ name: "no data" }],
+        thirdParty: [{ name: "no data" }]
     };
     if (first.length) {
         scripts.firstParty = first;
@@ -140,13 +174,14 @@ function getScriptInfo() {
     }
     return scripts;
 }
-const { firstParty, thirdParty } = getScriptInfo();
+var _a = getScriptInfo(), firstParty = _a.firstParty, thirdParty = _a.thirdParty;
 console.groupCollapsed("FIRST PARTY SCRIPTS");
 console.table(firstParty);
 console.groupEnd();
 console.groupCollapsed("THIRD PARTY SCRIPTS");
 console.table(thirdParty);
 console.groupEnd();
+export {};
 /*
 Choose which properties to display
 https://developer.mozilla.org/en-US/docs/Web/API/console/table
@@ -164,7 +199,20 @@ console.groupEnd();
 
 
 
+</details>
+
+
+
+
 <!-- END-HOW_TO -->
+
+
+
+
+
+
+
+
 
 
 

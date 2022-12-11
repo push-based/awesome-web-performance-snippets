@@ -18,9 +18,14 @@ Copy this code snippet into the bookmark to use it.
 
 
 
+<details>
+
+<summary>Bookmark Snippet</summary>
+
+
 ```javascript
 
-javascript:(() => {const rels = [
+javascript:(() => {var rels = [
     "preload",
     "prefetch",
     "preconnect",
@@ -29,14 +34,19 @@ javascript:(() => {const rels = [
     "prerender",
     "modulepreload",
 ];
-rels.forEach((element) => {
-    const linkElements = document.querySelectorAll(`link[rel="${element}"]`);
-    const dot = linkElements.length > 0 ? "🟩" : "🟥";
-    console.log(`${dot} ${element}`);
-    linkElements.forEach((el) => console.log(el));
+rels.forEach(function (element) {
+    var linkElements = document.querySelectorAll("link[rel=\"".concat(element, "\"]"));
+    var dot = linkElements.length > 0 ? "🟩" : "🟥";
+    console.log("".concat(dot, " ").concat(element));
+    linkElements.forEach(function (el) { return console.log(el); });
 });
 )()
 ``` 
+
+
+
+
+</details>
 
 
 
@@ -47,9 +57,14 @@ Copy this code snippet into the DevTools console Tab to use it.
 
 
 
+<details>
+
+<summary>Console Tab Snippet</summary>
+
+
 ```javascript
 
-const rels = [
+var rels = [
     "preload",
     "prefetch",
     "preconnect",
@@ -58,11 +73,11 @@ const rels = [
     "prerender",
     "modulepreload",
 ];
-rels.forEach((element) => {
-    const linkElements = document.querySelectorAll(`link[rel="${element}"]`);
-    const dot = linkElements.length > 0 ? "🟩" : "🟥";
-    console.log(`${dot} ${element}`);
-    linkElements.forEach((el) => console.log(el));
+rels.forEach(function (element) {
+    var linkElements = document.querySelectorAll("link[rel=\"".concat(element, "\"]"));
+    var dot = linkElements.length > 0 ? "🟩" : "🟥";
+    console.log("".concat(dot, " ").concat(element));
+    linkElements.forEach(function (el) { return console.log(el); });
 });
 
 ``` 
@@ -70,7 +85,20 @@ rels.forEach((element) => {
 
 
 
+</details>
+
+
+
+
 <!-- END-HOW_TO -->
+
+
+
+
+
+
+
+
 
 
 

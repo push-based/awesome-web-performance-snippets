@@ -29,17 +29,32 @@ Copy this code snippet into the bookmark to use it.
 
 
 
+<details>
+
+<summary>Bookmark Snippet</summary>
+
+
 ```javascript
 
-javascript:(() => {function index(root = document.body) {
-    const allNodes = [...root.querySelectorAll("*")];
-    const notProcessed = allNodes.filter((n) => isHidden(n));
-    const processed = allNodes.filter((n) => !isHidden(n));
-    const visibility = processed.filter((n) => isVisibilityHidden(n));
-    const opacity = processed.filter((n) => isOpacity0(n));
-    const dimensions = processed.filter((n) => isHeightWidthOverflow(n));
-    const transform = processed.filter((n) => isTransformHidden(n));
-    const opacityFilter = processed.filter((n) => isFilterOpacity(n));
+javascript:(() => {var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
+function index(root) {
+    if (root === void 0) { root = document.body; }
+    var allNodes = __spreadArray([], root.querySelectorAll("*"), true);
+    var notProcessed = allNodes.filter(function (n) { return isHidden(n); });
+    var processed = allNodes.filter(function (n) { return !isHidden(n); });
+    var visibility = processed.filter(function (n) { return isVisibilityHidden(n); });
+    var opacity = processed.filter(function (n) { return isOpacity0(n); });
+    var dimensions = processed.filter(function (n) { return isHeightWidthOverflow(n); });
+    var transform = processed.filter(function (n) { return isTransformHidden(n); });
+    var opacityFilter = processed.filter(function (n) { return isFilterOpacity(n); });
     /**
      * Finds elements that are not affecting layout of the page and will not be included in styles recalculation
      */
@@ -64,7 +79,7 @@ javascript:(() => {function index(root = document.body) {
      * This elements are still processed during style recalculation
      */
     function isHeightWidthOverflow(element) {
-        const styles = window.getComputedStyle(element);
+        var styles = window.getComputedStyle(element);
         return (((styles.height === "0" || styles.height === "0px") &&
             styles.overflow === "hidden") ||
             ((styles.width === "0" || styles.width === "0px") &&
@@ -90,53 +105,57 @@ javascript:(() => {function index(root = document.body) {
      * This elements are still processed during style recalculation
      */
     function getReferences(nodes) {
-        return nodes.map((n) => ({
+        return nodes.map(function (n) { return ({
             self: n,
-            children: n.querySelectorAll("*"),
-        }));
+            children: n.querySelectorAll("*")
+        }); });
     }
     function getSummary(name, nodes) {
-        const children = nodes
-            .map((n) => n.querySelectorAll("*").length + 1)
-            .reduce((acc, val) => acc + val, 0);
+        var children = nodes
+            .map(function (n) { return n.querySelectorAll("*").length + 1; })
+            .reduce(function (acc, val) { return acc + val; }, 0);
         return {
             "hiding method": name,
             nodes: nodes.length,
-            children,
+            children: children,
             "potential savings (%)": Number(parseFloat((children / processed.length) * 100).toFixed(2)),
-            references: getReferences(nodes),
+            references: getReferences(nodes)
         };
     }
     console.table([
         {
-            name: `📝TOTAL`,
+            name: "\uD83D\uDCDDTOTAL",
             nodes: allNodes.length,
             processed: processed.length,
-            notProcessed: notProcessed.length,
+            notProcessed: notProcessed.length
         },
     ]);
-    const summary = [
+    var summary = [
         getSummary("visibility: none", visibility),
         getSummary("opacity: 0", opacity),
         getSummary("height: 0 || width: 0 && overflow: hidden", dimensions),
         getSummary("transform: scale(0)", transform),
         getSummary("filter: opacity(0)", opacityFilter),
     ];
-    return console.table([
+    return console.table(__spreadArray([
         {
             "hiding method": "👉SUMMARY",
-            nodes: summary.reduce((acc, val) => acc + val.nodes, 0),
-            children: summary.reduce((acc, val) => acc + val.children, 0),
+            nodes: summary.reduce(function (acc, val) { return acc + val.nodes; }, 0),
+            children: summary.reduce(function (acc, val) { return acc + val.children; }, 0),
             "potential savings (%)": Number(summary
-                .reduce((acc, val) => acc + val["potential savings (%)"], 0)
+                .reduce(function (acc, val) { return acc + val["potential savings (%)"]; }, 0)
                 .toFixed(2)),
-            references: "----",
-        },
-        ...summary,
-    ]);
+            references: "----"
+        }
+    ], summary, true));
 }
 )()
 ``` 
+
+
+
+
+</details>
 
 
 
@@ -147,17 +166,32 @@ Copy this code snippet into the DevTools console Tab to use it.
 
 
 
+<details>
+
+<summary>Console Tab Snippet</summary>
+
+
 ```javascript
 
-function index(root = document.body) {
-    const allNodes = [...root.querySelectorAll("*")];
-    const notProcessed = allNodes.filter((n) => isHidden(n));
-    const processed = allNodes.filter((n) => !isHidden(n));
-    const visibility = processed.filter((n) => isVisibilityHidden(n));
-    const opacity = processed.filter((n) => isOpacity0(n));
-    const dimensions = processed.filter((n) => isHeightWidthOverflow(n));
-    const transform = processed.filter((n) => isTransformHidden(n));
-    const opacityFilter = processed.filter((n) => isFilterOpacity(n));
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
+function index(root) {
+    if (root === void 0) { root = document.body; }
+    var allNodes = __spreadArray([], root.querySelectorAll("*"), true);
+    var notProcessed = allNodes.filter(function (n) { return isHidden(n); });
+    var processed = allNodes.filter(function (n) { return !isHidden(n); });
+    var visibility = processed.filter(function (n) { return isVisibilityHidden(n); });
+    var opacity = processed.filter(function (n) { return isOpacity0(n); });
+    var dimensions = processed.filter(function (n) { return isHeightWidthOverflow(n); });
+    var transform = processed.filter(function (n) { return isTransformHidden(n); });
+    var opacityFilter = processed.filter(function (n) { return isFilterOpacity(n); });
     /**
      * Finds elements that are not affecting layout of the page and will not be included in styles recalculation
      */
@@ -182,7 +216,7 @@ function index(root = document.body) {
      * This elements are still processed during style recalculation
      */
     function isHeightWidthOverflow(element) {
-        const styles = window.getComputedStyle(element);
+        var styles = window.getComputedStyle(element);
         return (((styles.height === "0" || styles.height === "0px") &&
             styles.overflow === "hidden") ||
             ((styles.width === "0" || styles.width === "0px") &&
@@ -208,50 +242,49 @@ function index(root = document.body) {
      * This elements are still processed during style recalculation
      */
     function getReferences(nodes) {
-        return nodes.map((n) => ({
+        return nodes.map(function (n) { return ({
             self: n,
-            children: n.querySelectorAll("*"),
-        }));
+            children: n.querySelectorAll("*")
+        }); });
     }
     function getSummary(name, nodes) {
-        const children = nodes
-            .map((n) => n.querySelectorAll("*").length + 1)
-            .reduce((acc, val) => acc + val, 0);
+        var children = nodes
+            .map(function (n) { return n.querySelectorAll("*").length + 1; })
+            .reduce(function (acc, val) { return acc + val; }, 0);
         return {
             "hiding method": name,
             nodes: nodes.length,
-            children,
+            children: children,
             "potential savings (%)": Number(parseFloat((children / processed.length) * 100).toFixed(2)),
-            references: getReferences(nodes),
+            references: getReferences(nodes)
         };
     }
     console.table([
         {
-            name: `📝TOTAL`,
+            name: "\uD83D\uDCDDTOTAL",
             nodes: allNodes.length,
             processed: processed.length,
-            notProcessed: notProcessed.length,
+            notProcessed: notProcessed.length
         },
     ]);
-    const summary = [
+    var summary = [
         getSummary("visibility: none", visibility),
         getSummary("opacity: 0", opacity),
         getSummary("height: 0 || width: 0 && overflow: hidden", dimensions),
         getSummary("transform: scale(0)", transform),
         getSummary("filter: opacity(0)", opacityFilter),
     ];
-    return console.table([
+    return console.table(__spreadArray([
         {
             "hiding method": "👉SUMMARY",
-            nodes: summary.reduce((acc, val) => acc + val.nodes, 0),
-            children: summary.reduce((acc, val) => acc + val.children, 0),
+            nodes: summary.reduce(function (acc, val) { return acc + val.nodes; }, 0),
+            children: summary.reduce(function (acc, val) { return acc + val.children; }, 0),
             "potential savings (%)": Number(summary
-                .reduce((acc, val) => acc + val["potential savings (%)"], 0)
+                .reduce(function (acc, val) { return acc + val["potential savings (%)"]; }, 0)
                 .toFixed(2)),
-            references: "----",
-        },
-        ...summary,
-    ]);
+            references: "----"
+        }
+    ], summary, true));
 }
 
 ``` 
@@ -259,7 +292,20 @@ function index(root = document.body) {
 
 
 
+</details>
+
+
+
+
 <!-- END-HOW_TO -->
+
+
+
+
+
+
+
+
 
 
 
