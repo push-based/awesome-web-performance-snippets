@@ -32,19 +32,10 @@ Copy this code snippet into the bookmark to use it.
 
 ```javascript
 
-javascript:(() => {var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
-new PerformanceObserver(function (entryList) {
-    var entries = entryList.getEntries();
-    var resourcesLoaded = __spreadArray([], entries, true).map(function (entry) {
-        var obj = {};
+javascript:(() => {new PerformanceObserver((entryList) => {
+    const entries = entryList.getEntries();
+    const resourcesLoaded = [...entries].map((entry) => {
+        let obj = {};
         // Some resources may have a responseStart value of 0, due
         // to the resource being cached, or a cross-origin resource
         // being served without a Timing-Allow-Origin header set.
@@ -85,19 +76,10 @@ Copy this code snippet into the DevTools console Tab to use it.
 
 ```javascript
 
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
-new PerformanceObserver(function (entryList) {
-    var entries = entryList.getEntries();
-    var resourcesLoaded = __spreadArray([], entries, true).map(function (entry) {
-        var obj = {};
+new PerformanceObserver((entryList) => {
+    const entries = entryList.getEntries();
+    const resourcesLoaded = [...entries].map((entry) => {
+        let obj = {};
         // Some resources may have a responseStart value of 0, due
         // to the resource being cached, or a cross-origin resource
         // being served without a Timing-Allow-Origin header set.
@@ -126,6 +108,12 @@ new PerformanceObserver(function (entryList) {
 
 
 <!-- END-HOW_TO -->
+
+
+
+
+
+
 
 
 

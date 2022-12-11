@@ -38,11 +38,11 @@ Copy this code snippet into the bookmark to use it.
 ```javascript
 
 javascript:(() => {function genColor() {
-    var n = (Math.random() * 0xfffff * 1000000).toString(16);
+    let n = (Math.random() * 0xfffff * 1000000).toString(16);
     return "#" + n.slice(0, 6);
 }
 // console.log(shifts) to see full list of shifts above threshold
-var shifts = [];
+const shifts = [];
 // threshold ex: 0.05
 // Layout Shifts will be grouped by color.
 // All nodes attributed to the shift will have a border with the corresponding color
@@ -50,18 +50,21 @@ var shifts = [];
 // Will have all details related to that shift in dropdown
 // Useful for single page applications and finding shifts after initial load
 function findShifts(threshold) {
-    return new PerformanceObserver(function (list) {
-        list.getEntries().forEach(function (entry) {
+    return new PerformanceObserver((list) => {
+        list.getEntries().forEach((entry) => {
             if (entry.value > threshold && !entry.hadRecentInput) {
-                var color_1 = genColor();
+                const color = genColor();
                 shifts.push(entry);
                 console.log(shifts);
-                var valueNode_1 = document.createElement("details");
-                valueNode_1.innerHTML = "\n<summary>Layout Shift: ".concat(entry.value, "</summary>\n<pre>").concat(JSON.stringify(entry, null, 2), "</pre>\n");
-                valueNode_1.style = "color: ".concat(color_1, ";");
-                entry.sources.forEach(function (source) {
-                    source.node.parentNode.insertBefore(valueNode_1, source.node);
-                    source.node.style = "border: 2px ".concat(color_1, " solid");
+                const valueNode = document.createElement("details");
+                valueNode.innerHTML = `
+<summary>Layout Shift: ${entry.value}</summary>
+<pre>${JSON.stringify(entry, null, 2)}</pre>
+`;
+                valueNode.style = `color: ${color};`;
+                entry.sources.forEach((source) => {
+                    source.node.parentNode.insertBefore(valueNode, source.node);
+                    source.node.style = `border: 2px ${color} solid`;
                 });
             }
         });
@@ -93,11 +96,11 @@ Copy this code snippet into the DevTools console Tab to use it.
 ```javascript
 
 function genColor() {
-    var n = (Math.random() * 0xfffff * 1000000).toString(16);
+    let n = (Math.random() * 0xfffff * 1000000).toString(16);
     return "#" + n.slice(0, 6);
 }
 // console.log(shifts) to see full list of shifts above threshold
-var shifts = [];
+const shifts = [];
 // threshold ex: 0.05
 // Layout Shifts will be grouped by color.
 // All nodes attributed to the shift will have a border with the corresponding color
@@ -105,18 +108,21 @@ var shifts = [];
 // Will have all details related to that shift in dropdown
 // Useful for single page applications and finding shifts after initial load
 function findShifts(threshold) {
-    return new PerformanceObserver(function (list) {
-        list.getEntries().forEach(function (entry) {
+    return new PerformanceObserver((list) => {
+        list.getEntries().forEach((entry) => {
             if (entry.value > threshold && !entry.hadRecentInput) {
-                var color_1 = genColor();
+                const color = genColor();
                 shifts.push(entry);
                 console.log(shifts);
-                var valueNode_1 = document.createElement("details");
-                valueNode_1.innerHTML = "\n<summary>Layout Shift: ".concat(entry.value, "</summary>\n<pre>").concat(JSON.stringify(entry, null, 2), "</pre>\n");
-                valueNode_1.style = "color: ".concat(color_1, ";");
-                entry.sources.forEach(function (source) {
-                    source.node.parentNode.insertBefore(valueNode_1, source.node);
-                    source.node.style = "border: 2px ".concat(color_1, " solid");
+                const valueNode = document.createElement("details");
+                valueNode.innerHTML = `
+<summary>Layout Shift: ${entry.value}</summary>
+<pre>${JSON.stringify(entry, null, 2)}</pre>
+`;
+                valueNode.style = `color: ${color};`;
+                entry.sources.forEach((source) => {
+                    source.node.parentNode.insertBefore(valueNode, source.node);
+                    source.node.style = `border: 2px ${color} solid`;
                 });
             }
         });
@@ -135,6 +141,12 @@ findShifts(0.05).observe({ entryTypes: ["layout-shift"] });
 
 
 <!-- END-HOW_TO -->
+
+
+
+
+
+
 
 
 

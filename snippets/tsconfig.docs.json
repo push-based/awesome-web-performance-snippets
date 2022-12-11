@@ -7,7 +7,7 @@
         "es2020"
       ],
       "module": "commonjs",
-      "target": "es2019"
+      "target": "es2020"
     },
     "include": [
       "./bin.ts"

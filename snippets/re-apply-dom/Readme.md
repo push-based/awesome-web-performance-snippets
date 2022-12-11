@@ -49,9 +49,9 @@ Copy this code snippet into the bookmark to use it.
 
 ```javascript
 
-javascript:(() => {var bi = document.body.innerHTML;
+javascript:(() => {const bi = document.body.innerHTML;
 document.body.innerHTML = '';
-setTimeout(function () { return document.body.innerHTML = bi; }, 350);
+setTimeout(() => document.body.innerHTML = bi, 350);
 )()
 ``` 
 
@@ -76,9 +76,9 @@ Copy this code snippet into the DevTools console Tab to use it.
 
 ```javascript
 
-var bi = document.body.innerHTML;
+const bi = document.body.innerHTML;
 document.body.innerHTML = '';
-setTimeout(function () { return document.body.innerHTML = bi; }, 350);
+setTimeout(() => document.body.innerHTML = bi, 350);
 
 ``` 
 
@@ -91,6 +91,12 @@ setTimeout(function () { return document.body.innerHTML = bi; }, 350);
 
 
 <!-- END-HOW_TO -->
+
+
+
+
+
+
 
 
 

@@ -25,27 +25,18 @@ Copy this code snippet into the bookmark to use it.
 
 ```javascript
 
-javascript:(() => {var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
-/**
+javascript:(() => {/**
  * PerformanceObserver
  */
-var po = new PerformanceObserver(function (list) {
-    var entries = list.getEntries();
+const po = new PerformanceObserver((list) => {
+    let entries = list.getEntries();
     entries = dedupe(entries, "startTime");
     /**
      * Print all entries of LCP
      */
-    entries.forEach(function (item, i) {
+    entries.forEach((item, i) => {
         console.dir(item);
-        console.log("".concat(i + 1, " current LCP item : ").concat(item.element, ": ").concat(item.startTime));
+        console.log(`${i + 1} current LCP item : ${item.element}: ${item.startTime}`);
         /**
          * Highlight LCP elements on the page
          */
@@ -54,11 +45,11 @@ var po = new PerformanceObserver(function (list) {
     /**
      * LCP is the lastEntry in getEntries Array
      */
-    var lastEntry = entries[entries.length - 1];
+    const lastEntry = entries[entries.length - 1];
     /**
      * Print final LCP
      */
-    console.log("LCP is: ".concat(lastEntry.startTime));
+    console.log(`LCP is: ${lastEntry.startTime}`);
 });
 /**
  * Start observing for largest-contentful-paint
@@ -66,7 +57,7 @@ var po = new PerformanceObserver(function (list) {
  */
 po.observe({ type: "largest-contentful-paint", buffered: true });
 function dedupe(arr, key) {
-    return __spreadArray([], new Map(arr.map(function (item) { return [item[key], item]; })).values(), true);
+    return [...new Map(arr.map((item) => [item[key], item])).values()];
 }
 )()
 ``` 
@@ -92,27 +83,18 @@ Copy this code snippet into the DevTools console Tab to use it.
 
 ```javascript
 
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
 /**
  * PerformanceObserver
  */
-var po = new PerformanceObserver(function (list) {
-    var entries = list.getEntries();
+const po = new PerformanceObserver((list) => {
+    let entries = list.getEntries();
     entries = dedupe(entries, "startTime");
     /**
      * Print all entries of LCP
      */
-    entries.forEach(function (item, i) {
+    entries.forEach((item, i) => {
         console.dir(item);
-        console.log("".concat(i + 1, " current LCP item : ").concat(item.element, ": ").concat(item.startTime));
+        console.log(`${i + 1} current LCP item : ${item.element}: ${item.startTime}`);
         /**
          * Highlight LCP elements on the page
          */
@@ -121,11 +103,11 @@ var po = new PerformanceObserver(function (list) {
     /**
      * LCP is the lastEntry in getEntries Array
      */
-    var lastEntry = entries[entries.length - 1];
+    const lastEntry = entries[entries.length - 1];
     /**
      * Print final LCP
      */
-    console.log("LCP is: ".concat(lastEntry.startTime));
+    console.log(`LCP is: ${lastEntry.startTime}`);
 });
 /**
  * Start observing for largest-contentful-paint
@@ -133,7 +115,7 @@ var po = new PerformanceObserver(function (list) {
  */
 po.observe({ type: "largest-contentful-paint", buffered: true });
 function dedupe(arr, key) {
-    return __spreadArray([], new Map(arr.map(function (item) { return [item[key], item]; })).values(), true);
+    return [...new Map(arr.map((item) => [item[key], item])).values()];
 }
 
 ``` 
@@ -147,6 +129,12 @@ function dedupe(arr, key) {
 
 
 <!-- END-HOW_TO -->
+
+
+
+
+
+
 
 
 

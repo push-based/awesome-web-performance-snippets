@@ -24,17 +24,8 @@ Copy this code snippet into the bookmark to use it.
 
 ```javascript
 
-javascript:(() => {var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
-function index() {
-    var _a = initializeFlow(), name = _a.name, showSummaryInDOM = _a.showSummaryInDOM, appPrefixes = _a.appPrefixes, mode = _a.mode, allNodes = _a.allNodes, visibleNodes = _a.visibleNodes, hiddenNodes = _a.hiddenNodes, inViewportNodes = _a.inViewportNodes, outOfViewportNodes = _a.outOfViewportNodes;
+javascript:(() => {function index() {
+    const { name, showSummaryInDOM, appPrefixes, mode, allNodes, visibleNodes, hiddenNodes, inViewportNodes, outOfViewportNodes, } = initializeFlow();
     /**
      * Flow init
      */
@@ -42,15 +33,15 @@ function index() {
         /**
          * Clearing summary items from DOM.
          */
-        var summaries = document.querySelectorAll(".customSummaryItem");
-        summaries.forEach(function (i) { return i.remove(); });
-        var mode = prompt("Mode: summary or component");
-        var allNodes = Array.from(document.body.querySelectorAll("*"));
-        var visibleNodes = [];
-        var hiddenNodes = [];
-        var inViewportNodes = [];
-        var outOfViewportNodes = [];
-        allNodes.forEach(function (n) {
+        const summaries = document.querySelectorAll(".customSummaryItem");
+        summaries.forEach((i) => i.remove());
+        const mode = prompt("Mode: summary or component");
+        const allNodes = Array.from(document.body.querySelectorAll("*"));
+        const visibleNodes = [];
+        const hiddenNodes = [];
+        const inViewportNodes = [];
+        const outOfViewportNodes = [];
+        allNodes.forEach((n) => {
             if (isHidden(n)) {
                 hiddenNodes.push(n);
             }
@@ -67,31 +58,31 @@ function index() {
         switch (mode) {
             case "component":
                 return {
-                    mode: mode,
+                    mode,
                     name: prompt("Component name"),
                     showSummaryInDOM: prompt("Apply summary info to elements? (yes/no)", "no") === "yes"
                         ? true
                         : false,
-                    allNodes: allNodes,
-                    visibleNodes: visibleNodes,
-                    hiddenNodes: hiddenNodes,
-                    inViewportNodes: inViewportNodes,
-                    outOfViewportNodes: outOfViewportNodes
+                    allNodes,
+                    visibleNodes,
+                    hiddenNodes,
+                    inViewportNodes,
+                    outOfViewportNodes,
                 };
             case "summary":
                 return {
-                    mode: mode,
+                    mode,
                     appPrefixes: prompt("Components prefixes, comma separated. (ex: app)")
                         .split(",")
-                        .map(function (p) { return p.trim(); }) || "app",
+                        .map((p) => p.trim()) || "app",
                     showSummaryInDOM: prompt("Apply summary info to elements? (yes/no)", "no") === "yes"
                         ? true
                         : false,
-                    allNodes: allNodes,
-                    visibleNodes: visibleNodes,
-                    hiddenNodes: hiddenNodes,
-                    inViewportNodes: inViewportNodes,
-                    outOfViewportNodes: outOfViewportNodes
+                    allNodes,
+                    visibleNodes,
+                    hiddenNodes,
+                    inViewportNodes,
+                    outOfViewportNodes,
                 };
         }
     }
@@ -116,15 +107,15 @@ function index() {
      * Adds summary div to references
      */
     function addSummary(nodes) {
-        nodes.forEach(function (n) {
+        nodes.forEach((n) => {
             n.references.self.style.position = "relative";
-            var node = document.createElement("DIV");
-            var totalNode = document.createElement("SPAN");
-            var visibleNode = document.createElement("SPAN");
-            var hiddenNode = document.createElement("SPAN");
-            var totalText = document.createTextNode(" Total: ".concat(n.visibleNodes + n.hiddenNodes, " "));
-            var visibleText = document.createTextNode(" Visible: ".concat(n.visibleNodes, " "));
-            var hiddenText = document.createTextNode(" Hidden: ".concat(n.hiddenNodes, " "));
+            const node = document.createElement("DIV");
+            const totalNode = document.createElement("SPAN");
+            const visibleNode = document.createElement("SPAN");
+            const hiddenNode = document.createElement("SPAN");
+            const totalText = document.createTextNode(` Total: ${n.visibleNodes + n.hiddenNodes} `);
+            const visibleText = document.createTextNode(` Visible: ${n.visibleNodes} `);
+            const hiddenText = document.createTextNode(` Hidden: ${n.hiddenNodes} `);
             /**
              * Appending styles
              */
@@ -134,7 +125,7 @@ function index() {
                 left: "0",
                 "z-index": "999999",
                 "font-size": "14px",
-                display: "flex"
+                display: "flex",
             });
             Object.assign(totalNode.style, { background: "black", color: "#fff" });
             Object.assign(visibleNode.style, { background: "green", color: "#fff" });
@@ -153,13 +144,13 @@ function index() {
      * Finds references of the component with given name
      */
     function findReferences(name, showSummary) {
-        var components = Array.from(document.querySelectorAll(name)).map(function (r) {
-            var childNodes = __spreadArray([r], r.querySelectorAll("*"), true);
-            var hiddenNodes = [];
-            var visibleNodes = [];
-            var inViewportNodes = [];
-            var outOfViewportNodes = [];
-            childNodes.forEach(function (c) {
+        const components = Array.from(document.querySelectorAll(name)).map((r) => {
+            const childNodes = [r, ...r.querySelectorAll("*")];
+            const hiddenNodes = [];
+            const visibleNodes = [];
+            const inViewportNodes = [];
+            const outOfViewportNodes = [];
+            childNodes.forEach((c) => {
                 if (isHidden(c)) {
                     hiddenNodes.push(c);
                 }
@@ -186,11 +177,11 @@ function index() {
                 outOfViewport: !isInViewport(r),
                 references: {
                     self: r,
-                    visibleNodes: visibleNodes,
-                    hiddenNodes: hiddenNodes,
-                    inViewportNodes: inViewportNodes,
-                    outOfViewportNodes: outOfViewportNodes
-                }
+                    visibleNodes,
+                    hiddenNodes,
+                    inViewportNodes,
+                    outOfViewportNodes,
+                },
             };
         });
         if (showSummary) {
@@ -198,84 +189,87 @@ function index() {
         }
         return {
             all: components,
-            visible: components.filter(function (c) { return !c.hidden; }),
-            hidden: components.filter(function (c) { return c.hidden; }),
-            inViewport: components.filter(function (c) { return c.inViewport; }),
-            outOfViewport: components.filter(function (c) { return !c.inViewport; })
+            visible: components.filter((c) => !c.hidden),
+            hidden: components.filter((c) => c.hidden),
+            inViewport: components.filter((c) => c.inViewport),
+            outOfViewport: components.filter((c) => !c.inViewport),
         };
     }
     /**
      * Get summary data for all components
      */
     function getAllComponentsSummary(prefixes) {
-        var components = __spreadArray([], new Set(allNodes
-            .filter(function (e) {
-            return Array.isArray(prefixes)
-                ? prefixes.some(function (p) { return e.nodeName.startsWith(p.toUpperCase()); })
-                : e.nodeName.startsWith(prefix.toUpperCase());
-        })
-            .map(function (e) { return e.nodeName; })), true).map(function (name) { return getSpecificComponentSummary(name); })
-            .reduce(function (acc, val) { return __spreadArray(__spreadArray([], acc, true), [val[0]], false); }, []);
-        return __spreadArray([
+        const components = [
+            ...new Set(allNodes
+                .filter((e) => Array.isArray(prefixes)
+                ? prefixes.some((p) => e.nodeName.startsWith(p.toUpperCase()))
+                : e.nodeName.startsWith(prefix.toUpperCase()))
+                .map((e) => e.nodeName)),
+        ]
+            .map((name) => getSpecificComponentSummary(name))
+            .reduce((acc, val) => [...acc, val[0]], []);
+        return [
             {
                 name: "📝TOTAL",
                 visible: components
-                    .map(function (c) { return c.visible; })
-                    .reduce(function (acc, val) { return acc + val; }, 0),
+                    .map((c) => c.visible)
+                    .reduce((acc, val) => acc + val, 0),
                 hidden: components
-                    .map(function (c) { return c.hidden; })
-                    .reduce(function (acc, val) { return acc + val; }, 0),
+                    .map((c) => c.hidden)
+                    .reduce((acc, val) => acc + val, 0),
                 inViewport: components
-                    .map(function (c) { return c.inViewport; })
-                    .reduce(function (acc, val) { return acc + val; }, 0),
+                    .map((c) => c.inViewport)
+                    .reduce((acc, val) => acc + val, 0),
                 outOfViewport: components
-                    .map(function (c) { return c.outOfViewport; })
-                    .reduce(function (acc, val) { return acc + val; }, 0),
+                    .map((c) => c.outOfViewport)
+                    .reduce((acc, val) => acc + val, 0),
                 nodes: allNodes.length,
                 visibleNodes: visibleNodes.length,
                 hiddenNodes: hiddenNodes.length,
                 inViewportNodes: inViewportNodes.length,
                 outOfViewportNodes: outOfViewportNodes.length,
-                references: "----"
-            }
-        ], components, true);
+                references: "----",
+            },
+            ...components,
+        ];
     }
     /**
      * Get summary data for provided component name
      */
     function getSpecificComponentSummary(name) {
-        var _a = findReferences(name.toUpperCase(), showSummaryInDOM), all = _a.all, visible = _a.visible, hidden = _a.hidden, inViewport = _a.inViewport, outOfViewport = _a.outOfViewport;
-        return __spreadArray([
+        const { all, visible, hidden, inViewport, outOfViewport } = findReferences(name.toUpperCase(), showSummaryInDOM);
+        return [
             {
-                name: "\uD83D\uDC49 ".concat(name.toUpperCase()),
+                name: `👉 ${name.toUpperCase()}`,
                 // Components counters
                 visible: visible.length,
                 hidden: hidden.length,
                 inViewport: inViewport.length,
                 outOfViewport: outOfViewport.length,
                 // Nodes counters
-                nodes: all.map(function (r) { return r.nodes; }).reduce(function (acc, val) { return acc + val; }, 0),
+                nodes: all.map((r) => r.nodes).reduce((acc, val) => acc + val, 0),
                 visibleNodes: all
-                    .map(function (r) { return (!r.hidden ? r.visibleNodes : 0); })
-                    .reduce(function (acc, val) { return acc + val; }, 0),
+                    .map((r) => (!r.hidden ? r.visibleNodes : 0))
+                    .reduce((acc, val) => acc + val, 0),
                 hiddenNodes: all
-                    .map(function (r) { return (r.hidden ? r.nodes : r.hiddenNodes); })
-                    .reduce(function (acc, val) { return acc + val; }, 0),
+                    .map((r) => (r.hidden ? r.nodes : r.hiddenNodes))
+                    .reduce((acc, val) => acc + val, 0),
                 inViewportNodes: all
-                    .map(function (r) { return r.inViewportNodes; })
-                    .reduce(function (acc, val) { return acc + val; }, 0),
+                    .map((r) => r.inViewportNodes)
+                    .reduce((acc, val) => acc + val, 0),
                 outOfViewportNodes: all
-                    .map(function (r) { return r.outOfViewportNodes; })
-                    .reduce(function (acc, val) { return acc + val; }, 0),
+                    .map((r) => r.outOfViewportNodes)
+                    .reduce((acc, val) => acc + val, 0),
                 // References
                 references: {
-                    visible: visible,
-                    hidden: hidden,
-                    inViewport: inViewport,
-                    outOfViewport: outOfViewport
-                }
-            }
-        ], all, true);
+                    visible,
+                    hidden,
+                    inViewport,
+                    outOfViewport,
+                },
+            },
+            ...all,
+        ];
     }
     switch (mode) {
         case "component":
@@ -308,17 +302,8 @@ Copy this code snippet into the DevTools console Tab to use it.
 
 ```javascript
 
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
 function index() {
-    var _a = initializeFlow(), name = _a.name, showSummaryInDOM = _a.showSummaryInDOM, appPrefixes = _a.appPrefixes, mode = _a.mode, allNodes = _a.allNodes, visibleNodes = _a.visibleNodes, hiddenNodes = _a.hiddenNodes, inViewportNodes = _a.inViewportNodes, outOfViewportNodes = _a.outOfViewportNodes;
+    const { name, showSummaryInDOM, appPrefixes, mode, allNodes, visibleNodes, hiddenNodes, inViewportNodes, outOfViewportNodes, } = initializeFlow();
     /**
      * Flow init
      */
@@ -326,15 +311,15 @@ function index() {
         /**
          * Clearing summary items from DOM.
          */
-        var summaries = document.querySelectorAll(".customSummaryItem");
-        summaries.forEach(function (i) { return i.remove(); });
-        var mode = prompt("Mode: summary or component");
-        var allNodes = Array.from(document.body.querySelectorAll("*"));
-        var visibleNodes = [];
-        var hiddenNodes = [];
-        var inViewportNodes = [];
-        var outOfViewportNodes = [];
-        allNodes.forEach(function (n) {
+        const summaries = document.querySelectorAll(".customSummaryItem");
+        summaries.forEach((i) => i.remove());
+        const mode = prompt("Mode: summary or component");
+        const allNodes = Array.from(document.body.querySelectorAll("*"));
+        const visibleNodes = [];
+        const hiddenNodes = [];
+        const inViewportNodes = [];
+        const outOfViewportNodes = [];
+        allNodes.forEach((n) => {
             if (isHidden(n)) {
                 hiddenNodes.push(n);
             }
@@ -351,31 +336,31 @@ function index() {
         switch (mode) {
             case "component":
                 return {
-                    mode: mode,
+                    mode,
                     name: prompt("Component name"),
                     showSummaryInDOM: prompt("Apply summary info to elements? (yes/no)", "no") === "yes"
                         ? true
                         : false,
-                    allNodes: allNodes,
-                    visibleNodes: visibleNodes,
-                    hiddenNodes: hiddenNodes,
-                    inViewportNodes: inViewportNodes,
-                    outOfViewportNodes: outOfViewportNodes
+                    allNodes,
+                    visibleNodes,
+                    hiddenNodes,
+                    inViewportNodes,
+                    outOfViewportNodes,
                 };
             case "summary":
                 return {
-                    mode: mode,
+                    mode,
                     appPrefixes: prompt("Components prefixes, comma separated. (ex: app)")
                         .split(",")
-                        .map(function (p) { return p.trim(); }) || "app",
+                        .map((p) => p.trim()) || "app",
                     showSummaryInDOM: prompt("Apply summary info to elements? (yes/no)", "no") === "yes"
                         ? true
                         : false,
-                    allNodes: allNodes,
-                    visibleNodes: visibleNodes,
-                    hiddenNodes: hiddenNodes,
-                    inViewportNodes: inViewportNodes,
-                    outOfViewportNodes: outOfViewportNodes
+                    allNodes,
+                    visibleNodes,
+                    hiddenNodes,
+                    inViewportNodes,
+                    outOfViewportNodes,
                 };
         }
     }
@@ -400,15 +385,15 @@ function index() {
      * Adds summary div to references
      */
     function addSummary(nodes) {
-        nodes.forEach(function (n) {
+        nodes.forEach((n) => {
             n.references.self.style.position = "relative";
-            var node = document.createElement("DIV");
-            var totalNode = document.createElement("SPAN");
-            var visibleNode = document.createElement("SPAN");
-            var hiddenNode = document.createElement("SPAN");
-            var totalText = document.createTextNode(" Total: ".concat(n.visibleNodes + n.hiddenNodes, " "));
-            var visibleText = document.createTextNode(" Visible: ".concat(n.visibleNodes, " "));
-            var hiddenText = document.createTextNode(" Hidden: ".concat(n.hiddenNodes, " "));
+            const node = document.createElement("DIV");
+            const totalNode = document.createElement("SPAN");
+            const visibleNode = document.createElement("SPAN");
+            const hiddenNode = document.createElement("SPAN");
+            const totalText = document.createTextNode(` Total: ${n.visibleNodes + n.hiddenNodes} `);
+            const visibleText = document.createTextNode(` Visible: ${n.visibleNodes} `);
+            const hiddenText = document.createTextNode(` Hidden: ${n.hiddenNodes} `);
             /**
              * Appending styles
              */
@@ -418,7 +403,7 @@ function index() {
                 left: "0",
                 "z-index": "999999",
                 "font-size": "14px",
-                display: "flex"
+                display: "flex",
             });
             Object.assign(totalNode.style, { background: "black", color: "#fff" });
             Object.assign(visibleNode.style, { background: "green", color: "#fff" });
@@ -437,13 +422,13 @@ function index() {
      * Finds references of the component with given name
      */
     function findReferences(name, showSummary) {
-        var components = Array.from(document.querySelectorAll(name)).map(function (r) {
-            var childNodes = __spreadArray([r], r.querySelectorAll("*"), true);
-            var hiddenNodes = [];
-            var visibleNodes = [];
-            var inViewportNodes = [];
-            var outOfViewportNodes = [];
-            childNodes.forEach(function (c) {
+        const components = Array.from(document.querySelectorAll(name)).map((r) => {
+            const childNodes = [r, ...r.querySelectorAll("*")];
+            const hiddenNodes = [];
+            const visibleNodes = [];
+            const inViewportNodes = [];
+            const outOfViewportNodes = [];
+            childNodes.forEach((c) => {
                 if (isHidden(c)) {
                     hiddenNodes.push(c);
                 }
@@ -470,11 +455,11 @@ function index() {
                 outOfViewport: !isInViewport(r),
                 references: {
                     self: r,
-                    visibleNodes: visibleNodes,
-                    hiddenNodes: hiddenNodes,
-                    inViewportNodes: inViewportNodes,
-                    outOfViewportNodes: outOfViewportNodes
-                }
+                    visibleNodes,
+                    hiddenNodes,
+                    inViewportNodes,
+                    outOfViewportNodes,
+                },
             };
         });
         if (showSummary) {
@@ -482,84 +467,87 @@ function index() {
         }
         return {
             all: components,
-            visible: components.filter(function (c) { return !c.hidden; }),
-            hidden: components.filter(function (c) { return c.hidden; }),
-            inViewport: components.filter(function (c) { return c.inViewport; }),
-            outOfViewport: components.filter(function (c) { return !c.inViewport; })
+            visible: components.filter((c) => !c.hidden),
+            hidden: components.filter((c) => c.hidden),
+            inViewport: components.filter((c) => c.inViewport),
+            outOfViewport: components.filter((c) => !c.inViewport),
         };
     }
     /**
      * Get summary data for all components
      */
     function getAllComponentsSummary(prefixes) {
-        var components = __spreadArray([], new Set(allNodes
-            .filter(function (e) {
-            return Array.isArray(prefixes)
-                ? prefixes.some(function (p) { return e.nodeName.startsWith(p.toUpperCase()); })
-                : e.nodeName.startsWith(prefix.toUpperCase());
-        })
-            .map(function (e) { return e.nodeName; })), true).map(function (name) { return getSpecificComponentSummary(name); })
-            .reduce(function (acc, val) { return __spreadArray(__spreadArray([], acc, true), [val[0]], false); }, []);
-        return __spreadArray([
+        const components = [
+            ...new Set(allNodes
+                .filter((e) => Array.isArray(prefixes)
+                ? prefixes.some((p) => e.nodeName.startsWith(p.toUpperCase()))
+                : e.nodeName.startsWith(prefix.toUpperCase()))
+                .map((e) => e.nodeName)),
+        ]
+            .map((name) => getSpecificComponentSummary(name))
+            .reduce((acc, val) => [...acc, val[0]], []);
+        return [
             {
                 name: "📝TOTAL",
                 visible: components
-                    .map(function (c) { return c.visible; })
-                    .reduce(function (acc, val) { return acc + val; }, 0),
+                    .map((c) => c.visible)
+                    .reduce((acc, val) => acc + val, 0),
                 hidden: components
-                    .map(function (c) { return c.hidden; })
-                    .reduce(function (acc, val) { return acc + val; }, 0),
+                    .map((c) => c.hidden)
+                    .reduce((acc, val) => acc + val, 0),
                 inViewport: components
-                    .map(function (c) { return c.inViewport; })
-                    .reduce(function (acc, val) { return acc + val; }, 0),
+                    .map((c) => c.inViewport)
+                    .reduce((acc, val) => acc + val, 0),
                 outOfViewport: components
-                    .map(function (c) { return c.outOfViewport; })
-                    .reduce(function (acc, val) { return acc + val; }, 0),
+                    .map((c) => c.outOfViewport)
+                    .reduce((acc, val) => acc + val, 0),
                 nodes: allNodes.length,
                 visibleNodes: visibleNodes.length,
                 hiddenNodes: hiddenNodes.length,
                 inViewportNodes: inViewportNodes.length,
                 outOfViewportNodes: outOfViewportNodes.length,
-                references: "----"
-            }
-        ], components, true);
+                references: "----",
+            },
+            ...components,
+        ];
     }
     /**
      * Get summary data for provided component name
      */
     function getSpecificComponentSummary(name) {
-        var _a = findReferences(name.toUpperCase(), showSummaryInDOM), all = _a.all, visible = _a.visible, hidden = _a.hidden, inViewport = _a.inViewport, outOfViewport = _a.outOfViewport;
-        return __spreadArray([
+        const { all, visible, hidden, inViewport, outOfViewport } = findReferences(name.toUpperCase(), showSummaryInDOM);
+        return [
             {
-                name: "\uD83D\uDC49 ".concat(name.toUpperCase()),
+                name: `👉 ${name.toUpperCase()}`,
                 // Components counters
                 visible: visible.length,
                 hidden: hidden.length,
                 inViewport: inViewport.length,
                 outOfViewport: outOfViewport.length,
                 // Nodes counters
-                nodes: all.map(function (r) { return r.nodes; }).reduce(function (acc, val) { return acc + val; }, 0),
+                nodes: all.map((r) => r.nodes).reduce((acc, val) => acc + val, 0),
                 visibleNodes: all
-                    .map(function (r) { return (!r.hidden ? r.visibleNodes : 0); })
-                    .reduce(function (acc, val) { return acc + val; }, 0),
+                    .map((r) => (!r.hidden ? r.visibleNodes : 0))
+                    .reduce((acc, val) => acc + val, 0),
                 hiddenNodes: all
-                    .map(function (r) { return (r.hidden ? r.nodes : r.hiddenNodes); })
-                    .reduce(function (acc, val) { return acc + val; }, 0),
+                    .map((r) => (r.hidden ? r.nodes : r.hiddenNodes))
+                    .reduce((acc, val) => acc + val, 0),
                 inViewportNodes: all
-                    .map(function (r) { return r.inViewportNodes; })
-                    .reduce(function (acc, val) { return acc + val; }, 0),
+                    .map((r) => r.inViewportNodes)
+                    .reduce((acc, val) => acc + val, 0),
                 outOfViewportNodes: all
-                    .map(function (r) { return r.outOfViewportNodes; })
-                    .reduce(function (acc, val) { return acc + val; }, 0),
+                    .map((r) => r.outOfViewportNodes)
+                    .reduce((acc, val) => acc + val, 0),
                 // References
                 references: {
-                    visible: visible,
-                    hidden: hidden,
-                    inViewport: inViewport,
-                    outOfViewport: outOfViewport
-                }
-            }
-        ], all, true);
+                    visible,
+                    hidden,
+                    inViewport,
+                    outOfViewport,
+                },
+            },
+            ...all,
+        ];
     }
     switch (mode) {
         case "component":
@@ -580,6 +568,12 @@ function index() {
 
 
 <!-- END-HOW_TO -->
+
+
+
+
+
+
 
 
 

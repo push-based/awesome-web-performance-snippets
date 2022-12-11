@@ -47,7 +47,7 @@ Copy this code snippet into the bookmark to use it.
 
 ```javascript
 
-javascript:(() => {var b = document.body;
+javascript:(() => {const b = document.body;
 b.style.zoom === '1' ? b.style.zoom = '1.01' : b.style.zoom = '1';
 )()
 ``` 
@@ -73,7 +73,7 @@ Copy this code snippet into the DevTools console Tab to use it.
 
 ```javascript
 
-var b = document.body;
+const b = document.body;
 b.style.zoom === '1' ? b.style.zoom = '1.01' : b.style.zoom = '1';
 
 ``` 
@@ -87,6 +87,12 @@ b.style.zoom === '1' ? b.style.zoom = '1.01' : b.style.zoom = '1';
 
 
 <!-- END-HOW_TO -->
+
+
+
+
+
+
 
 
 

@@ -22,9 +22,9 @@ Copy this code snippet into the bookmark to use it.
 
 ```javascript
 
-javascript:(() => {var imgs = document.querySelectorAll('img');
+javascript:(() => {const imgs = document.querySelectorAll('img');
 Array.from(imgs)
-    .forEach(function (i) { return i.setAttribute('loading', 'lazy'); });
+    .forEach(i => i.setAttribute('loading', 'lazy'));
 )()
 ``` 
 
@@ -49,9 +49,9 @@ Copy this code snippet into the DevTools console Tab to use it.
 
 ```javascript
 
-var imgs = document.querySelectorAll('img');
+const imgs = document.querySelectorAll('img');
 Array.from(imgs)
-    .forEach(function (i) { return i.setAttribute('loading', 'lazy'); });
+    .forEach(i => i.setAttribute('loading', 'lazy'));
 
 ``` 
 
@@ -64,6 +64,12 @@ Array.from(imgs)
 
 
 <!-- END-HOW_TO -->
+
+
+
+
+
+
 
 
 

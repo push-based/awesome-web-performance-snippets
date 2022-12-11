@@ -35,45 +35,34 @@ Copy this code snippet into the bookmark to use it.
 
 ```javascript
 
-javascript:(() => {var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-// ex: katespade.com - list firsty party subdomains in HOSTS array
-var HOSTS = ["assets.katespade.com"];
+javascript:(() => {// ex: katespade.com - list firsty party subdomains in HOSTS array
+const HOSTS = ["assets.katespade.com"];
 function getScriptInfo() {
-    var resourceListEntries = performance.getEntriesByType("resource");
+    const resourceListEntries = performance.getEntriesByType("resource");
     // set for first party scripts
-    var first = [];
+    const first = [];
     // set for third party scripts
-    var third = [];
-    resourceListEntries.forEach(function (resource) {
+    const third = [];
+    resourceListEntries.forEach((resource) => {
         // check for initiator type
-        var value = "initiatorType" in resource;
+        const value = "initiatorType" in resource;
         if (value) {
             if (resource.initiatorType === "script") {
-                var host = new URL(resource.name).host;
+                const { host } = new URL(resource.name);
                 // check if resource url host matches location.host = first party script
                 if (host === location.host || HOSTS.includes(host)) {
-                    first.push(__assign(__assign({}, resource.toJSON()), { type: "First Party" }));
+                    first.push({ ...resource.toJSON(), type: "First Party" });
                 }
                 else {
                     // add to third party script
-                    third.push(__assign(__assign({}, resource.toJSON()), { type: "Third Party" }));
+                    third.push({ ...resource.toJSON(), type: "Third Party" });
                 }
             }
         }
     });
-    var scripts = {
+    const scripts = {
         firstParty: [{ name: "no data" }],
-        thirdParty: [{ name: "no data" }]
+        thirdParty: [{ name: "no data" }],
     };
     if (first.length) {
         scripts.firstParty = first;
@@ -83,7 +72,7 @@ function getScriptInfo() {
     }
     return scripts;
 }
-var _a = getScriptInfo(), firstParty = _a.firstParty, thirdParty = _a.thirdParty;
+const { firstParty, thirdParty } = getScriptInfo();
 console.groupCollapsed("FIRST PARTY SCRIPTS");
 console.table(firstParty);
 console.groupEnd();
@@ -126,45 +115,34 @@ Copy this code snippet into the DevTools console Tab to use it.
 
 ```javascript
 
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 // ex: katespade.com - list firsty party subdomains in HOSTS array
-var HOSTS = ["assets.katespade.com"];
+const HOSTS = ["assets.katespade.com"];
 function getScriptInfo() {
-    var resourceListEntries = performance.getEntriesByType("resource");
+    const resourceListEntries = performance.getEntriesByType("resource");
     // set for first party scripts
-    var first = [];
+    const first = [];
     // set for third party scripts
-    var third = [];
-    resourceListEntries.forEach(function (resource) {
+    const third = [];
+    resourceListEntries.forEach((resource) => {
         // check for initiator type
-        var value = "initiatorType" in resource;
+        const value = "initiatorType" in resource;
         if (value) {
             if (resource.initiatorType === "script") {
-                var host = new URL(resource.name).host;
+                const { host } = new URL(resource.name);
                 // check if resource url host matches location.host = first party script
                 if (host === location.host || HOSTS.includes(host)) {
-                    first.push(__assign(__assign({}, resource.toJSON()), { type: "First Party" }));
+                    first.push({ ...resource.toJSON(), type: "First Party" });
                 }
                 else {
                     // add to third party script
-                    third.push(__assign(__assign({}, resource.toJSON()), { type: "Third Party" }));
+                    third.push({ ...resource.toJSON(), type: "Third Party" });
                 }
             }
         }
     });
-    var scripts = {
+    const scripts = {
         firstParty: [{ name: "no data" }],
-        thirdParty: [{ name: "no data" }]
+        thirdParty: [{ name: "no data" }],
     };
     if (first.length) {
         scripts.firstParty = first;
@@ -174,14 +152,14 @@ function getScriptInfo() {
     }
     return scripts;
 }
-var _a = getScriptInfo(), firstParty = _a.firstParty, thirdParty = _a.thirdParty;
+const { firstParty, thirdParty } = getScriptInfo();
 console.groupCollapsed("FIRST PARTY SCRIPTS");
 console.table(firstParty);
 console.groupEnd();
 console.groupCollapsed("THIRD PARTY SCRIPTS");
 console.table(thirdParty);
 console.groupEnd();
-export {};
+
 /*
 Choose which properties to display
 https://developer.mozilla.org/en-US/docs/Web/API/console/table
@@ -205,6 +183,12 @@ console.groupEnd();
 
 
 <!-- END-HOW_TO -->
+
+
+
+
+
+
 
 
 

@@ -25,9 +25,9 @@ Copy this code snippet into the bookmark to use it.
 
 ```javascript
 
-javascript:(() => {new PerformanceObserver(function (entryList) {
-    var pageNav = entryList.getEntriesByType('navigation')[0];
-    console.log("TTFB (ms): ".concat(pageNav.responseStart));
+javascript:(() => {new PerformanceObserver((entryList) => {
+    const [pageNav] = entryList.getEntriesByType('navigation');
+    console.log(`TTFB (ms): ${pageNav.responseStart}`);
 }).observe({
     type: 'navigation',
     buffered: true
@@ -56,9 +56,9 @@ Copy this code snippet into the DevTools console Tab to use it.
 
 ```javascript
 
-new PerformanceObserver(function (entryList) {
-    var pageNav = entryList.getEntriesByType('navigation')[0];
-    console.log("TTFB (ms): ".concat(pageNav.responseStart));
+new PerformanceObserver((entryList) => {
+    const [pageNav] = entryList.getEntriesByType('navigation');
+    console.log(`TTFB (ms): ${pageNav.responseStart}`);
 }).observe({
     type: 'navigation',
     buffered: true
@@ -75,6 +75,12 @@ new PerformanceObserver(function (entryList) {
 
 
 <!-- END-HOW_TO -->
+
+
+
+
+
+
 
 
 

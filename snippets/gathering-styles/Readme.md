@@ -23,8 +23,8 @@ Copy this code snippet into the bookmark to use it.
 ```javascript
 
 javascript:(() => {console.log(Array.from(document.querySelectorAll('style'))
-    .map(function (a) { return a.innerText; })
-    .reduce(function (a, b) { return a + b; }));
+    .map(a => a.innerText)
+    .reduce((a, b) => a + b));
 )()
 ``` 
 
@@ -50,8 +50,8 @@ Copy this code snippet into the DevTools console Tab to use it.
 ```javascript
 
 console.log(Array.from(document.querySelectorAll('style'))
-    .map(function (a) { return a.innerText; })
-    .reduce(function (a, b) { return a + b; }));
+    .map(a => a.innerText)
+    .reduce((a, b) => a + b));
 
 ``` 
 
@@ -64,6 +64,12 @@ console.log(Array.from(document.querySelectorAll('style'))
 
 
 <!-- END-HOW_TO -->
+
+
+
+
+
+
 
 
 

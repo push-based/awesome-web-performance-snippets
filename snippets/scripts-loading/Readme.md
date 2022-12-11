@@ -32,18 +32,9 @@ Copy this code snippet into the bookmark to use it.
 
 ```javascript
 
-javascript:(() => {var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
-var scripts = document.querySelectorAll('script[src]');
-var scriptsLoading = __spreadArray([], scripts, true).map(function (obj) {
-    var newObj = {};
+javascript:(() => {const scripts = document.querySelectorAll('script[src]');
+const scriptsLoading = [...scripts].map((obj) => {
+    let newObj = {};
     newObj = {
         src: obj.src,
         async: obj.async,
@@ -77,18 +68,9 @@ Copy this code snippet into the DevTools console Tab to use it.
 
 ```javascript
 
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
-var scripts = document.querySelectorAll('script[src]');
-var scriptsLoading = __spreadArray([], scripts, true).map(function (obj) {
-    var newObj = {};
+const scripts = document.querySelectorAll('script[src]');
+const scriptsLoading = [...scripts].map((obj) => {
+    let newObj = {};
     newObj = {
         src: obj.src,
         async: obj.async,
@@ -110,6 +92,12 @@ console.table(scriptsLoading);
 
 
 <!-- END-HOW_TO -->
+
+
+
+
+
+
 
 
 

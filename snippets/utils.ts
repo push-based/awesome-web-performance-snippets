@@ -1,5 +1,13 @@
 import {join} from "path";
-import {HOW_TO_END, HOW_TO_START, HOW_TO_START_REGEX, NEW_LINE, SNIPPETS_DIST, SNIPPETS_ROOT} from "./constants";
+import {
+    HOW_TO_END,
+    HOW_TO_START,
+    HOW_TO_START_REGEX,
+    NEW_LINE,
+    SNIPPETS_DIST,
+    SNIPPETS_ROOT,
+    SNIPPETS_TEMPLATE_NAME
+} from "./constants";
 import {readFileSync, writeFileSync} from "fs";
 import {Technique} from "./types";
 
@@ -51,7 +59,10 @@ export function toConsoleSnippet(c: string): string {
 ### Console Tab Snippet${NEW_LINE}
 Copy this code snippet into the DevTools console Tab to use it.${NEW_LINE}
 ${NEW_LINE}
-${wrapCollapse('Console Tab Snippet', wrapJsMd(c))}
+${wrapCollapse('Console Tab Snippet', wrapJsMd(c
+        // @TODO the replace is a hack that should be fixed in the snippets:compile step in the tsconfig.json
+        .replace('export {};', '')
+    ))}
 ${NEW_LINE}
 `;
 }
@@ -62,11 +73,11 @@ export function updateSnippet(folder: string): void {
 
     let readmeContent: string = readFileSync(readmePath, 'utf8');
     if (readmeContent.trim() === '') {
-        throw new Error(`${readmePath} is missing`)
+        throw new Error(`${readmePath} is missing. Please use the snippet from ${SNIPPETS_TEMPLATE_NAME}`)
     }
     let snippetContent: string = readFileSync(snippetPath, 'utf8');
     if (snippetContent.trim() === '') {
-        throw new Error(`${snippetPath} is missing`)
+        throw new Error(`${snippetPath} is missing. Did you run 'npm run snippets:compile'`)
     }
 
     const howToMatch = HOW_TO_START_REGEX.exec(readmeContent);

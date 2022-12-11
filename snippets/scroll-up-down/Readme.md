@@ -23,16 +23,16 @@ Copy this code snippet into the bookmark to use it.
 
 ```javascript
 
-javascript:(() => {var scrollHeight = document.documentElement.scrollHeight;
+javascript:(() => {const scrollHeight = document.documentElement.scrollHeight;
 window.scroll({
     top: scrollHeight,
     behavior: 'smooth'
 });
 // wait for a second, then scroll back up
-setTimeout(function () { return window.scroll({
+setTimeout(() => window.scroll({
     top: 0,
     behavior: 'smooth'
-}); }, 3000);
+}), 3000);
 console.log('scroll done!');
 )()
 ``` 
@@ -58,16 +58,16 @@ Copy this code snippet into the DevTools console Tab to use it.
 
 ```javascript
 
-var scrollHeight = document.documentElement.scrollHeight;
+const scrollHeight = document.documentElement.scrollHeight;
 window.scroll({
     top: scrollHeight,
     behavior: 'smooth'
 });
 // wait for a second, then scroll back up
-setTimeout(function () { return window.scroll({
+setTimeout(() => window.scroll({
     top: 0,
     behavior: 'smooth'
-}); }, 3000);
+}), 3000);
 console.log('scroll done!');
 
 ``` 
@@ -81,6 +81,12 @@ console.log('scroll done!');
 
 
 <!-- END-HOW_TO -->
+
+
+
+
+
+
 
 
 

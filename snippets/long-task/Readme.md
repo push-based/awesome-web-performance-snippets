@@ -34,18 +34,17 @@ Copy this code snippet into the bookmark to use it.
 
 javascript:(() => {try {
     // Create the performance observer.
-    var po_1 = new PerformanceObserver(function (list) {
-        for (var _i = 0, _a = list.getEntries(); _i < _a.length; _i++) {
-            var entry = _a[_i];
+    const po = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
             // Log the entry and all associated details.
             console.table(entry.toJSON());
         }
     });
     // Start listening for `longtask` entries to be dispatched.
-    po_1.observe({ type: 'longtask', buffered: true });
+    po.observe({ type: 'longtask', buffered: true });
 }
 catch (e) {
-    console.log("The browser doesn't support this API");
+    console.log(`The browser doesn't support this API`);
 }
 )()
 ``` 
@@ -73,18 +72,17 @@ Copy this code snippet into the DevTools console Tab to use it.
 
 try {
     // Create the performance observer.
-    var po_1 = new PerformanceObserver(function (list) {
-        for (var _i = 0, _a = list.getEntries(); _i < _a.length; _i++) {
-            var entry = _a[_i];
+    const po = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
             // Log the entry and all associated details.
             console.table(entry.toJSON());
         }
     });
     // Start listening for `longtask` entries to be dispatched.
-    po_1.observe({ type: 'longtask', buffered: true });
+    po.observe({ type: 'longtask', buffered: true });
 }
 catch (e) {
-    console.log("The browser doesn't support this API");
+    console.log(`The browser doesn't support this API`);
 }
 
 ``` 
@@ -98,6 +96,12 @@ catch (e) {
 
 
 <!-- END-HOW_TO -->
+
+
+
+
+
+
 
 
 

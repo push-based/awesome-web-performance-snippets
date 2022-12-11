@@ -29,25 +29,14 @@ Copy this code snippet into the bookmark to use it.
 
 ```javascript
 
-javascript:(() => {var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
-function getAttributeDirectives() {
-    var _a = initializeFlow(), name = _a.name, showSummaryInDOM = _a.showSummaryInDOM, appPrefixes = _a.appPrefixes, mode = _a.mode;
+javascript:(() => {function getAttributeDirectives() {
+    const { name, showSummaryInDOM, appPrefixes, mode } = initializeFlow();
     /**
      * Filter out nodes that don't have an attribute
      */
     function filterAttribute(attribute, prefixes) {
         return Array.isArray(prefixes)
-            ? prefixes.some(function (p) {
-                return attribute.name ? attribute.name.startsWith(p.toLowerCase()) : false;
-            })
+            ? prefixes.some((p) => attribute.name ? attribute.name.startsWith(p.toLowerCase()) : false)
             : attribute.name
                 ? attribute.name.startsWith(prefixes.toLowerCase())
                 : false;
@@ -56,27 +45,27 @@ function getAttributeDirectives() {
         /**
          * Clearing summary items from DOM.
          */
-        var summaries = document.querySelectorAll(".customSummaryItem");
-        summaries.forEach(function (i) { return i.remove(); });
-        var mode = prompt("Mode: summary or directive");
+        const summaries = document.querySelectorAll(".customSummaryItem");
+        summaries.forEach((i) => i.remove());
+        const mode = prompt("Mode: summary or directive");
         switch (mode) {
             case "directive":
                 return {
-                    mode: mode,
+                    mode,
                     name: prompt("Directive name"),
                     showSummaryInDOM: prompt("Apply summary info to elements? (yes/no)", "no") === "yes"
                         ? true
-                        : false
+                        : false,
                 };
             case "summary":
                 return {
-                    mode: mode,
+                    mode,
                     appPrefixes: prompt("Directives prefixes, comma separated. (ex: app)")
                         .split(",")
-                        .map(function (p) { return p.trim(); }) || "app",
+                        .map((p) => p.trim()) || "app",
                     showSummaryInDOM: prompt("Apply summary info to elements? (yes/no)", "no") === "yes"
                         ? true
-                        : false
+                        : false,
                 };
         }
     }
@@ -99,9 +88,9 @@ function getAttributeDirectives() {
      * Adds summary div to references
      */
     function addSummary(nodes, prefixes) {
-        nodes.forEach(function (n) {
+        nodes.forEach((n) => {
             n.style.position = "relative";
-            var node = document.createElement("DIV");
+            const node = document.createElement("DIV");
             Object.assign(node.style, {
                 position: "absolute",
                 top: "0",
@@ -111,11 +100,12 @@ function getAttributeDirectives() {
                 display: "flex",
                 background: "green",
                 color: "#fff",
-                padding: "4px"
+                padding: "4px",
             });
             node.classList.add("customSummaryItem");
-            var text = document.createTextNode("".concat(__spreadArray([], n.attributes, true).filter(function (a) { return filterAttribute(a, prefixes); })
-                .map(function (a) { return a.name; }).length));
+            const text = document.createTextNode(`${[...n.attributes]
+                .filter((a) => filterAttribute(a, prefixes))
+                .map((a) => a.name).length}`);
             node.appendChild(text);
             n.appendChild(node);
         });
@@ -124,85 +114,87 @@ function getAttributeDirectives() {
      * Finds references of the nodes that contain directive with given name
      */
     function findReferences(name) {
-        var directives = Array.from(document.querySelectorAll("[".concat(name, "]"))).map(function (r) {
+        const directives = Array.from(document.querySelectorAll(`[${name}]`)).map((r) => {
             return {
-                name: name,
+                name,
                 hidden: isHidden(r),
                 visible: !isHidden(r),
                 inViewport: isInViewport(r),
                 outOfViewport: !isInViewport(r),
-                reference: r
+                reference: r,
             };
         });
         return {
             all: directives,
-            visible: directives.filter(function (c) { return !c.hidden; }),
-            hidden: directives.filter(function (c) { return c.hidden; }),
-            inViewport: directives.filter(function (c) { return c.inViewport; }),
-            outOfViewport: directives.filter(function (c) { return !c.inViewport; })
+            visible: directives.filter((c) => !c.hidden),
+            hidden: directives.filter((c) => c.hidden),
+            inViewport: directives.filter((c) => c.inViewport),
+            outOfViewport: directives.filter((c) => !c.inViewport),
         };
     }
     /**
      * Get summary data for all directives
      */
     function getAllDirectivesSummary(prefixes) {
-        var nodesWithDirectives = Array.from(document.body.querySelectorAll("*")).filter(function (e) {
-            return Array.from(e.attributes).some(function (a) { return filterAttribute(a, prefixes); });
-        });
-        var directives = 
+        const nodesWithDirectives = Array.from(document.body.querySelectorAll("*")).filter((e) => Array.from(e.attributes).some((a) => filterAttribute(a, prefixes)));
+        const directives = 
         // Find unique components names in page
-        __spreadArray([], new Set(nodesWithDirectives
-            .map(function (e) {
-            return __spreadArray([], e.attributes, true).filter(function (a) { return filterAttribute(a, prefixes); })
-                .map(function (a) { return a.name; });
-        })
-            .reduce(function (acc, val) { return __spreadArray(__spreadArray([], acc, true), val, true); }, [])), true).map(function (name) { return getSpecificDirectiveSummary(name); })
-            .reduce(function (acc, val) { return __spreadArray(__spreadArray([], acc, true), [val[0]], false); }, []);
+        [
+            ...new Set(nodesWithDirectives
+                .map((e) => [...e.attributes]
+                .filter((a) => filterAttribute(a, prefixes))
+                .map((a) => a.name))
+                .reduce((acc, val) => [...acc, ...val], [])),
+        ]
+            .map((name) => getSpecificDirectiveSummary(name))
+            .reduce((acc, val) => [...acc, val[0]], []);
         if (showSummaryInDOM) {
             addSummary(nodesWithDirectives, prefixes);
         }
-        return __spreadArray([
+        return [
             {
                 name: "📝TOTAL",
                 visible: directives
-                    .map(function (c) { return c.visible; })
-                    .reduce(function (acc, val) { return acc + val; }, 0),
+                    .map((c) => c.visible)
+                    .reduce((acc, val) => acc + val, 0),
                 hidden: directives
-                    .map(function (c) { return c.hidden; })
-                    .reduce(function (acc, val) { return acc + val; }, 0),
+                    .map((c) => c.hidden)
+                    .reduce((acc, val) => acc + val, 0),
                 inViewport: directives
-                    .map(function (c) { return c.inViewport; })
-                    .reduce(function (acc, val) { return acc + val; }, 0),
+                    .map((c) => c.inViewport)
+                    .reduce((acc, val) => acc + val, 0),
                 outOfViewport: directives
-                    .map(function (c) { return c.outOfViewport; })
-                    .reduce(function (acc, val) { return acc + val; }, 0),
-                reference: "----"
-            }
-        ], directives, true);
+                    .map((c) => c.outOfViewport)
+                    .reduce((acc, val) => acc + val, 0),
+                reference: "----",
+            },
+            ...directives,
+        ];
     }
     /**
      * Get summary data for specific directive
      */
     function getSpecificDirectiveSummary(name, showSummary) {
-        var _a = findReferences(name), all = _a.all, visible = _a.visible, hidden = _a.hidden, inViewport = _a.inViewport, outOfViewport = _a.outOfViewport;
+        const { all, visible, hidden, inViewport, outOfViewport } = findReferences(name);
         if (showSummary) {
-            addSummary(all.map(function (e) { return e.reference; }), name);
+            addSummary(all.map((e) => e.reference), name);
         }
-        return __spreadArray([
+        return [
             {
-                name: "\uD83D\uDC49 ".concat(name),
+                name: `👉 ${name}`,
                 visible: visible.length,
                 hidden: hidden.length,
                 inViewport: inViewport.length,
                 outOfViewport: outOfViewport.length,
                 reference: {
-                    visible: visible,
-                    hidden: hidden,
-                    inViewport: inViewport,
-                    outOfViewport: outOfViewport
-                }
-            }
-        ], all, true);
+                    visible,
+                    hidden,
+                    inViewport,
+                    outOfViewport,
+                },
+            },
+            ...all,
+        ];
     }
     switch (mode) {
         case "directive":
@@ -235,25 +227,14 @@ Copy this code snippet into the DevTools console Tab to use it.
 
 ```javascript
 
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
 function getAttributeDirectives() {
-    var _a = initializeFlow(), name = _a.name, showSummaryInDOM = _a.showSummaryInDOM, appPrefixes = _a.appPrefixes, mode = _a.mode;
+    const { name, showSummaryInDOM, appPrefixes, mode } = initializeFlow();
     /**
      * Filter out nodes that don't have an attribute
      */
     function filterAttribute(attribute, prefixes) {
         return Array.isArray(prefixes)
-            ? prefixes.some(function (p) {
-                return attribute.name ? attribute.name.startsWith(p.toLowerCase()) : false;
-            })
+            ? prefixes.some((p) => attribute.name ? attribute.name.startsWith(p.toLowerCase()) : false)
             : attribute.name
                 ? attribute.name.startsWith(prefixes.toLowerCase())
                 : false;
@@ -262,27 +243,27 @@ function getAttributeDirectives() {
         /**
          * Clearing summary items from DOM.
          */
-        var summaries = document.querySelectorAll(".customSummaryItem");
-        summaries.forEach(function (i) { return i.remove(); });
-        var mode = prompt("Mode: summary or directive");
+        const summaries = document.querySelectorAll(".customSummaryItem");
+        summaries.forEach((i) => i.remove());
+        const mode = prompt("Mode: summary or directive");
         switch (mode) {
             case "directive":
                 return {
-                    mode: mode,
+                    mode,
                     name: prompt("Directive name"),
                     showSummaryInDOM: prompt("Apply summary info to elements? (yes/no)", "no") === "yes"
                         ? true
-                        : false
+                        : false,
                 };
             case "summary":
                 return {
-                    mode: mode,
+                    mode,
                     appPrefixes: prompt("Directives prefixes, comma separated. (ex: app)")
                         .split(",")
-                        .map(function (p) { return p.trim(); }) || "app",
+                        .map((p) => p.trim()) || "app",
                     showSummaryInDOM: prompt("Apply summary info to elements? (yes/no)", "no") === "yes"
                         ? true
-                        : false
+                        : false,
                 };
         }
     }
@@ -305,9 +286,9 @@ function getAttributeDirectives() {
      * Adds summary div to references
      */
     function addSummary(nodes, prefixes) {
-        nodes.forEach(function (n) {
+        nodes.forEach((n) => {
             n.style.position = "relative";
-            var node = document.createElement("DIV");
+            const node = document.createElement("DIV");
             Object.assign(node.style, {
                 position: "absolute",
                 top: "0",
@@ -317,11 +298,12 @@ function getAttributeDirectives() {
                 display: "flex",
                 background: "green",
                 color: "#fff",
-                padding: "4px"
+                padding: "4px",
             });
             node.classList.add("customSummaryItem");
-            var text = document.createTextNode("".concat(__spreadArray([], n.attributes, true).filter(function (a) { return filterAttribute(a, prefixes); })
-                .map(function (a) { return a.name; }).length));
+            const text = document.createTextNode(`${[...n.attributes]
+                .filter((a) => filterAttribute(a, prefixes))
+                .map((a) => a.name).length}`);
             node.appendChild(text);
             n.appendChild(node);
         });
@@ -330,85 +312,87 @@ function getAttributeDirectives() {
      * Finds references of the nodes that contain directive with given name
      */
     function findReferences(name) {
-        var directives = Array.from(document.querySelectorAll("[".concat(name, "]"))).map(function (r) {
+        const directives = Array.from(document.querySelectorAll(`[${name}]`)).map((r) => {
             return {
-                name: name,
+                name,
                 hidden: isHidden(r),
                 visible: !isHidden(r),
                 inViewport: isInViewport(r),
                 outOfViewport: !isInViewport(r),
-                reference: r
+                reference: r,
             };
         });
         return {
             all: directives,
-            visible: directives.filter(function (c) { return !c.hidden; }),
-            hidden: directives.filter(function (c) { return c.hidden; }),
-            inViewport: directives.filter(function (c) { return c.inViewport; }),
-            outOfViewport: directives.filter(function (c) { return !c.inViewport; })
+            visible: directives.filter((c) => !c.hidden),
+            hidden: directives.filter((c) => c.hidden),
+            inViewport: directives.filter((c) => c.inViewport),
+            outOfViewport: directives.filter((c) => !c.inViewport),
         };
     }
     /**
      * Get summary data for all directives
      */
     function getAllDirectivesSummary(prefixes) {
-        var nodesWithDirectives = Array.from(document.body.querySelectorAll("*")).filter(function (e) {
-            return Array.from(e.attributes).some(function (a) { return filterAttribute(a, prefixes); });
-        });
-        var directives = 
+        const nodesWithDirectives = Array.from(document.body.querySelectorAll("*")).filter((e) => Array.from(e.attributes).some((a) => filterAttribute(a, prefixes)));
+        const directives = 
         // Find unique components names in page
-        __spreadArray([], new Set(nodesWithDirectives
-            .map(function (e) {
-            return __spreadArray([], e.attributes, true).filter(function (a) { return filterAttribute(a, prefixes); })
-                .map(function (a) { return a.name; });
-        })
-            .reduce(function (acc, val) { return __spreadArray(__spreadArray([], acc, true), val, true); }, [])), true).map(function (name) { return getSpecificDirectiveSummary(name); })
-            .reduce(function (acc, val) { return __spreadArray(__spreadArray([], acc, true), [val[0]], false); }, []);
+        [
+            ...new Set(nodesWithDirectives
+                .map((e) => [...e.attributes]
+                .filter((a) => filterAttribute(a, prefixes))
+                .map((a) => a.name))
+                .reduce((acc, val) => [...acc, ...val], [])),
+        ]
+            .map((name) => getSpecificDirectiveSummary(name))
+            .reduce((acc, val) => [...acc, val[0]], []);
         if (showSummaryInDOM) {
             addSummary(nodesWithDirectives, prefixes);
         }
-        return __spreadArray([
+        return [
             {
                 name: "📝TOTAL",
                 visible: directives
-                    .map(function (c) { return c.visible; })
-                    .reduce(function (acc, val) { return acc + val; }, 0),
+                    .map((c) => c.visible)
+                    .reduce((acc, val) => acc + val, 0),
                 hidden: directives
-                    .map(function (c) { return c.hidden; })
-                    .reduce(function (acc, val) { return acc + val; }, 0),
+                    .map((c) => c.hidden)
+                    .reduce((acc, val) => acc + val, 0),
                 inViewport: directives
-                    .map(function (c) { return c.inViewport; })
-                    .reduce(function (acc, val) { return acc + val; }, 0),
+                    .map((c) => c.inViewport)
+                    .reduce((acc, val) => acc + val, 0),
                 outOfViewport: directives
-                    .map(function (c) { return c.outOfViewport; })
-                    .reduce(function (acc, val) { return acc + val; }, 0),
-                reference: "----"
-            }
-        ], directives, true);
+                    .map((c) => c.outOfViewport)
+                    .reduce((acc, val) => acc + val, 0),
+                reference: "----",
+            },
+            ...directives,
+        ];
     }
     /**
      * Get summary data for specific directive
      */
     function getSpecificDirectiveSummary(name, showSummary) {
-        var _a = findReferences(name), all = _a.all, visible = _a.visible, hidden = _a.hidden, inViewport = _a.inViewport, outOfViewport = _a.outOfViewport;
+        const { all, visible, hidden, inViewport, outOfViewport } = findReferences(name);
         if (showSummary) {
-            addSummary(all.map(function (e) { return e.reference; }), name);
+            addSummary(all.map((e) => e.reference), name);
         }
-        return __spreadArray([
+        return [
             {
-                name: "\uD83D\uDC49 ".concat(name),
+                name: `👉 ${name}`,
                 visible: visible.length,
                 hidden: hidden.length,
                 inViewport: inViewport.length,
                 outOfViewport: outOfViewport.length,
                 reference: {
-                    visible: visible,
-                    hidden: hidden,
-                    inViewport: inViewport,
-                    outOfViewport: outOfViewport
-                }
-            }
-        ], all, true);
+                    visible,
+                    hidden,
+                    inViewport,
+                    outOfViewport,
+                },
+            },
+            ...all,
+        ];
     }
     switch (mode) {
         case "directive":
@@ -429,6 +413,12 @@ function getAttributeDirectives() {
 
 
 <!-- END-HOW_TO -->
+
+
+
+
+
+
 
 
 

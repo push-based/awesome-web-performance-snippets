@@ -25,26 +25,25 @@ Copy this code snippet into the bookmark to use it.
 ```javascript
 
 javascript:(() => {try {
-    var cumulativeLayoutShiftScore_1 = 0;
-    var observer_1 = new PerformanceObserver(function (list) {
-        for (var _i = 0, _a = list.getEntries(); _i < _a.length; _i++) {
-            var entry = _a[_i];
+    let cumulativeLayoutShiftScore = 0;
+    const observer = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
             if (!entry.hadRecentInput) {
-                cumulativeLayoutShiftScore_1 += entry.value;
+                cumulativeLayoutShiftScore += entry.value;
             }
         }
     });
-    observer_1.observe({ type: "layout-shift", buffered: true });
-    document.addEventListener("visibilitychange", function () {
+    observer.observe({ type: "layout-shift", buffered: true });
+    document.addEventListener("visibilitychange", () => {
         if (document.visibilityState === "hidden") {
-            observer_1.takeRecords();
-            observer_1.disconnect();
-            console.log("CLS: ".concat(cumulativeLayoutShiftScore_1));
+            observer.takeRecords();
+            observer.disconnect();
+            console.log(`CLS: ${cumulativeLayoutShiftScore}`);
         }
     });
 }
 catch (e) {
-    console.log("Browser doesn't support this API");
+    console.log(`Browser doesn't support this API`);
 }
 )()
 ``` 
@@ -71,26 +70,25 @@ Copy this code snippet into the DevTools console Tab to use it.
 ```javascript
 
 try {
-    var cumulativeLayoutShiftScore_1 = 0;
-    var observer_1 = new PerformanceObserver(function (list) {
-        for (var _i = 0, _a = list.getEntries(); _i < _a.length; _i++) {
-            var entry = _a[_i];
+    let cumulativeLayoutShiftScore = 0;
+    const observer = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
             if (!entry.hadRecentInput) {
-                cumulativeLayoutShiftScore_1 += entry.value;
+                cumulativeLayoutShiftScore += entry.value;
             }
         }
     });
-    observer_1.observe({ type: "layout-shift", buffered: true });
-    document.addEventListener("visibilitychange", function () {
+    observer.observe({ type: "layout-shift", buffered: true });
+    document.addEventListener("visibilitychange", () => {
         if (document.visibilityState === "hidden") {
-            observer_1.takeRecords();
-            observer_1.disconnect();
-            console.log("CLS: ".concat(cumulativeLayoutShiftScore_1));
+            observer.takeRecords();
+            observer.disconnect();
+            console.log(`CLS: ${cumulativeLayoutShiftScore}`);
         }
     });
 }
 catch (e) {
-    console.log("Browser doesn't support this API");
+    console.log(`Browser doesn't support this API`);
 }
 
 ``` 
@@ -104,6 +102,12 @@ catch (e) {
 
 
 <!-- END-HOW_TO -->
+
+
+
+
+
+
 
 
 

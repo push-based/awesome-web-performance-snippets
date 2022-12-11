@@ -34,20 +34,19 @@ Copy this code snippet into the bookmark to use it.
 ```javascript
 
 javascript:(() => {function getImgs(sortBy) {
-    var imgs = [];
-    var resourceListEntries = performance.getEntriesByType("resource");
-    resourceListEntries.forEach(function (_a) {
-        var name = _a.name, transferSize = _a.transferSize, encodedBodySize = _a.encodedBodySize, decodedBodySize = _a.decodedBodySize, initiatorType = _a.initiatorType;
+    const imgs = [];
+    const resourceListEntries = performance.getEntriesByType("resource");
+    resourceListEntries.forEach(({ name, transferSize, encodedBodySize, decodedBodySize, initiatorType, }) => {
         if (initiatorType == "img") {
             imgs.push({
-                name: name,
-                transferSize: transferSize,
-                decodedBodySize: decodedBodySize,
-                encodedBodySize: encodedBodySize
+                name,
+                transferSize,
+                decodedBodySize,
+                encodedBodySize,
             });
         }
     });
-    var imgList = imgs.sort(function (a, b) {
+    const imgList = imgs.sort((a, b) => {
         return b[sortBy] - a[sortBy];
     });
     return imgList;
@@ -78,20 +77,19 @@ Copy this code snippet into the DevTools console Tab to use it.
 ```javascript
 
 function getImgs(sortBy) {
-    var imgs = [];
-    var resourceListEntries = performance.getEntriesByType("resource");
-    resourceListEntries.forEach(function (_a) {
-        var name = _a.name, transferSize = _a.transferSize, encodedBodySize = _a.encodedBodySize, decodedBodySize = _a.decodedBodySize, initiatorType = _a.initiatorType;
+    const imgs = [];
+    const resourceListEntries = performance.getEntriesByType("resource");
+    resourceListEntries.forEach(({ name, transferSize, encodedBodySize, decodedBodySize, initiatorType, }) => {
         if (initiatorType == "img") {
             imgs.push({
-                name: name,
-                transferSize: transferSize,
-                decodedBodySize: decodedBodySize,
-                encodedBodySize: encodedBodySize
+                name,
+                transferSize,
+                decodedBodySize,
+                encodedBodySize,
             });
         }
     });
-    var imgList = imgs.sort(function (a, b) {
+    const imgList = imgs.sort((a, b) => {
         return b[sortBy] - a[sortBy];
     });
     return imgList;
@@ -109,6 +107,12 @@ console.table(getImgs("encodedBodySize"));
 
 
 <!-- END-HOW_TO -->
+
+
+
+
+
+
 
 
 
