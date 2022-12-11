@@ -16,7 +16,7 @@ Included scripts from other open source authors and repositories:
 
 <!-- START-SNIPPETS -->
 
-## [Check first and third party script](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/check-first-and-third-party-script)  
+## [Dist/snippets/check first and third party script](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
 
@@ -109,7 +109,7 @@ console.groupEnd();
 
 
   
-## [Check first and third party script timings](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/check-first-and-third-party-script-timings)  
+## [Dist/snippets/check first and third party script timings](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
 
@@ -210,7 +210,7 @@ console.table(calculateTimings("first", "REQ_START_UNTIL_RES_END"));
 
 
   
-## [Check header](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/check-header)  
+## [Dist/snippets/check header](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
 
@@ -242,7 +242,7 @@ Copy this code snippet into the DevTools console Tab to use it.
 
 
   
-## [Check image sizes](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/check-image-sizes)  
+## [Dist/snippets/check image sizes](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
 
@@ -288,7 +288,7 @@ console.table(getImgs("encodedBodySize"));
 
 
   
-## [Check image usage](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/check-image-usage)  
+## [Dist/snippets/check image usage](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
 
@@ -541,7 +541,7 @@ enrichSizeUsage(d).then(console.table);
 
 
   
-## [Cls](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/cls)  
+## [Dist/snippets/cls](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
 
@@ -598,7 +598,7 @@ findShifts(0.05).observe({ entryTypes: ["layout-shift"] });
 
 
   
-## [Cumulative layout shift](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/cumulative-layout-shift)  
+## [Dist/snippets/cumulative layout shift](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
 
@@ -646,7 +646,7 @@ catch (e) {
 
 
   
-## [Full relayout](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/full-relayout)  
+## [Dist/snippets/full relayout](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
 
@@ -674,7 +674,7 @@ b.style.zoom === '1' ? b.style.zoom = '1.01' : b.style.zoom = '1';
 
 
   
-## [Gathering styles](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/gathering-styles)  
+## [Dist/snippets/gathering styles](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
 
@@ -703,7 +703,7 @@ console.log(Array.from(document.querySelectorAll('style'))
 
 
   
-## [Get Attribute Directives](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/getAttributeDirectives)  
+## [Dist/snippets/get Attribute Directives](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
 
@@ -911,7 +911,7 @@ function getAttributeDirectives() {
 
 
   
-## [Get Components Nodes](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/getComponentsNodes)  
+## [Dist/snippets/get Components Nodes](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
 
@@ -1197,7 +1197,7 @@ function index() {
 
 
   
-## [Get DOMEvent Listeners](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/getDOMEventListeners)  
+## [Dist/snippets/get DOMEvent Listeners](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
 
@@ -1307,7 +1307,7 @@ function getDOMEventListeners() {
 
 
   
-## [Get Nodes Info](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/getNodesInfo)  
+## [Dist/snippets/get Nodes Info](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
 
@@ -1446,7 +1446,7 @@ function index(root) {
 
 
   
-## [Lcp](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/lcp)  
+## [Dist/snippets/lcp](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
 
@@ -1515,7 +1515,7 @@ function dedupe(arr, key) {
 
 
   
-## [Long task](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/long-task)  
+## [Dist/snippets/long task](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
 
@@ -1556,7 +1556,7 @@ catch (e) {
 
 
   
-## [Make lazy img](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/make-lazy-img)  
+## [Dist/snippets/make lazy img](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
 
@@ -1585,7 +1585,7 @@ Array.from(imgs)
 
 
   
-## [Re apply dom](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/re-apply-dom)  
+## [Dist/snippets/re apply dom](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
 
@@ -1614,7 +1614,7 @@ setTimeout(function () { return document.body.innerHTML = bi; }, 350);
 
 
   
-## [Resources hints](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/resources-hints)  
+## [Dist/snippets/resources hints](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
 
@@ -1655,7 +1655,7 @@ rels.forEach(function (element) {
 
 
   
-## [Scripts loading](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/scripts-loading)  
+## [Dist/snippets/scripts loading](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
 
@@ -1702,7 +1702,7 @@ console.table(scriptsLoading);
 
 
   
-## [Scroll up down](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/scroll-up-down)  
+## [Dist/snippets/scroll up down](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
 
@@ -1739,7 +1739,7 @@ console.log('scroll done!');
 
 
   
-## [Time to first byte all](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/time-to-first-byte-all)  
+## [Dist/snippets/time to first byte all](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
 
@@ -1794,7 +1794,7 @@ new PerformanceObserver(function (entryList) {
 
 
   
-## [Time to first byte document](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/time-to-first-byte-document)  
+## [Dist/snippets/time to first byte document](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
 
@@ -1828,6 +1828,8 @@ new PerformanceObserver(function (entryList) {
 
   
 <!-- END-SNIPPETS -->
+
+
 
 
 

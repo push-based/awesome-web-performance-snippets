@@ -83,6 +83,8 @@ Copy this code snippet into the DevTools console Tab to use it.
 
 
 
+
+
 # Credits
 
 Author: _Harry Roberts_  
