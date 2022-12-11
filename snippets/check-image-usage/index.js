@@ -97,16 +97,12 @@ function getNetworkImgs() {
         ({
              name,
              transferSize,
-            // encodedBodySize,
-             decodedBodySize,
              initiatorType,
          }) => {
             if (initiatorType == "img") {
                 imgs.set(name, {
                     name,
-                    transferSize,
-                    decodedBodySize,
-               //     encodedBodySize
+                    transferSize
                 });
             }
         }
@@ -218,8 +214,7 @@ function enrichData() {
             tag: 'n/a',
             url,
             error: '',
-            transferSize: '?',
-            decodedBodySize: '?'
+            transferSize: '?'
         };
 
         let errorDetected = true;
@@ -239,8 +234,7 @@ function enrichData() {
             case withBgDataImgNames.has(url):
                 imgData.tag = withBgDataImgNodes.get(url);
                 imgData.error = msgDontUseBgDataImage;
-                imgData.transferSize = 0;
-                imgData.decodedBodySize = url.length * 1.02;
+                imgData.transferSize = url.length * 1.02;
                 break;
             default:
                 errorDetected = false;
