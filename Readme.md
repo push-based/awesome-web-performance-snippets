@@ -16,7 +16,7 @@ Included scripts from other open source authors and repositories:
 
 <!-- START-SNIPPETS -->
 
-## [Check above the fold lazy loaded images](https://github.com/push-based/web-performance-tools/tree/master/snippets/check-above-the-fold-lazy-loaded-images)  
+## [Snippets/check above the fold lazy loaded images](https://github.com/push-based/web-performance-tools/tree/master/)  
 ```javascript  
 function findATFLazyLoadedImages() {
     const lazy = document.querySelectorAll('[loading="lazy"], [data-src]');
@@ -33,7 +33,7 @@ function findATFLazyLoadedImages() {
 console.log(findATFLazyLoadedImages());
 ```  
   
-## [Check first and third party script](https://github.com/push-based/web-performance-tools/tree/master/snippets/check-first-and-third-party-script)  
+## [Snippets/check first and third party script](https://github.com/push-based/web-performance-tools/tree/master/)  
 ```javascript  
 // ex: katespade.com - list firsty party subdomains in HOSTS array
 const HOSTS = ["assets.katespade.com"];
@@ -102,7 +102,7 @@ console.groupEnd();
 */
 ```  
   
-## [Check first and third party script timings](https://github.com/push-based/web-performance-tools/tree/master/snippets/check-first-and-third-party-script-timings)  
+## [Snippets/check first and third party script timings](https://github.com/push-based/web-performance-tools/tree/master/)  
 ```javascript  
 function createUniqueLists(firstParty, thirdParty) {
     function getUniqueListBy(arr, key) {
@@ -191,7 +191,7 @@ timingOptions.forEach((timing) => {
 console.table(calculateTimings("first", "REQ_START_UNTIL_RES_END"));
 ```  
   
-## [Check header](https://github.com/push-based/web-performance-tools/tree/master/snippets/check-header)  
+## [Snippets/check header](https://github.com/push-based/web-performance-tools/tree/master/)  
 ```javascript  
 (function () {
     var ct = document.createElement('style');
@@ -484,7 +484,7 @@ script[async], script[defer], script[type=module] {
 }());
 ```  
   
-## [Check image sizes](https://github.com/push-based/web-performance-tools/tree/master/snippets/check-image-sizes)  
+## [Snippets/check image sizes](https://github.com/push-based/web-performance-tools/tree/master/)  
 ```javascript  
 function getImgs(sortBy) {
     const imgs = [];
@@ -518,7 +518,7 @@ function getImgs(sortBy) {
 console.table(getImgs("encodedBodySize"));
 ```  
   
-## [Check image usage](https://github.com/push-based/web-performance-tools/tree/master/snippets/check-image-usage)  
+## [Snippets/check image usage](https://github.com/push-based/web-performance-tools/tree/master/)  
 ```javascript  
 const bgUrlChecker = /(url\(["'])([A-Za-z0-9$.:/_\-~]*)(["']\))(?!data:$)/g;
 const base64UrlChecker = /(url\(["'])(data:)([A-Za-z0-9$.:/_\-~]*)/g;
@@ -788,7 +788,7 @@ fixUsage(d);
 enrichSizeUsage(d).then(console.table);
 ```  
   
-## [Cls](https://github.com/push-based/web-performance-tools/tree/master/snippets/cls)  
+## [Snippets/cls](https://github.com/push-based/web-performance-tools/tree/master/)  
 ```javascript  
 function genColor() {
   let n = (Math.random() * 0xfffff * 1000000).toString(16);
@@ -831,7 +831,7 @@ source.node.style = `border: 2px ${color} solid`;
 findShifts(0.05).observe({ entryTypes: ["layout-shift"] });
 ```  
   
-## [Cumulative layout shift](https://github.com/push-based/web-performance-tools/tree/master/snippets/cumulative-layout-shift)  
+## [Snippets/cumulative layout shift](https://github.com/push-based/web-performance-tools/tree/master/)  
 ```javascript  
 try {
     let cumulativeLayoutShiftScore = 0;
@@ -858,20 +858,20 @@ try {
 }
 ```  
   
-## [Full relayout](https://github.com/push-based/web-performance-tools/tree/master/snippets/full-relayout)  
+## [Snippets/full relayout](https://github.com/push-based/web-performance-tools/tree/master/)  
 ```javascript  
 const b = document.body;
 b.style.zoom === '1' ? b.style.zoom = '1.01' : b.style.zoom = '1';
 ```  
   
-## [Gathering styles](https://github.com/push-based/web-performance-tools/tree/master/snippets/gathering-styles)  
+## [Snippets/gathering styles](https://github.com/push-based/web-performance-tools/tree/master/)  
 ```javascript  
 console.log(Array.from(document.querySelectorAll('style'))
     .map(a => a.innerText)
     .reduce((a,b) => a + b));
 ```  
   
-## [Get Attribute Directives](https://github.com/push-based/web-performance-tools/tree/master/snippets/getAttributeDirectives)  
+## [Snippets/get Attribute Directives](https://github.com/push-based/web-performance-tools/tree/master/)  
 ```javascript  
 function getAttributeDirectives() {
   const { name, showSummaryInDOM, appPrefixes, mode } = initializeFlow();
@@ -1093,7 +1093,7 @@ function getAttributeDirectives() {
 }
 ```  
   
-## [Get Components Nodes](https://github.com/push-based/web-performance-tools/tree/master/snippets/getComponentsNodes)  
+## [Snippets/get Components Nodes](https://github.com/push-based/web-performance-tools/tree/master/)  
 ```javascript  
 function index() {
   const {
@@ -1393,7 +1393,7 @@ function index() {
 }
 ```  
   
-## [Get DOMEvent Listeners](https://github.com/push-based/web-performance-tools/tree/master/snippets/getDOMEventListeners)  
+## [Snippets/get DOMEvent Listeners](https://github.com/push-based/web-performance-tools/tree/master/)  
 ```javascript  
 function getDOMEventListeners() {
   // Get all elements with event listeners
@@ -1494,7 +1494,7 @@ function getDOMEventListeners() {
 }
 ```  
   
-## [Get Nodes Info](https://github.com/push-based/web-performance-tools/tree/master/snippets/getNodesInfo)  
+## [Snippets/get Nodes Info](https://github.com/push-based/web-performance-tools/tree/master/)  
 ```javascript  
 function index(root = document.body) {
   const allNodes = [...root.querySelectorAll("*")];
@@ -1620,7 +1620,7 @@ function index(root = document.body) {
 }
 ```  
   
-## [Lcp](https://github.com/push-based/web-performance-tools/tree/master/snippets/lcp)  
+## [Snippets/lcp](https://github.com/push-based/web-performance-tools/tree/master/)  
 ```javascript  
 /**
  * PerformanceObserver
@@ -1665,7 +1665,7 @@ function dedupe(arr, key) {
 }
 ```  
   
-## [Long task](https://github.com/push-based/web-performance-tools/tree/master/snippets/long-task)  
+## [Snippets/long task](https://github.com/push-based/web-performance-tools/tree/master/)  
 ```javascript  
 try {
   // Create the performance observer.
@@ -1682,27 +1682,27 @@ try {
 }
 ```  
   
-## [Make lazy img](https://github.com/push-based/web-performance-tools/tree/master/snippets/make-lazy-img)  
+## [Snippets/make lazy img](https://github.com/push-based/web-performance-tools/tree/master/)  
 ```javascript  
 const imgs = document.querySelectorAll('img');
 Array.from(imgs)
     .forEach(i => i.setAttribute('loading', 'lazy'));
 ```  
   
-## [Re apply dom](https://github.com/push-based/web-performance-tools/tree/master/snippets/re-apply-dom)  
+## [Snippets/re apply dom](https://github.com/push-based/web-performance-tools/tree/master/)  
 ```javascript  
 const bi = document.body.innerHTML;
 document.body.innerHTML = '';
 setTimeout(() => document.body.innerHTML = bi, 350);
 ```  
   
-## [Re dom](https://github.com/push-based/web-performance-tools/tree/master/snippets/re-dom)  
+## [Snippets/re dom](https://github.com/push-based/web-performance-tools/tree/master/)  
 ```javascript  
 const bi = document.body.innerHTML; document.body.innerHTML = '';
 setTimeout(() => document.body.innerHTML = bi, 400);
 ```  
   
-## [Resources hints](https://github.com/push-based/web-performance-tools/tree/master/snippets/resources-hints)  
+## [Snippets/resources hints](https://github.com/push-based/web-performance-tools/tree/master/)  
 ```javascript  
 const rels = [
     "preload",
@@ -1722,7 +1722,7 @@ rels.forEach((element) => {
 });
 ```  
   
-## [Scripts loading](https://github.com/push-based/web-performance-tools/tree/master/snippets/scripts-loading)  
+## [Snippets/scripts loading](https://github.com/push-based/web-performance-tools/tree/master/)  
 ```javascript  
 const scripts = document.querySelectorAll('script[src]');
 
@@ -1739,7 +1739,7 @@ const scriptsLoading = [...scripts].map((obj) => {
 console.table(scriptsLoading);
 ```  
   
-## [Scroll up down](https://github.com/push-based/web-performance-tools/tree/master/snippets/scroll-up-down)  
+## [Snippets/scroll up down](https://github.com/push-based/web-performance-tools/tree/master/)  
 ```javascript  
 const scrollHeight = document.documentElement.scrollHeight;
 
@@ -1756,7 +1756,7 @@ setTimeout(() => window.scroll({
 console.log('scroll done!');
 ```  
   
-## [Time to first byte all](https://github.com/push-based/web-performance-tools/tree/master/snippets/time-to-first-byte-all)  
+## [Snippets/time to first byte all](https://github.com/push-based/web-performance-tools/tree/master/)  
 ```javascript  
 new PerformanceObserver((entryList) => {
     const entries = entryList.getEntries();
@@ -1780,7 +1780,7 @@ new PerformanceObserver((entryList) => {
 })
 ```  
   
-## [Time to first byte document](https://github.com/push-based/web-performance-tools/tree/master/snippets/time-to-first-byte-document)  
+## [Snippets/time to first byte document](https://github.com/push-based/web-performance-tools/tree/master/)  
 ```javascript  
 new PerformanceObserver((entryList) => {
     const [pageNav] = entryList.getEntriesByType('navigation')
@@ -1791,11 +1791,13 @@ new PerformanceObserver((entryList) => {
 })
 ```  
   
-## [Xxx](https://github.com/push-based/web-performance-tools/tree/master/snippets/xxx)  
+## [Snippets/xxx](https://github.com/push-based/web-performance-tools/tree/master/)  
 ```javascript  
 ```  
   
 <!-- END-SNIPPETS -->
+
+
 
 
 
