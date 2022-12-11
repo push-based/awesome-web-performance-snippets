@@ -6,19 +6,10 @@ This is helpful to get scroll performance and interacted state of the page.
 ## How to use it
 
 <!-- START-HOW_TO[] -->
-
-
-
-
 ### Bookmark Snippet
-
-
-
 <details>
 
 <summary>Copy this code snippet into the bookmark to use it</summary>
-
-
 ```javascript
 
 javascript:(() => {const scrollHeight = document.documentElement.scrollHeight;
@@ -34,24 +25,11 @@ setTimeout(() => window.scroll({
 console.log('scroll done!');
 )()
 ``` 
-
-
-
-
 </details>
-
-
-
-
 ### Console Tab Snippet
-
-
-
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
-
-
 ```javascript
 
 const scrollHeight = document.documentElement.scrollHeight;
@@ -67,34 +45,5 @@ setTimeout(() => window.scroll({
 console.log('scroll done!');
 
 ``` 
-
-
-
-
 </details>
-
-
-
-
 <!-- END-HOW_TO -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

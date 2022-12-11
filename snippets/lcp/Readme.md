@@ -8,19 +8,10 @@ Observes (also from the past) and logg's the [LCP](web.dev/lcp).
 ## How to use it
 
 <!-- START-HOW_TO[] -->
-
-
-
-
 ### Bookmark Snippet
-
-
-
 <details>
 
 <summary>Copy this code snippet into the bookmark to use it</summary>
-
-
 ```javascript
 
 javascript:(() => {/**
@@ -59,24 +50,11 @@ function dedupe(arr, key) {
 }
 )()
 ``` 
-
-
-
-
 </details>
-
-
-
-
 ### Console Tab Snippet
-
-
-
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
-
-
 ```javascript
 
 /**
@@ -115,33 +93,5 @@ function dedupe(arr, key) {
 }
 
 ``` 
-
-
-
-
 </details>
-
-
-
-
 <!-- END-HOW_TO -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -22,31 +22,19 @@ _Run First And Third Party Script Info in the console first, then run this_
 <br>
 
 [More Info on TAO header - Akamai Developer Resources](https://developer.akamai.com/blog/2018/06/13/how-add-timing-allow-origin-headers-improve-site-performance-measurement)
-
-
 ## How to use it
 
 <!-- START-HOW_TO[bookmark,console-tab,sources-tab,chromium] -->
-
-
 | Technique   | Is Usable  |
 | ----------- | ---------- |
 | [Bookmark](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-bookmarks) |      ✔    | 
 | [Console Tab](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-console-tab.md) |      ✔    | 
 | [Sources Tab](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-sources-tab.md) |      ✔    | 
 | [Chromium](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-chromium.md)       |      ✔    |
-    
-
-
 ### Bookmark Snippet
-
-
-
 <details>
 
 <summary>Copy this code snippet into the bookmark to use it</summary>
-
-
 ```javascript
 
 javascript:(() => {function createUniqueLists(firstParty, thirdParty) {
@@ -115,24 +103,11 @@ timingOptions.forEach((timing) => {
 console.table(calculateTimings("first", "REQ_START_UNTIL_RES_END"));
 )()
 ``` 
-
-
-
-
 </details>
-
-
-
-
 ### Console Tab Snippet
-
-
-
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
-
-
 ```javascript
 
 function createUniqueLists(firstParty, thirdParty) {
@@ -201,37 +176,8 @@ timingOptions.forEach((timing) => {
 console.table(calculateTimings("first", "REQ_START_UNTIL_RES_END"));
 
 ``` 
-
-
-
-
 </details>
-
-
-
-
 <!-- END-HOW_TO -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Credits
 
 Author: _Joan León_  

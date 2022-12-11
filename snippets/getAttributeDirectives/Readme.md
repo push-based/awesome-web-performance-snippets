@@ -5,26 +5,16 @@ Gets information about all attribute directives in the page or specific attribut
 ## How to use it
 
 <!-- START-HOW_TO[bookmark,console-tab,sources-tab,chromium] -->
-
-
 | Technique   | Is Usable  |
 | ----------- | ---------- |
 | [Bookmark](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-bookmarks) |      ✔    | 
 | [Console Tab](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-console-tab.md) |      ✔    | 
 | [Sources Tab](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-sources-tab.md) |      ✔    | 
 | [Chromium](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-chromium.md)       |      ✔    |
-    
-
-
 ### Bookmark Snippet
-
-
-
 <details>
 
 <summary>Copy this code snippet into the bookmark to use it</summary>
-
-
 ```javascript
 
 javascript:(() => {function getAttributeDirectives() {
@@ -203,24 +193,11 @@ javascript:(() => {function getAttributeDirectives() {
 }
 )()
 ``` 
-
-
-
-
 </details>
-
-
-
-
 ### Console Tab Snippet
-
-
-
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
-
-
 ```javascript
 
 function getAttributeDirectives() {
@@ -399,37 +376,8 @@ function getAttributeDirectives() {
 }
 
 ``` 
-
-
-
-
 </details>
-
-
-
-
 <!-- END-HOW_TO -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Input
 
 - Mode: summary/component
