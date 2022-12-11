@@ -255,10 +255,7 @@ script[async], script[defer], script[type=module] {
 
 
 
-
-### Console Tab Snippet
-
-
+## Console Tab Snippet
 
 <details>
 
@@ -502,6 +499,8 @@ script[async], script[defer], script[type=module] {
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 # Credits

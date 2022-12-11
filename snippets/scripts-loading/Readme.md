@@ -52,10 +52,7 @@ console.table(scriptsLoading);
 
 
 
-
-### Console Tab Snippet
-
-
+## Console Tab Snippet
 
 <details>
 
@@ -88,5 +85,7 @@ console.table(scriptsLoading);
 
 
 <!-- END-HOW_TO -->
+
+
 
 

@@ -40,10 +40,7 @@ javascript:(() => {new PerformanceObserver((entryList) => {
 
 
 
-
-### Console Tab Snippet
-
-
+## Console Tab Snippet
 
 <details>
 
@@ -71,5 +68,7 @@ new PerformanceObserver((entryList) => {
 
 
 <!-- END-HOW_TO -->
+
+
 
 

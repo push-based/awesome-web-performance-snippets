@@ -148,10 +148,7 @@ javascript:(() => {function index(root = document.body) {
 
 
 
-
-### Console Tab Snippet
-
-
+## Console Tab Snippet
 
 <details>
 
@@ -276,6 +273,8 @@ function index(root = document.body) {
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 ## Input

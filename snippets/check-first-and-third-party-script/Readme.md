@@ -99,10 +99,7 @@ console.groupEnd();
 
 
 
-
-### Console Tab Snippet
-
-
+## Console Tab Snippet
 
 <details>
 
@@ -179,5 +176,7 @@ console.groupEnd();
 
 
 <!-- END-HOW_TO -->
+
+
 
 

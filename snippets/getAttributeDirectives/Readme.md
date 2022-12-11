@@ -211,10 +211,7 @@ javascript:(() => {function getAttributeDirectives() {
 
 
 
-
-### Console Tab Snippet
-
-
+## Console Tab Snippet
 
 <details>
 
@@ -409,6 +406,8 @@ function getAttributeDirectives() {
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 ## Input

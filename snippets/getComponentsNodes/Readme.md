@@ -286,10 +286,7 @@ javascript:(() => {function index() {
 
 
 
-
-### Console Tab Snippet
-
-
+## Console Tab Snippet
 
 <details>
 
@@ -564,6 +561,8 @@ function index() {
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 ## Input

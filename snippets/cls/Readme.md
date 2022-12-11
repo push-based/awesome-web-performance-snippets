@@ -79,10 +79,7 @@ findShifts(0.05).observe({ entryTypes: ["layout-shift"] });
 
 
 
-
-### Console Tab Snippet
-
-
+## Console Tab Snippet
 
 <details>
 
@@ -137,6 +134,8 @@ findShifts(0.05).observe({ entryTypes: ["layout-shift"] });
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 # Credits

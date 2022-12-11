@@ -56,10 +56,7 @@ setTimeout(() => document.body.innerHTML = bi, 350);
 
 
 
-
-### Console Tab Snippet
-
-
+## Console Tab Snippet
 
 <details>
 
@@ -83,6 +80,8 @@ setTimeout(() => document.body.innerHTML = bi, 350);
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 # Credits

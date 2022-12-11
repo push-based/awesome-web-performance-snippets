@@ -42,10 +42,7 @@ console.log('scroll done!');
 
 
 
-
-### Console Tab Snippet
-
-
+## Console Tab Snippet
 
 <details>
 
@@ -77,5 +74,7 @@ console.log('scroll done!');
 
 
 <!-- END-HOW_TO -->
+
+
 
 

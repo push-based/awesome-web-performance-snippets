@@ -121,10 +121,7 @@ console.table(calculateTimings("first", "REQ_START_UNTIL_RES_END"));
 
 
 
-
-### Console Tab Snippet
-
-
+## Console Tab Snippet
 
 <details>
 
@@ -209,6 +206,8 @@ console.table(calculateTimings("first", "REQ_START_UNTIL_RES_END"));
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 # Credits

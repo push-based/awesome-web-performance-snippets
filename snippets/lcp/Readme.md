@@ -67,10 +67,7 @@ function dedupe(arr, key) {
 
 
 
-
-### Console Tab Snippet
-
-
+## Console Tab Snippet
 
 <details>
 
@@ -125,5 +122,7 @@ function dedupe(arr, key) {
 
 
 <!-- END-HOW_TO -->
+
+
 
 

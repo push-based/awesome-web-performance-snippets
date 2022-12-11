@@ -33,10 +33,7 @@ Array.from(imgs)
 
 
 
-
-### Console Tab Snippet
-
-
+## Console Tab Snippet
 
 <details>
 
@@ -60,5 +57,7 @@ Array.from(imgs)
 
 
 <!-- END-HOW_TO -->
+
+
 
 

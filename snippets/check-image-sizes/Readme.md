@@ -60,10 +60,7 @@ console.table(getImgs("encodedBodySize"));
 
 
 
-
-### Console Tab Snippet
-
-
+## Console Tab Snippet
 
 <details>
 
@@ -103,6 +100,8 @@ console.table(getImgs("encodedBodySize"));
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 # Credits

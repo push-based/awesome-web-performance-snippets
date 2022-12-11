@@ -48,10 +48,7 @@ rels.forEach((element) => {
 
 
 
-
-### Console Tab Snippet
-
-
+## Console Tab Snippet
 
 <details>
 
@@ -87,5 +84,7 @@ rels.forEach((element) => {
 
 
 <!-- END-HOW_TO -->
+
+
 
 

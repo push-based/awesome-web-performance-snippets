@@ -54,10 +54,7 @@ catch (e) {
 
 
 
-
-### Console Tab Snippet
-
-
+## Console Tab Snippet
 
 <details>
 
@@ -92,5 +89,7 @@ catch (e) {
 
 
 <!-- END-HOW_TO -->
+
+
 
 

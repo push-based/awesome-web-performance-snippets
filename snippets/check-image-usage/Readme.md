@@ -254,10 +254,7 @@ enrichSizeUsage(d).then(console.table);
 
 
 
-
-### Console Tab Snippet
-
-
+## Console Tab Snippet
 
 <details>
 
@@ -487,6 +484,8 @@ enrichSizeUsage(d).then(console.table);
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 <img width="595" alt="loading1" src="https://user-images.githubusercontent.com/10064416/206700419-3c8e4ced-a75a-44c1-bc4f-b00294a5de22.PNG">

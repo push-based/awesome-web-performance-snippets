@@ -33,10 +33,7 @@ javascript:(() => {console.log(Array.from(document.querySelectorAll('style'))
 
 
 
-
-### Console Tab Snippet
-
-
+## Console Tab Snippet
 
 <details>
 
@@ -60,5 +57,7 @@ console.log(Array.from(document.querySelectorAll('style'))
 
 
 <!-- END-HOW_TO -->
+
+
 
 

@@ -100,10 +100,7 @@ javascript:(() => {function getDOMEventListeners() {
 
 
 
-
-### Console Tab Snippet
-
-
+## Console Tab Snippet
 
 <details>
 
@@ -185,6 +182,8 @@ function getDOMEventListeners() {
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 ## Input
