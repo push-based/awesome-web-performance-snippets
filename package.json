@@ -6,7 +6,10 @@
   "scripts": {
     "chromium:serve": "ts-node chromium/index.ts",
     "docs:update": "ts-node docs/index.ts",
-    "snippets:build": "ts-node snippets/index.ts",
+    "docs:build": "npm run snippets:build && npm run docs:update",
+    "snippets:compile": "tsc -p ./snippets/tsconfig.lib.json",
+    "snippets:update": "ts-node -p ./snippets/tsconfig.docs.json",
+    "snippets:build": "npm run snippets:compile && npm run snippets:update",
     "chromium:build": "tsc -p chromium/tsconfig.json",
     "time-stats": "node time-stats/index.js"
   },

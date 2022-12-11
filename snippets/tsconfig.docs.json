@@ -1,0 +1,14 @@
+{
+  "ts-node": {
+    "extends": ".tsconfig.json",
+    "compilerOptions": {
+      "outDir": "../dist/snippets",
+      "lib": [
+        "es2019"
+      ]
+    },
+    "include": [
+      "index.ts"
+    ]
+  }
+}

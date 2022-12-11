@@ -1,17 +1,20 @@
 {
+  "extends": "./.tsconfig.json",
   "compilerOptions": {
-    "rootDir": ".",
     "outDir": "../dist/snippets",
     "lib": [
       "es2019",
       "dom"
     ],
-    "module": "commonjs",
-    "target": "es2019",
+    "module": "es6",
     "allowJs": true
   },
   "include": [
-    "**/index.js", "**/index.ts"
+    "./**/index.js",
+    "./**/index.ts"
   ],
-  "exclude": ["SNIPPET_TEMPLATE/**"]
+  "exclude": [
+    "./*.*",
+    "_SNIPPET_TEMPLATE/**"
+  ]
 }

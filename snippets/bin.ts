@@ -86,4 +86,13 @@ function updateSnippet(folder) {
         writeFileSync(readmePath, out, 'utf8');
     }
 }
-export {} from './utils';
+
+(() => {
+    const snippetsPath = SNIPPETS_ROOT;
+    readdirSync(snippetsPath).filter(p => {
+        const stats = lstatSync(p);
+        return stats.isDirectory() && !p.includes(SNIPPETS_TEMPLATE_NAME)
+    })
+        .forEach(updateSnippet);
+
+})();
