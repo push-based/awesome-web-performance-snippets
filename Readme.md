@@ -1696,12 +1696,6 @@ document.body.innerHTML = '';
 setTimeout(() => document.body.innerHTML = bi, 350);
 ```  
   
-## [Snippets/re dom](https://github.com/push-based/web-performance-tools/tree/master/)  
-```javascript  
-const bi = document.body.innerHTML; document.body.innerHTML = '';
-setTimeout(() => document.body.innerHTML = bi, 400);
-```  
-  
 ## [Snippets/resources hints](https://github.com/push-based/web-performance-tools/tree/master/)  
 ```javascript  
 const rels = [
@@ -1796,6 +1790,8 @@ new PerformanceObserver((entryList) => {
 ```  
   
 <!-- END-SNIPPETS -->
+
+
 
 
 
