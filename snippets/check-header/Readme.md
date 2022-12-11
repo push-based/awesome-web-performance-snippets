@@ -7,10 +7,19 @@ You can fins a detailed description in Harrys repository called [ct](https://git
 ## How to use it
 
 <!-- START-HOW_TO[] -->
+
+
+
+
 ### Bookmark Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the bookmark to use it</summary>
+
+
 ```javascript
 
 javascript:(() => {(function () {
@@ -25,6 +34,11 @@ javascript:(() => {(function () {
  *
  * © Harry Roberts 2021 – twitter.com/csswizardry
  */
+
+
+
+
+
 /**
  * It’s slightly easier to remember topics than it is colours. Set up some
  * custom properties for use later on.
@@ -36,8 +50,7 @@ head {
   --ct-notify: #0bce6b;
   --ct-warn: #ffa400;
   --ct-error: #ff4e42;
-}
-/**
+}/**
  * Show the <head> and set up the items we might be interested in.
  */
 
@@ -71,8 +84,7 @@ head script, head style {
 
 head ::before {
   font-weight: bold;
-}
-/**
+}/**
  * External Script and Style
  */
 
@@ -88,8 +100,7 @@ head link[rel="stylesheet"] {
 
   head link[rel="stylesheet"]::before {
     content: "[Blocking Stylesheet – " attr(href) "]"
-  }
-/**
+  }/**
  * Inline Script and Style.
  */
 
@@ -109,8 +120,7 @@ head script:not(:empty) {
 
   head style:not(:empty)::before {
     content: "[Inline Style] ";
-  }
-/**
+  }/**
  * Blocked Title.
  *
  * These selectors are generally more complex because the Key Selector (\`title\`)
@@ -128,8 +138,7 @@ head script:not(:empty) ~ title {
   head script[src]:not([async]):not([defer]):not([type=module]) ~ title::before,
   head script:not(:empty) ~ title::before {
     content: "[<title> blocked by JS] ";
-  }
-/**
+  }/**
  * Blocked Scripts.
  *
  * These selectors are generally more complex because the Key Selector
@@ -147,8 +156,7 @@ head style:not(:empty) ~ script {
   head [rel="stylesheet"]:not([media="print"]):not(.ct) ~ script::before,
   head style:not(:empty) ~ script::before {
     content: "[JS blocked by CSS – " attr(src) "]";
-  }
-/**
+  }/**
  * Using both \`async\` and \`defer\` is redundant (an anti-pattern, even). Let’s
  * flag that.
  */
@@ -161,8 +169,7 @@ head script[src][src][async][defer] {
 
   head script[src][src][async][defer]::before {
     content: "[async and defer is redundant: prefer defer – " attr(src) "]";
-  }
-/**
+  }/**
  * Async and defer simply do not work on inline scripts. It won’t do any harm,
  * but it’s useful to know about.
  */
@@ -178,8 +185,7 @@ head script:not([src])[defer] {
 
   head script:not([src])[defer]::before {
     content: "The defer attribute is redundant on inline scripts"
-  }
-/**
+  }/**
  * Third Party blocking resources.
  *
  * Expect false-positives here… it’s a crude proxy at best.
@@ -203,8 +209,7 @@ head [rel="stylesheet"][href^="http"] {
   head [rel="stylesheet"][href^="//"]::before,
   head [rel="stylesheet"][href^="http"]::before {
     content: "[Third Party Blocking Stylesheet – " attr(href) "]";
-  }
-/**
+  }/**
  * Mid-HEAD CSP disables the Preload Scanner
  */
 
@@ -215,8 +220,7 @@ head script ~ meta[http-equiv="content-security-policy"] {
 
   head script ~ meta[http-equiv="content-security-policy"]::before {
     content: "[Meta CSP defined after JS]"
-  }
-/**
+  }/**
  * Charset should appear as early as possible
  */
 head > meta[charset]:not(:nth-child(-n+5)) {
@@ -226,8 +230,7 @@ head > meta[charset]:not(:nth-child(-n+5)) {
 
 head > meta[charset]:not(:nth-child(-n+5))::before {
   content: "[Charset should appear as early as possible]";
-}
-/**
+}/**
  * Hide all irrelevant or non-matching scripts and styles (including ct.css).
  *
  * We’re done!
@@ -244,11 +247,24 @@ script[async], script[defer], script[type=module] {
 }());
 )()
 ``` 
+
+
+
+
 </details>
+
+
+
+
 ### Console Tab Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
+
+
 ```javascript
 
 (function () {
@@ -263,6 +279,11 @@ script[async], script[defer], script[type=module] {
  *
  * © Harry Roberts 2021 – twitter.com/csswizardry
  */
+
+
+
+
+
 /**
  * It’s slightly easier to remember topics than it is colours. Set up some
  * custom properties for use later on.
@@ -274,8 +295,7 @@ head {
   --ct-notify: #0bce6b;
   --ct-warn: #ffa400;
   --ct-error: #ff4e42;
-}
-/**
+}/**
  * Show the <head> and set up the items we might be interested in.
  */
 
@@ -309,8 +329,7 @@ head script, head style {
 
 head ::before {
   font-weight: bold;
-}
-/**
+}/**
  * External Script and Style
  */
 
@@ -326,8 +345,7 @@ head link[rel="stylesheet"] {
 
   head link[rel="stylesheet"]::before {
     content: "[Blocking Stylesheet – " attr(href) "]"
-  }
-/**
+  }/**
  * Inline Script and Style.
  */
 
@@ -347,8 +365,7 @@ head script:not(:empty) {
 
   head style:not(:empty)::before {
     content: "[Inline Style] ";
-  }
-/**
+  }/**
  * Blocked Title.
  *
  * These selectors are generally more complex because the Key Selector (\`title\`)
@@ -366,8 +383,7 @@ head script:not(:empty) ~ title {
   head script[src]:not([async]):not([defer]):not([type=module]) ~ title::before,
   head script:not(:empty) ~ title::before {
     content: "[<title> blocked by JS] ";
-  }
-/**
+  }/**
  * Blocked Scripts.
  *
  * These selectors are generally more complex because the Key Selector
@@ -385,8 +401,7 @@ head style:not(:empty) ~ script {
   head [rel="stylesheet"]:not([media="print"]):not(.ct) ~ script::before,
   head style:not(:empty) ~ script::before {
     content: "[JS blocked by CSS – " attr(src) "]";
-  }
-/**
+  }/**
  * Using both \`async\` and \`defer\` is redundant (an anti-pattern, even). Let’s
  * flag that.
  */
@@ -399,8 +414,7 @@ head script[src][src][async][defer] {
 
   head script[src][src][async][defer]::before {
     content: "[async and defer is redundant: prefer defer – " attr(src) "]";
-  }
-/**
+  }/**
  * Async and defer simply do not work on inline scripts. It won’t do any harm,
  * but it’s useful to know about.
  */
@@ -416,8 +430,7 @@ head script:not([src])[defer] {
 
   head script:not([src])[defer]::before {
     content: "The defer attribute is redundant on inline scripts"
-  }
-/**
+  }/**
  * Third Party blocking resources.
  *
  * Expect false-positives here… it’s a crude proxy at best.
@@ -441,8 +454,7 @@ head [rel="stylesheet"][href^="http"] {
   head [rel="stylesheet"][href^="//"]::before,
   head [rel="stylesheet"][href^="http"]::before {
     content: "[Third Party Blocking Stylesheet – " attr(href) "]";
-  }
-/**
+  }/**
  * Mid-HEAD CSP disables the Preload Scanner
  */
 
@@ -453,8 +465,7 @@ head script ~ meta[http-equiv="content-security-policy"] {
 
   head script ~ meta[http-equiv="content-security-policy"]::before {
     content: "[Meta CSP defined after JS]"
-  }
-/**
+  }/**
  * Charset should appear as early as possible
  */
 head > meta[charset]:not(:nth-child(-n+5)) {
@@ -464,8 +475,7 @@ head > meta[charset]:not(:nth-child(-n+5)) {
 
 head > meta[charset]:not(:nth-child(-n+5))::before {
   content: "[Charset should appear as early as possible]";
-}
-/**
+}/**
  * Hide all irrelevant or non-matching scripts and styles (including ct.css).
  *
  * We’re done!
@@ -482,8 +492,18 @@ script[async], script[defer], script[type=module] {
 }());
 
 ``` 
+
+
+
+
 </details>
+
+
+
+
 <!-- END-HOW_TO -->
+
+
 # Credits
 
 Author: _Harry Roberts_  

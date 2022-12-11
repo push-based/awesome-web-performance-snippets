@@ -7,10 +7,19 @@ Gets information about all components in the page or specific component type
 ## How to use it
 
 <!-- START-HOW_TO[] -->
+
+
+
+
 ### Bookmark Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the bookmark to use it</summary>
+
+
 ```javascript
 
 javascript:(() => {function index() {
@@ -269,11 +278,24 @@ javascript:(() => {function index() {
 }
 )()
 ``` 
+
+
+
+
 </details>
+
+
+
+
 ### Console Tab Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
+
+
 ```javascript
 
 function index() {
@@ -532,8 +554,18 @@ function index() {
 }
 
 ``` 
+
+
+
+
 </details>
+
+
+
+
 <!-- END-HOW_TO -->
+
+
 ## Input
 
 - Mode: summary/component

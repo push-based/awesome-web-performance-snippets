@@ -11,16 +11,26 @@ List all scripts using PerformanceResourceTiming API and separating them by firs
 ## How to use it
 
 <!-- START-HOW_TO[bookmark,console-tab,sources-tab,chromium] -->
+
+
 | Technique   | Is Usable  |
 | ----------- | ---------- |
 | [Bookmark](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-bookmarks) |      ✔    | 
 | [Console Tab](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-console-tab.md) |      ✔    | 
 | [Sources Tab](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-sources-tab.md) |      ✔    | 
 | [Chromium](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-chromium.md)       |      ✔    |
+    
+
+
 ### Bookmark Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the bookmark to use it</summary>
+
+
 ```javascript
 
 javascript:(() => {// ex: katespade.com - list firsty party subdomains in HOSTS array
@@ -81,11 +91,24 @@ console.groupEnd();
 */
 )()
 ``` 
+
+
+
+
 </details>
+
+
+
+
 ### Console Tab Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
+
+
 ```javascript
 
 // ex: katespade.com - list firsty party subdomains in HOSTS array
@@ -146,5 +169,15 @@ console.groupEnd();
 */
 
 ``` 
+
+
+
+
 </details>
+
+
+
+
 <!-- END-HOW_TO -->
+
+

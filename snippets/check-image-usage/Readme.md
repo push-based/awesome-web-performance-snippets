@@ -13,16 +13,26 @@ It checks:
 ## How to use it
 
 <!-- START-HOW_TO[bookmark,console-tab,sources-tab,chromium] -->
+
+
 | Technique   | Is Usable  |
 | ----------- | ---------- |
 | [Bookmark](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-bookmarks) |      ✔    | 
 | [Console Tab](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-console-tab.md) |      ✔    | 
 | [Sources Tab](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-sources-tab.md) |      ✔    | 
 | [Chromium](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-chromium.md)       |      ✔    |
+    
+
+
 ### Bookmark Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the bookmark to use it</summary>
+
+
 ```javascript
 
 javascript:(() => {const bgUrlChecker = /(url\(["'])([A-Za-z0-9$.:/_\-~]*)(["']\))(?!data:$)/g;
@@ -236,11 +246,24 @@ fixUsage(d);
 enrichSizeUsage(d).then(console.table);
 )()
 ``` 
+
+
+
+
 </details>
+
+
+
+
 ### Console Tab Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
+
+
 ```javascript
 
 const bgUrlChecker = /(url\(["'])([A-Za-z0-9$.:/_\-~]*)(["']\))(?!data:$)/g;
@@ -454,8 +477,18 @@ fixUsage(d);
 enrichSizeUsage(d).then(console.table);
 
 ``` 
+
+
+
+
 </details>
+
+
+
+
 <!-- END-HOW_TO -->
+
+
 <img width="595" alt="loading1" src="https://user-images.githubusercontent.com/10064416/206700419-3c8e4ced-a75a-44c1-bc4f-b00294a5de22.PNG">
 
 # Credits

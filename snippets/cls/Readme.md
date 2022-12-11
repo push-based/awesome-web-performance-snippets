@@ -13,16 +13,26 @@ console.log(entryList.getEntries());
 ## How to use it
 
 <!-- START-HOW_TO[bookmark,console-tab,sources-tab,chromium] -->
+
+
 | Technique   | Is Usable  |
 | ----------- | ---------- |
 | [Bookmark](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-bookmarks) |      ✔    | 
 | [Console Tab](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-console-tab.md) |      ✔    | 
 | [Sources Tab](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-sources-tab.md) |      ✔    | 
 | [Chromium](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-chromium.md)       |      ✔    |
+    
+
+
 ### Bookmark Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the bookmark to use it</summary>
+
+
 ```javascript
 
 javascript:(() => {function genColor() {
@@ -61,11 +71,24 @@ function findShifts(threshold) {
 findShifts(0.05).observe({ entryTypes: ["layout-shift"] });
 )()
 ``` 
+
+
+
+
 </details>
+
+
+
+
 ### Console Tab Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
+
+
 ```javascript
 
 function genColor() {
@@ -104,8 +127,18 @@ function findShifts(threshold) {
 findShifts(0.05).observe({ entryTypes: ["layout-shift"] });
 
 ``` 
+
+
+
+
 </details>
+
+
+
+
 <!-- END-HOW_TO -->
+
+
 # Credits
 
 Author: _Joan León_  

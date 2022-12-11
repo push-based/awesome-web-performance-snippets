@@ -8,10 +8,19 @@ Measure the time to first byte, from the document
 ## How to use it
 
 <!-- START-HOW_TO[] -->
+
+
+
+
 ### Bookmark Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the bookmark to use it</summary>
+
+
 ```javascript
 
 javascript:(() => {new PerformanceObserver((entryList) => {
@@ -23,11 +32,24 @@ javascript:(() => {new PerformanceObserver((entryList) => {
 });
 )()
 ``` 
+
+
+
+
 </details>
+
+
+
+
 ### Console Tab Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
+
+
 ```javascript
 
 new PerformanceObserver((entryList) => {
@@ -39,5 +61,15 @@ new PerformanceObserver((entryList) => {
 });
 
 ``` 
+
+
+
+
 </details>
+
+
+
+
 <!-- END-HOW_TO -->
+
+

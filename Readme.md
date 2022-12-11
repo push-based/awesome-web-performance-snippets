@@ -14,12 +14,17 @@ Included scripts from other open source authors and repositories:
 
 <!-- START-SNIPPETS -->
 
-## [Check first and third party script](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/check-first-and-third-party-script)  
+## [Dist/snippets/check first and third party script](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
+
+
 ```javascript
 
 // ex: katespade.com - list firsty party subdomains in HOSTS array
@@ -80,13 +85,26 @@ console.groupEnd();
 */
 
 ``` 
+
+
+
+
 </details>
-## [Check first and third party script timings](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/check-first-and-third-party-script-timings)  
+
+
+
+  
+## [Dist/snippets/check first and third party script timings](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
+
+
 ```javascript
 
 function createUniqueLists(firstParty, thirdParty) {
@@ -155,13 +173,26 @@ timingOptions.forEach((timing) => {
 console.table(calculateTimings("first", "REQ_START_UNTIL_RES_END"));
 
 ``` 
+
+
+
+
 </details>
-## [Check header](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/check-header)  
+
+
+
+  
+## [Dist/snippets/check header](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
+
+
 ```javascript
 
 (function () {
@@ -176,6 +207,11 @@ console.table(calculateTimings("first", "REQ_START_UNTIL_RES_END"));
  *
  * © Harry Roberts 2021 – twitter.com/csswizardry
  */
+
+
+
+
+
 /**
  * It’s slightly easier to remember topics than it is colours. Set up some
  * custom properties for use later on.
@@ -187,8 +223,7 @@ head {
   --ct-notify: #0bce6b;
   --ct-warn: #ffa400;
   --ct-error: #ff4e42;
-}
-/**
+}/**
  * Show the <head> and set up the items we might be interested in.
  */
 
@@ -222,8 +257,7 @@ head script, head style {
 
 head ::before {
   font-weight: bold;
-}
-/**
+}/**
  * External Script and Style
  */
 
@@ -239,8 +273,7 @@ head link[rel="stylesheet"] {
 
   head link[rel="stylesheet"]::before {
     content: "[Blocking Stylesheet – " attr(href) "]"
-  }
-/**
+  }/**
  * Inline Script and Style.
  */
 
@@ -260,8 +293,7 @@ head script:not(:empty) {
 
   head style:not(:empty)::before {
     content: "[Inline Style] ";
-  }
-/**
+  }/**
  * Blocked Title.
  *
  * These selectors are generally more complex because the Key Selector (\`title\`)
@@ -279,8 +311,7 @@ head script:not(:empty) ~ title {
   head script[src]:not([async]):not([defer]):not([type=module]) ~ title::before,
   head script:not(:empty) ~ title::before {
     content: "[<title> blocked by JS] ";
-  }
-/**
+  }/**
  * Blocked Scripts.
  *
  * These selectors are generally more complex because the Key Selector
@@ -298,8 +329,7 @@ head style:not(:empty) ~ script {
   head [rel="stylesheet"]:not([media="print"]):not(.ct) ~ script::before,
   head style:not(:empty) ~ script::before {
     content: "[JS blocked by CSS – " attr(src) "]";
-  }
-/**
+  }/**
  * Using both \`async\` and \`defer\` is redundant (an anti-pattern, even). Let’s
  * flag that.
  */
@@ -312,8 +342,7 @@ head script[src][src][async][defer] {
 
   head script[src][src][async][defer]::before {
     content: "[async and defer is redundant: prefer defer – " attr(src) "]";
-  }
-/**
+  }/**
  * Async and defer simply do not work on inline scripts. It won’t do any harm,
  * but it’s useful to know about.
  */
@@ -329,8 +358,7 @@ head script:not([src])[defer] {
 
   head script:not([src])[defer]::before {
     content: "The defer attribute is redundant on inline scripts"
-  }
-/**
+  }/**
  * Third Party blocking resources.
  *
  * Expect false-positives here… it’s a crude proxy at best.
@@ -354,8 +382,7 @@ head [rel="stylesheet"][href^="http"] {
   head [rel="stylesheet"][href^="//"]::before,
   head [rel="stylesheet"][href^="http"]::before {
     content: "[Third Party Blocking Stylesheet – " attr(href) "]";
-  }
-/**
+  }/**
  * Mid-HEAD CSP disables the Preload Scanner
  */
 
@@ -366,8 +393,7 @@ head script ~ meta[http-equiv="content-security-policy"] {
 
   head script ~ meta[http-equiv="content-security-policy"]::before {
     content: "[Meta CSP defined after JS]"
-  }
-/**
+  }/**
  * Charset should appear as early as possible
  */
 head > meta[charset]:not(:nth-child(-n+5)) {
@@ -377,8 +403,7 @@ head > meta[charset]:not(:nth-child(-n+5)) {
 
 head > meta[charset]:not(:nth-child(-n+5))::before {
   content: "[Charset should appear as early as possible]";
-}
-/**
+}/**
  * Hide all irrelevant or non-matching scripts and styles (including ct.css).
  *
  * We’re done!
@@ -395,13 +420,26 @@ script[async], script[defer], script[type=module] {
 }());
 
 ``` 
+
+
+
+
 </details>
-## [Check image sizes](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/check-image-sizes)  
+
+
+
+  
+## [Dist/snippets/check image sizes](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
+
+
 ```javascript
 
 function getImgs(sortBy) {
@@ -425,13 +463,26 @@ function getImgs(sortBy) {
 console.table(getImgs("encodedBodySize"));
 
 ``` 
+
+
+
+
 </details>
-## [Check image usage](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/check-image-usage)  
+
+
+
+  
+## [Dist/snippets/check image usage](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
+
+
 ```javascript
 
 const bgUrlChecker = /(url\(["'])([A-Za-z0-9$.:/_\-~]*)(["']\))(?!data:$)/g;
@@ -645,13 +696,26 @@ fixUsage(d);
 enrichSizeUsage(d).then(console.table);
 
 ``` 
+
+
+
+
 </details>
-## [Cls](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/cls)  
+
+
+
+  
+## [Dist/snippets/cls](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
+
+
 ```javascript
 
 function genColor() {
@@ -690,13 +754,26 @@ function findShifts(threshold) {
 findShifts(0.05).observe({ entryTypes: ["layout-shift"] });
 
 ``` 
+
+
+
+
 </details>
-## [Cumulative layout shift](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/cumulative-layout-shift)  
+
+
+
+  
+## [Dist/snippets/cumulative layout shift](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
+
+
 ```javascript
 
 try {
@@ -722,26 +799,52 @@ catch (e) {
 }
 
 ``` 
+
+
+
+
 </details>
-## [Full relayout](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/full-relayout)  
+
+
+
+  
+## [Dist/snippets/full relayout](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
+
+
 ```javascript
 
 const b = document.body;
 b.style.zoom === '1' ? b.style.zoom = '1.01' : b.style.zoom = '1';
 
 ``` 
+
+
+
+
 </details>
-## [Gathering styles](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/gathering-styles)  
+
+
+
+  
+## [Dist/snippets/gathering styles](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
+
+
 ```javascript
 
 console.log(Array.from(document.querySelectorAll('style'))
@@ -749,13 +852,26 @@ console.log(Array.from(document.querySelectorAll('style'))
     .reduce((a, b) => a + b));
 
 ``` 
+
+
+
+
 </details>
-## [Get Attribute Directives](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/getAttributeDirectives)  
+
+
+
+  
+## [Dist/snippets/get Attribute Directives](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
+
+
 ```javascript
 
 function getAttributeDirectives() {
@@ -934,13 +1050,26 @@ function getAttributeDirectives() {
 }
 
 ``` 
+
+
+
+
 </details>
-## [Get Components Nodes](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/getComponentsNodes)  
+
+
+
+  
+## [Dist/snippets/get Components Nodes](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
+
+
 ```javascript
 
 function index() {
@@ -1199,13 +1328,26 @@ function index() {
 }
 
 ``` 
+
+
+
+
 </details>
-## [Get DOMEvent Listeners](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/getDOMEventListeners)  
+
+
+
+  
+## [Dist/snippets/get DOMEvent Listeners](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
+
+
 ```javascript
 
 function getDOMEventListeners() {
@@ -1271,13 +1413,26 @@ function getDOMEventListeners() {
 }
 
 ``` 
+
+
+
+
 </details>
-## [Get Nodes Info](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/getNodesInfo)  
+
+
+
+  
+## [Dist/snippets/get Nodes Info](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
+
+
 ```javascript
 
 function index(root = document.body) {
@@ -1386,13 +1541,26 @@ function index(root = document.body) {
 }
 
 ``` 
+
+
+
+
 </details>
-## [Lcp](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/lcp)  
+
+
+
+  
+## [Dist/snippets/lcp](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
+
+
 ```javascript
 
 /**
@@ -1431,13 +1599,26 @@ function dedupe(arr, key) {
 }
 
 ``` 
+
+
+
+
 </details>
-## [Long task](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/long-task)  
+
+
+
+  
+## [Dist/snippets/long task](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
+
+
 ```javascript
 
 try {
@@ -1456,13 +1637,26 @@ catch (e) {
 }
 
 ``` 
+
+
+
+
 </details>
-## [Make lazy img](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/make-lazy-img)  
+
+
+
+  
+## [Dist/snippets/make lazy img](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
+
+
 ```javascript
 
 const imgs = document.querySelectorAll('img');
@@ -1470,13 +1664,26 @@ Array.from(imgs)
     .forEach(i => i.setAttribute('loading', 'lazy'));
 
 ``` 
+
+
+
+
 </details>
-## [Re apply dom](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/re-apply-dom)  
+
+
+
+  
+## [Dist/snippets/re apply dom](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
+
+
 ```javascript
 
 const bi = document.body.innerHTML;
@@ -1484,13 +1691,26 @@ document.body.innerHTML = '';
 setTimeout(() => document.body.innerHTML = bi, 350);
 
 ``` 
+
+
+
+
 </details>
-## [Resources hints](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/resources-hints)  
+
+
+
+  
+## [Dist/snippets/resources hints](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
+
+
 ```javascript
 
 const rels = [
@@ -1510,13 +1730,26 @@ rels.forEach((element) => {
 });
 
 ``` 
+
+
+
+
 </details>
-## [Scripts loading](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/scripts-loading)  
+
+
+
+  
+## [Dist/snippets/scripts loading](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
+
+
 ```javascript
 
 const scripts = document.querySelectorAll('script[src]');
@@ -1533,13 +1766,26 @@ const scriptsLoading = [...scripts].map((obj) => {
 console.table(scriptsLoading);
 
 ``` 
+
+
+
+
 </details>
-## [Scroll up down](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/scroll-up-down)  
+
+
+
+  
+## [Dist/snippets/scroll up down](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
+
+
 ```javascript
 
 const scrollHeight = document.documentElement.scrollHeight;
@@ -1555,13 +1801,26 @@ setTimeout(() => window.scroll({
 console.log('scroll done!');
 
 ``` 
+
+
+
+
 </details>
-## [Time to first byte all](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/time-to-first-byte-all)  
+
+
+
+  
+## [Dist/snippets/time to first byte all](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
+
+
 ```javascript
 
 new PerformanceObserver((entryList) => {
@@ -1586,13 +1845,26 @@ new PerformanceObserver((entryList) => {
 });
 
 ``` 
+
+
+
+
 </details>
-## [Time to first byte document](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/time-to-first-byte-document)  
+
+
+
+  
+## [Dist/snippets/time to first byte document](https://github.com/push-based/web-performance-tools/tree/master/)  
 
 ### Console Tab Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
+
+
 ```javascript
 
 new PerformanceObserver((entryList) => {
@@ -1604,5 +1876,15 @@ new PerformanceObserver((entryList) => {
 });
 
 ``` 
+
+
+
+
 </details>
+
+
+
+  
 <!-- END-SNIPPETS -->
+
+

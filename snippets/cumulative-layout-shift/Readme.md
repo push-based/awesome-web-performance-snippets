@@ -7,10 +7,19 @@ TODO
 ## How to use it
 
 <!-- START-HOW_TO[] -->
+
+
+
+
 ### Bookmark Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the bookmark to use it</summary>
+
+
 ```javascript
 
 javascript:(() => {try {
@@ -36,11 +45,24 @@ catch (e) {
 }
 )()
 ``` 
+
+
+
+
 </details>
+
+
+
+
 ### Console Tab Snippet
+
+
+
 <details>
 
 <summary>Copy this code snippet into the DevTools console Tab to use it</summary>
+
+
 ```javascript
 
 try {
@@ -66,8 +88,18 @@ catch (e) {
 }
 
 ``` 
+
+
+
+
 </details>
+
+
+
+
 <!-- END-HOW_TO -->
+
+
 # Credits
 
 Author: _Joan León_  
