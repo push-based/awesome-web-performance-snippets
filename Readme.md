@@ -3,8 +3,8 @@
 ## Third Party Sources
 
 Included scripts from other open source authors and repositories:
-- [webperf-snippets](https://github.com/nucliweb/webperf-snippets) from [Joan León](https://joanleon.dev/)
-- [header-check](https://github.com/csswizardry/ct) from [Harry Roberts](https://csswizardry.com/)
+- directly copied or adopted from [webperf-snippets](https://github.com/nucliweb/webperf-snippets) by [Joan León](https://joanleon.dev/)
+- directly copied from [header-check](https://github.com/csswizardry/ct) by [Harry Roberts](https://csswizardry.com/)
 ## How to use a snippet?
 
 - [how-to-use-it-with-console-tab](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-console-tab.md)
