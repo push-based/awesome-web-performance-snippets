@@ -36,6 +36,7 @@ export function getUsabilityTable(techniques: Technique[]): string {
 function wrapBookmarkIIFE(js: string): string {
     return `javascript:(() => {${js})()`;
 }
+
 function wrapJsMd(js: string): string {
     return `
 \`\`\`javascript${NEW_LINE}
@@ -43,7 +44,8 @@ ${js}
 \`\`\` ${NEW_LINE}
 ${NEW_LINE}`;
 }
-export function toBookmarkSnippet(c: string, cfg?: {h: string}): string {
+
+export function toBookmarkSnippet(c: string, cfg?: { h: string }): string {
     const h = cfg?.h || '###';
     // @TODO add compression
     return `
@@ -54,11 +56,8 @@ ${NEW_LINE}
 `;
 }
 
-export function toConsoleSnippet(c: string, cfg?: {h: string}): string {
-    const h = cfg?.h || '###';
+export function toConsoleSnippet(c: string): string {
     return `
-${h} Console Tab Snippet${NEW_LINE}
-${NEW_LINE}
 ${wrapCollapse('Copy this code snippet into the DevTools console Tab to use it', wrapJsMd(c
         // @TODO the replace is a hack that should be fixed in the snippets:compile step in the tsconfig.json
         .replace('export {};', '')
@@ -85,8 +84,9 @@ export function updateSnippet(folder: string): void {
 
     const table = getUsabilityTable(techniques);
     const bookmark = toBookmarkSnippet(snippetContent);
+    const ch2 = `## Console Tab Snippet` + NEW_LINE;
     const consoleTab = toConsoleSnippet(snippetContent);
-    let out = table + bookmark + consoleTab + NEW_LINE;
+    let out = table + bookmark + ch2 + consoleTab + NEW_LINE;
 
     if (out !== '') {
         const [start, _s, _t, _e, rest_] = readmeContent.split(HOW_TO_START_REGEX) || [];

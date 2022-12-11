@@ -8,7 +8,7 @@ import {SNIPPETS_DIST, toConsoleSnippet} from "../snippets";
     let readmeContent: string = readFileSync('./Readme.md', 'utf8');
     const bookMarkContent: string = loadSnippets(SNIPPETS_DIST)
         .map(({fileName, javascript}) => {
-            const title = toBookletName(dirname(fileName));
+            const title = toBookletName(dirname(fileName).split('/').pop());
             const folder = fileName
                 // split at wrong separator
                 .split('\\')
@@ -17,9 +17,9 @@ import {SNIPPETS_DIST, toConsoleSnippet} from "../snippets";
                 // join with proper forward slash for url
                 .join('/');
 
-            const h2 = `## [${title}](https://github.com/push-based/web-performance-tools/tree/master/${folder})  ` + NEW_LINE;
+            const h2 = `## [${title}](https://github.com/push-based/web-performance-tools/tree/master/${folder})` + NEW_LINE;
             const snippet = toConsoleSnippet(javascript)
-            return h2 + snippet + '  ' + NEW_LINE;
+            return h2 + snippet;
         }).join('');
 
     if (bookMarkContent !== '') {
@@ -29,9 +29,9 @@ import {SNIPPETS_DIST, toConsoleSnippet} from "../snippets";
         }
         const [content, end] = _.split(SNIPPET_AREA_END);
         readmeContent = start +
-            SNIPPET_AREA_START + NEW_LINE + NEW_LINE +
+            SNIPPET_AREA_START + NEW_LINE +
             bookMarkContent +
-            SNIPPET_AREA_END + NEW_LINE + NEW_LINE +
+            SNIPPET_AREA_END + NEW_LINE +
             end;
         writeFileSync('./Readme.md', readmeContent, 'utf8');
     }
