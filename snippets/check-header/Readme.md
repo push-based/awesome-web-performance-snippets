@@ -13,13 +13,11 @@ You can fins a detailed description in Harrys repository called [ct](https://git
 
 ### Bookmark Snippet
 
-Copy this code snippet into the bookmark to use it.
-
 
 
 <details>
 
-<summary>Bookmark Snippet</summary>
+<summary>Copy this code snippet into the bookmark to use it</summary>
 
 
 ```javascript
@@ -326,13 +324,11 @@ script[async], script[defer], script[type=module] {
 
 ### Console Tab Snippet
 
-Copy this code snippet into the DevTools console Tab to use it.
-
 
 
 <details>
 
-<summary>Console Tab Snippet</summary>
+<summary>Copy this code snippet into the DevTools console Tab to use it</summary>
 
 
 ```javascript

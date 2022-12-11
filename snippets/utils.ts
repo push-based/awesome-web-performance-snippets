@@ -43,23 +43,23 @@ ${js}
 \`\`\` ${NEW_LINE}
 ${NEW_LINE}`;
 }
-export function toBookmarkSnippet(c: string): string {
+export function toBookmarkSnippet(c: string, cfg?: {h: string}): string {
+    const h = cfg.h || '###';
     // @TODO add compression
     return `
-### Bookmark Snippet${NEW_LINE}
-Copy this code snippet into the bookmark to use it.${NEW_LINE}
+${h} Bookmark Snippet${NEW_LINE}
 ${NEW_LINE}
-${wrapCollapse('Bookmark Snippet', wrapJsMd(wrapBookmarkIIFE(c)))}
+${wrapCollapse('Copy this code snippet into the bookmark to use it', wrapJsMd(wrapBookmarkIIFE(c)))}
 ${NEW_LINE}
 `;
 }
 
-export function toConsoleSnippet(c: string): string {
+export function toConsoleSnippet(c: string, cfg?: {h: string}): string {
+    const h = cfg.h || '###';
     return `
-### Console Tab Snippet${NEW_LINE}
-Copy this code snippet into the DevTools console Tab to use it.${NEW_LINE}
+${h} Console Tab Snippet${NEW_LINE}
 ${NEW_LINE}
-${wrapCollapse('Console Tab Snippet', wrapJsMd(c
+${wrapCollapse('Copy this code snippet into the DevTools console Tab to use it', wrapJsMd(c
         // @TODO the replace is a hack that should be fixed in the snippets:compile step in the tsconfig.json
         .replace('export {};', '')
     ))}

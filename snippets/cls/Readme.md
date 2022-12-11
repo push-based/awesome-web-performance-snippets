@@ -26,13 +26,11 @@ console.log(entryList.getEntries());
 
 ### Bookmark Snippet
 
-Copy this code snippet into the bookmark to use it.
-
 
 
 <details>
 
-<summary>Bookmark Snippet</summary>
+<summary>Copy this code snippet into the bookmark to use it</summary>
 
 
 ```javascript
@@ -84,13 +82,11 @@ findShifts(0.05).observe({ entryTypes: ["layout-shift"] });
 
 ### Console Tab Snippet
 
-Copy this code snippet into the DevTools console Tab to use it.
-
 
 
 <details>
 
-<summary>Console Tab Snippet</summary>
+<summary>Copy this code snippet into the DevTools console Tab to use it</summary>
 
 
 ```javascript

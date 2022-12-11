@@ -11,13 +11,11 @@ Add `loading="lazy"` to all images and iframe's on the page.
 
 ### Bookmark Snippet
 
-Copy this code snippet into the bookmark to use it.
-
 
 
 <details>
 
-<summary>Bookmark Snippet</summary>
+<summary>Copy this code snippet into the bookmark to use it</summary>
 
 
 ```javascript
@@ -38,13 +36,11 @@ Array.from(imgs)
 
 ### Console Tab Snippet
 
-Copy this code snippet into the DevTools console Tab to use it.
-
 
 
 <details>
 
-<summary>Console Tab Snippet</summary>
+<summary>Copy this code snippet into the DevTools console Tab to use it</summary>
 
 
 ```javascript

@@ -22,13 +22,11 @@ IMPORTANT: This script can not be run as a bookmarklet because it relies on cons
 
 ### Bookmark Snippet
 
-Copy this code snippet into the bookmark to use it.
-
 
 
 <details>
 
-<summary>Bookmark Snippet</summary>
+<summary>Copy this code snippet into the bookmark to use it</summary>
 
 
 ```javascript
@@ -107,13 +105,11 @@ javascript:(() => {function getDOMEventListeners() {
 
 ### Console Tab Snippet
 
-Copy this code snippet into the DevTools console Tab to use it.
-
 
 
 <details>
 
-<summary>Console Tab Snippet</summary>
+<summary>Copy this code snippet into the DevTools console Tab to use it</summary>
 
 
 ```javascript

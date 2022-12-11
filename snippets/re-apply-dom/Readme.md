@@ -38,13 +38,11 @@ Use case: add correct lazy loading to images
 
 ### Bookmark Snippet
 
-Copy this code snippet into the bookmark to use it.
-
 
 
 <details>
 
-<summary>Bookmark Snippet</summary>
+<summary>Copy this code snippet into the bookmark to use it</summary>
 
 
 ```javascript
@@ -65,13 +63,11 @@ setTimeout(() => document.body.innerHTML = bi, 350);
 
 ### Console Tab Snippet
 
-Copy this code snippet into the DevTools console Tab to use it.
-
 
 
 <details>
 
-<summary>Console Tab Snippet</summary>
+<summary>Copy this code snippet into the DevTools console Tab to use it</summary>
 
 
 ```javascript

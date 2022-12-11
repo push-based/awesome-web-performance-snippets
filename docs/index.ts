@@ -1,9 +1,8 @@
-import {loadSnippets, toBookletName} from "../chromium/bookmarks/utils";
+import {loadSnippets, toBookletName} from "../chromium";
 import {readFileSync, writeFileSync} from "fs";
 import {NEW_LINE, SNIPPET_AREA_END, SNIPPET_AREA_START} from "./constants";
 import {dirname} from "path";
-import {toConsoleSnippet} from "../snippets";
-import {SNIPPETS_DIST} from "../snippets/constants";
+import {SNIPPETS_DIST, toConsoleSnippet} from "../snippets";
 
 (() => {
     let readmeContent: string = readFileSync('./Readme.md', 'utf8');

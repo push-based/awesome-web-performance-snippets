@@ -16,17 +16,15 @@ Included scripts from other open source authors and repositories:
 
 <!-- START-SNIPPETS -->
 
-## [Dist/snippets/check first and third party script](https://github.com/push-based/web-performance-tools/tree/master/)  
+## [Check first and third party script](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/check-first-and-third-party-script)  
 
 ### Console Tab Snippet
-
-Copy this code snippet into the DevTools console Tab to use it.
 
 
 
 <details>
 
-<summary>Console Tab Snippet</summary>
+<summary>Copy this code snippet into the DevTools console Tab to use it</summary>
 
 
 ```javascript
@@ -98,17 +96,15 @@ console.groupEnd();
 
 
   
-## [Dist/snippets/check first and third party script timings](https://github.com/push-based/web-performance-tools/tree/master/)  
+## [Check first and third party script timings](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/check-first-and-third-party-script-timings)  
 
 ### Console Tab Snippet
-
-Copy this code snippet into the DevTools console Tab to use it.
 
 
 
 <details>
 
-<summary>Console Tab Snippet</summary>
+<summary>Copy this code snippet into the DevTools console Tab to use it</summary>
 
 
 ```javascript
@@ -188,17 +184,15 @@ console.table(calculateTimings("first", "REQ_START_UNTIL_RES_END"));
 
 
   
-## [Dist/snippets/check header](https://github.com/push-based/web-performance-tools/tree/master/)  
+## [Check header](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/check-header)  
 
 ### Console Tab Snippet
-
-Copy this code snippet into the DevTools console Tab to use it.
 
 
 
 <details>
 
-<summary>Console Tab Snippet</summary>
+<summary>Copy this code snippet into the DevTools console Tab to use it</summary>
 
 
 ```javascript
@@ -503,17 +497,15 @@ script[async], script[defer], script[type=module] {
 
 
   
-## [Dist/snippets/check image sizes](https://github.com/push-based/web-performance-tools/tree/master/)  
+## [Check image sizes](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/check-image-sizes)  
 
 ### Console Tab Snippet
-
-Copy this code snippet into the DevTools console Tab to use it.
 
 
 
 <details>
 
-<summary>Console Tab Snippet</summary>
+<summary>Copy this code snippet into the DevTools console Tab to use it</summary>
 
 
 ```javascript
@@ -548,17 +540,15 @@ console.table(getImgs("encodedBodySize"));
 
 
   
-## [Dist/snippets/check image usage](https://github.com/push-based/web-performance-tools/tree/master/)  
+## [Check image usage](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/check-image-usage)  
 
 ### Console Tab Snippet
-
-Copy this code snippet into the DevTools console Tab to use it.
 
 
 
 <details>
 
-<summary>Console Tab Snippet</summary>
+<summary>Copy this code snippet into the DevTools console Tab to use it</summary>
 
 
 ```javascript
@@ -783,17 +773,15 @@ enrichSizeUsage(d).then(console.table);
 
 
   
-## [Dist/snippets/cls](https://github.com/push-based/web-performance-tools/tree/master/)  
+## [Cls](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/cls)  
 
 ### Console Tab Snippet
-
-Copy this code snippet into the DevTools console Tab to use it.
 
 
 
 <details>
 
-<summary>Console Tab Snippet</summary>
+<summary>Copy this code snippet into the DevTools console Tab to use it</summary>
 
 
 ```javascript
@@ -843,17 +831,15 @@ findShifts(0.05).observe({ entryTypes: ["layout-shift"] });
 
 
   
-## [Dist/snippets/cumulative layout shift](https://github.com/push-based/web-performance-tools/tree/master/)  
+## [Cumulative layout shift](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/cumulative-layout-shift)  
 
 ### Console Tab Snippet
-
-Copy this code snippet into the DevTools console Tab to use it.
 
 
 
 <details>
 
-<summary>Console Tab Snippet</summary>
+<summary>Copy this code snippet into the DevTools console Tab to use it</summary>
 
 
 ```javascript
@@ -890,17 +876,15 @@ catch (e) {
 
 
   
-## [Dist/snippets/full relayout](https://github.com/push-based/web-performance-tools/tree/master/)  
+## [Full relayout](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/full-relayout)  
 
 ### Console Tab Snippet
-
-Copy this code snippet into the DevTools console Tab to use it.
 
 
 
 <details>
 
-<summary>Console Tab Snippet</summary>
+<summary>Copy this code snippet into the DevTools console Tab to use it</summary>
 
 
 ```javascript
@@ -918,17 +902,15 @@ b.style.zoom === '1' ? b.style.zoom = '1.01' : b.style.zoom = '1';
 
 
   
-## [Dist/snippets/gathering styles](https://github.com/push-based/web-performance-tools/tree/master/)  
+## [Gathering styles](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/gathering-styles)  
 
 ### Console Tab Snippet
-
-Copy this code snippet into the DevTools console Tab to use it.
 
 
 
 <details>
 
-<summary>Console Tab Snippet</summary>
+<summary>Copy this code snippet into the DevTools console Tab to use it</summary>
 
 
 ```javascript
@@ -947,17 +929,15 @@ console.log(Array.from(document.querySelectorAll('style'))
 
 
   
-## [Dist/snippets/get Attribute Directives](https://github.com/push-based/web-performance-tools/tree/master/)  
+## [Get Attribute Directives](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/getAttributeDirectives)  
 
 ### Console Tab Snippet
-
-Copy this code snippet into the DevTools console Tab to use it.
 
 
 
 <details>
 
-<summary>Console Tab Snippet</summary>
+<summary>Copy this code snippet into the DevTools console Tab to use it</summary>
 
 
 ```javascript
@@ -1147,17 +1127,15 @@ function getAttributeDirectives() {
 
 
   
-## [Dist/snippets/get Components Nodes](https://github.com/push-based/web-performance-tools/tree/master/)  
+## [Get Components Nodes](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/getComponentsNodes)  
 
 ### Console Tab Snippet
-
-Copy this code snippet into the DevTools console Tab to use it.
 
 
 
 <details>
 
-<summary>Console Tab Snippet</summary>
+<summary>Copy this code snippet into the DevTools console Tab to use it</summary>
 
 
 ```javascript
@@ -1427,17 +1405,15 @@ function index() {
 
 
   
-## [Dist/snippets/get DOMEvent Listeners](https://github.com/push-based/web-performance-tools/tree/master/)  
+## [Get DOMEvent Listeners](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/getDOMEventListeners)  
 
 ### Console Tab Snippet
-
-Copy this code snippet into the DevTools console Tab to use it.
 
 
 
 <details>
 
-<summary>Console Tab Snippet</summary>
+<summary>Copy this code snippet into the DevTools console Tab to use it</summary>
 
 
 ```javascript
@@ -1514,17 +1490,15 @@ function getDOMEventListeners() {
 
 
   
-## [Dist/snippets/get Nodes Info](https://github.com/push-based/web-performance-tools/tree/master/)  
+## [Get Nodes Info](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/getNodesInfo)  
 
 ### Console Tab Snippet
-
-Copy this code snippet into the DevTools console Tab to use it.
 
 
 
 <details>
 
-<summary>Console Tab Snippet</summary>
+<summary>Copy this code snippet into the DevTools console Tab to use it</summary>
 
 
 ```javascript
@@ -1644,17 +1618,15 @@ function index(root = document.body) {
 
 
   
-## [Dist/snippets/lcp](https://github.com/push-based/web-performance-tools/tree/master/)  
+## [Lcp](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/lcp)  
 
 ### Console Tab Snippet
-
-Copy this code snippet into the DevTools console Tab to use it.
 
 
 
 <details>
 
-<summary>Console Tab Snippet</summary>
+<summary>Copy this code snippet into the DevTools console Tab to use it</summary>
 
 
 ```javascript
@@ -1704,17 +1676,15 @@ function dedupe(arr, key) {
 
 
   
-## [Dist/snippets/long task](https://github.com/push-based/web-performance-tools/tree/master/)  
+## [Long task](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/long-task)  
 
 ### Console Tab Snippet
-
-Copy this code snippet into the DevTools console Tab to use it.
 
 
 
 <details>
 
-<summary>Console Tab Snippet</summary>
+<summary>Copy this code snippet into the DevTools console Tab to use it</summary>
 
 
 ```javascript
@@ -1744,17 +1714,15 @@ catch (e) {
 
 
   
-## [Dist/snippets/make lazy img](https://github.com/push-based/web-performance-tools/tree/master/)  
+## [Make lazy img](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/make-lazy-img)  
 
 ### Console Tab Snippet
-
-Copy this code snippet into the DevTools console Tab to use it.
 
 
 
 <details>
 
-<summary>Console Tab Snippet</summary>
+<summary>Copy this code snippet into the DevTools console Tab to use it</summary>
 
 
 ```javascript
@@ -1773,17 +1741,15 @@ Array.from(imgs)
 
 
   
-## [Dist/snippets/re apply dom](https://github.com/push-based/web-performance-tools/tree/master/)  
+## [Re apply dom](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/re-apply-dom)  
 
 ### Console Tab Snippet
-
-Copy this code snippet into the DevTools console Tab to use it.
 
 
 
 <details>
 
-<summary>Console Tab Snippet</summary>
+<summary>Copy this code snippet into the DevTools console Tab to use it</summary>
 
 
 ```javascript
@@ -1802,17 +1768,15 @@ setTimeout(() => document.body.innerHTML = bi, 350);
 
 
   
-## [Dist/snippets/resources hints](https://github.com/push-based/web-performance-tools/tree/master/)  
+## [Resources hints](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/resources-hints)  
 
 ### Console Tab Snippet
-
-Copy this code snippet into the DevTools console Tab to use it.
 
 
 
 <details>
 
-<summary>Console Tab Snippet</summary>
+<summary>Copy this code snippet into the DevTools console Tab to use it</summary>
 
 
 ```javascript
@@ -1843,17 +1807,15 @@ rels.forEach((element) => {
 
 
   
-## [Dist/snippets/scripts loading](https://github.com/push-based/web-performance-tools/tree/master/)  
+## [Scripts loading](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/scripts-loading)  
 
 ### Console Tab Snippet
-
-Copy this code snippet into the DevTools console Tab to use it.
 
 
 
 <details>
 
-<summary>Console Tab Snippet</summary>
+<summary>Copy this code snippet into the DevTools console Tab to use it</summary>
 
 
 ```javascript
@@ -1881,17 +1843,15 @@ console.table(scriptsLoading);
 
 
   
-## [Dist/snippets/scroll up down](https://github.com/push-based/web-performance-tools/tree/master/)  
+## [Scroll up down](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/scroll-up-down)  
 
 ### Console Tab Snippet
-
-Copy this code snippet into the DevTools console Tab to use it.
 
 
 
 <details>
 
-<summary>Console Tab Snippet</summary>
+<summary>Copy this code snippet into the DevTools console Tab to use it</summary>
 
 
 ```javascript
@@ -1918,17 +1878,15 @@ console.log('scroll done!');
 
 
   
-## [Dist/snippets/time to first byte all](https://github.com/push-based/web-performance-tools/tree/master/)  
+## [Time to first byte all](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/time-to-first-byte-all)  
 
 ### Console Tab Snippet
-
-Copy this code snippet into the DevTools console Tab to use it.
 
 
 
 <details>
 
-<summary>Console Tab Snippet</summary>
+<summary>Copy this code snippet into the DevTools console Tab to use it</summary>
 
 
 ```javascript
@@ -1964,17 +1922,15 @@ new PerformanceObserver((entryList) => {
 
 
   
-## [Dist/snippets/time to first byte document](https://github.com/push-based/web-performance-tools/tree/master/)  
+## [Time to first byte document](https://github.com/push-based/web-performance-tools/tree/master/dist/snippets/time-to-first-byte-document)  
 
 ### Console Tab Snippet
-
-Copy this code snippet into the DevTools console Tab to use it.
 
 
 
 <details>
 
-<summary>Console Tab Snippet</summary>
+<summary>Copy this code snippet into the DevTools console Tab to use it</summary>
 
 
 ```javascript

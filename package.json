@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "chromium:serve": "ts-node chromium/index.ts",
+    "chromium:serve": "ts-node chromium/bin.ts",
     "docs:update": "ts-node docs/index.ts",
     "docs:build": "npm run snippets:build && npm run docs:update",
     "snippets:compile": "tsc -p ./snippets/tsconfig.lib.json",
