@@ -13,7 +13,7 @@ Included scripts from other open source authors and repositories:
 - [how-to-use-it-with-chromium](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-chromium.md)
 
 <!-- START-SNIPPETS -->
-## [Check first and third party script](https://github.com/push-based/web-performance-tools/tree/master/)
+## [Check first and third party script](https://github.com/push-based/web-performance-tools/tree/main/)
 
 <details>
 
@@ -88,7 +88,7 @@ console.groupEnd();
 
 
 
-## [Check first and third party script timings](https://github.com/push-based/web-performance-tools/tree/master/)
+## [Check first and third party script timings](https://github.com/push-based/web-performance-tools/tree/main/)
 
 <details>
 
@@ -171,7 +171,7 @@ console.table(calculateTimings("first", "REQ_START_UNTIL_RES_END"));
 
 
 
-## [Check header](https://github.com/push-based/web-performance-tools/tree/master/)
+## [Check header](https://github.com/push-based/web-performance-tools/tree/main/)
 
 <details>
 
@@ -413,7 +413,7 @@ script[async], script[defer], script[type=module] {
 
 
 
-## [Check image sizes](https://github.com/push-based/web-performance-tools/tree/master/)
+## [Check image sizes](https://github.com/push-based/web-performance-tools/tree/main/)
 
 <details>
 
@@ -451,7 +451,7 @@ console.table(getImgs("encodedBodySize"));
 
 
 
-## [Check image usage](https://github.com/push-based/web-performance-tools/tree/master/)
+## [Check image usage](https://github.com/push-based/web-performance-tools/tree/main/)
 
 <details>
 
@@ -679,7 +679,7 @@ enrichSizeUsage(d).then(console.table);
 
 
 
-## [Cls](https://github.com/push-based/web-performance-tools/tree/master/)
+## [Cls](https://github.com/push-based/web-performance-tools/tree/main/)
 
 <details>
 
@@ -732,7 +732,7 @@ findShifts(0.05).observe({ entryTypes: ["layout-shift"] });
 
 
 
-## [Cumulative layout shift](https://github.com/push-based/web-performance-tools/tree/master/)
+## [Cumulative layout shift](https://github.com/push-based/web-performance-tools/tree/main/)
 
 <details>
 
@@ -772,7 +772,7 @@ catch (e) {
 
 
 
-## [Full relayout](https://github.com/push-based/web-performance-tools/tree/master/)
+## [Full relayout](https://github.com/push-based/web-performance-tools/tree/main/)
 
 <details>
 
@@ -793,7 +793,7 @@ b.style.zoom === '1' ? b.style.zoom = '1.01' : b.style.zoom = '1';
 
 
 
-## [Gathering styles](https://github.com/push-based/web-performance-tools/tree/master/)
+## [Gathering styles](https://github.com/push-based/web-performance-tools/tree/main/)
 
 <details>
 
@@ -815,7 +815,7 @@ console.log(Array.from(document.querySelectorAll('style'))
 
 
 
-## [Get Attribute Directives](https://github.com/push-based/web-performance-tools/tree/master/)
+## [Get Attribute Directives](https://github.com/push-based/web-performance-tools/tree/main/)
 
 <details>
 
@@ -1008,7 +1008,7 @@ function getAttributeDirectives() {
 
 
 
-## [Get Components Nodes](https://github.com/push-based/web-performance-tools/tree/master/)
+## [Get Components Nodes](https://github.com/push-based/web-performance-tools/tree/main/)
 
 <details>
 
@@ -1281,7 +1281,7 @@ function index() {
 
 
 
-## [Get DOMEvent Listeners](https://github.com/push-based/web-performance-tools/tree/master/)
+## [Get DOMEvent Listeners](https://github.com/push-based/web-performance-tools/tree/main/)
 
 <details>
 
@@ -1361,7 +1361,7 @@ function getDOMEventListeners() {
 
 
 
-## [Get Nodes Info](https://github.com/push-based/web-performance-tools/tree/master/)
+## [Get Nodes Info](https://github.com/push-based/web-performance-tools/tree/main/)
 
 <details>
 
@@ -1484,7 +1484,7 @@ function index(root = document.body) {
 
 
 
-## [Lcp](https://github.com/push-based/web-performance-tools/tree/master/)
+## [Lcp](https://github.com/push-based/web-performance-tools/tree/main/)
 
 <details>
 
@@ -1537,7 +1537,7 @@ function dedupe(arr, key) {
 
 
 
-## [Long task](https://github.com/push-based/web-performance-tools/tree/master/)
+## [Long task](https://github.com/push-based/web-performance-tools/tree/main/)
 
 <details>
 
@@ -1570,7 +1570,7 @@ catch (e) {
 
 
 
-## [Make lazy img](https://github.com/push-based/web-performance-tools/tree/master/)
+## [Make lazy img](https://github.com/push-based/web-performance-tools/tree/main/)
 
 <details>
 
@@ -1592,7 +1592,7 @@ Array.from(imgs)
 
 
 
-## [Re apply dom](https://github.com/push-based/web-performance-tools/tree/master/)
+## [Re apply dom](https://github.com/push-based/web-performance-tools/tree/main/)
 
 <details>
 
@@ -1614,7 +1614,7 @@ setTimeout(() => document.body.innerHTML = bi, 350);
 
 
 
-## [Resources hints](https://github.com/push-based/web-performance-tools/tree/master/)
+## [Resources hints](https://github.com/push-based/web-performance-tools/tree/main/)
 
 <details>
 
@@ -1648,7 +1648,7 @@ rels.forEach((element) => {
 
 
 
-## [Scripts loading](https://github.com/push-based/web-performance-tools/tree/master/)
+## [Scripts loading](https://github.com/push-based/web-performance-tools/tree/main/)
 
 <details>
 
@@ -1679,7 +1679,7 @@ console.table(scriptsLoading);
 
 
 
-## [Scroll up down](https://github.com/push-based/web-performance-tools/tree/master/)
+## [Scroll up down](https://github.com/push-based/web-performance-tools/tree/main/)
 
 <details>
 
@@ -1709,7 +1709,7 @@ console.log('scroll done!');
 
 
 
-## [Time to first byte all](https://github.com/push-based/web-performance-tools/tree/master/)
+## [Time to first byte all](https://github.com/push-based/web-performance-tools/tree/main/)
 
 <details>
 
@@ -1748,7 +1748,7 @@ new PerformanceObserver((entryList) => {
 
 
 
-## [Time to first byte document](https://github.com/push-based/web-performance-tools/tree/master/)
+## [Time to first byte document](https://github.com/push-based/web-performance-tools/tree/main/)
 
 <details>
 
@@ -1775,6 +1775,7 @@ new PerformanceObserver((entryList) => {
 
 
 <!-- END-SNIPPETS -->
+
 
 
 
