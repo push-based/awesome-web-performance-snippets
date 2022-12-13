@@ -30,7 +30,7 @@ javascript:(() => {new PerformanceObserver((entryList) => {
     type: 'navigation',
     buffered: true
 });
-)()
+})()
 ``` 
 
 
@@ -68,6 +68,8 @@ new PerformanceObserver((entryList) => {
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 

@@ -44,7 +44,7 @@ javascript:(() => {try {
 catch (e) {
     console.log(`The browser doesn't support this API`);
 }
-)()
+})()
 ``` 
 
 
@@ -89,6 +89,8 @@ catch (e) {
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 

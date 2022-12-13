@@ -90,7 +90,7 @@ javascript:(() => {function getDOMEventListeners() {
         ...table,
     ]);
 }
-)()
+})()
 ``` 
 
 
@@ -182,6 +182,8 @@ function getDOMEventListeners() {
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 

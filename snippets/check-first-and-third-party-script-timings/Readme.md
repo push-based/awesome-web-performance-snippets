@@ -111,7 +111,7 @@ timingOptions.forEach((timing) => {
 });
 // choose your battle - arg1 is string either "first" or "third", arg2 is string timing option listed above.
 console.table(calculateTimings("first", "REQ_START_UNTIL_RES_END"));
-)()
+})()
 ``` 
 
 
@@ -206,6 +206,8 @@ console.table(calculateTimings("first", "REQ_START_UNTIL_RES_END"));
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 

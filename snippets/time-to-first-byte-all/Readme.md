@@ -50,7 +50,7 @@ javascript:(() => {new PerformanceObserver((entryList) => {
     type: 'resource',
     buffered: true
 });
-)()
+})()
 ``` 
 
 
@@ -101,6 +101,8 @@ new PerformanceObserver((entryList) => {
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 

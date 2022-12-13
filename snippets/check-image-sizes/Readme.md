@@ -50,7 +50,7 @@ javascript:(() => {function getImgs(sortBy) {
     return imgList;
 }
 console.table(getImgs("encodedBodySize"));
-)()
+})()
 ``` 
 
 
@@ -100,6 +100,8 @@ console.table(getImgs("encodedBodySize"));
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 

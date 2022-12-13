@@ -57,7 +57,7 @@ po.observe({ type: "largest-contentful-paint", buffered: true });
 function dedupe(arr, key) {
     return [...new Map(arr.map((item) => [item[key], item])).values()];
 }
-)()
+})()
 ``` 
 
 
@@ -122,6 +122,8 @@ function dedupe(arr, key) {
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 

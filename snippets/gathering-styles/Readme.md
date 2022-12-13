@@ -23,7 +23,7 @@ Gathers all style tags of the page and aggregates them to one string.
 javascript:(() => {console.log(Array.from(document.querySelectorAll('style'))
     .map(a => a.innerText)
     .reduce((a, b) => a + b));
-)()
+})()
 ``` 
 
 
@@ -57,6 +57,8 @@ console.log(Array.from(document.querySelectorAll('style'))
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 

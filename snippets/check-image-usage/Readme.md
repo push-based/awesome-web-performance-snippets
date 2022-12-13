@@ -244,7 +244,7 @@ const d = enrichData();
 highlightElements(d);
 fixUsage(d);
 enrichSizeUsage(d).then(console.table);
-)()
+})()
 ``` 
 
 
@@ -484,6 +484,8 @@ enrichSizeUsage(d).then(console.table);
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 

@@ -23,7 +23,7 @@ Add `loading="lazy"` to all images and iframe's on the page.
 javascript:(() => {const imgs = document.querySelectorAll('img');
 Array.from(imgs)
     .forEach(i => i.setAttribute('loading', 'lazy'));
-)()
+})()
 ``` 
 
 
@@ -57,6 +57,8 @@ Array.from(imgs)
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 

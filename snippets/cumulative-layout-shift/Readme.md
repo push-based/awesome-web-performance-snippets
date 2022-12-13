@@ -43,7 +43,7 @@ javascript:(() => {try {
 catch (e) {
     console.log(`Browser doesn't support this API`);
 }
-)()
+})()
 ``` 
 
 
@@ -95,6 +95,8 @@ catch (e) {
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 

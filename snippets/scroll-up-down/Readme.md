@@ -32,7 +32,7 @@ setTimeout(() => window.scroll({
     behavior: 'smooth'
 }), 3000);
 console.log('scroll done!');
-)()
+})()
 ``` 
 
 
@@ -74,6 +74,8 @@ console.log('scroll done!');
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 

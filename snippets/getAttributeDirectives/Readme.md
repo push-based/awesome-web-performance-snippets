@@ -201,7 +201,7 @@ javascript:(() => {function getAttributeDirectives() {
             return console.table(getAllDirectivesSummary(appPrefixes));
     }
 }
-)()
+})()
 ``` 
 
 
@@ -406,6 +406,8 @@ function getAttributeDirectives() {
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 

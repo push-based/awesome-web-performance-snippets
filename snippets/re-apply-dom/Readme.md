@@ -46,7 +46,7 @@ Use case: add correct lazy loading to images
 javascript:(() => {const bi = document.body.innerHTML;
 document.body.innerHTML = '';
 setTimeout(() => document.body.innerHTML = bi, 350);
-)()
+})()
 ``` 
 
 
@@ -80,6 +80,8 @@ setTimeout(() => document.body.innerHTML = bi, 350);
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 

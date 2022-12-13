@@ -42,7 +42,7 @@ const scriptsLoading = [...scripts].map((obj) => {
     return newObj;
 });
 console.table(scriptsLoading);
-)()
+})()
 ``` 
 
 
@@ -85,6 +85,8 @@ console.table(scriptsLoading);
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 

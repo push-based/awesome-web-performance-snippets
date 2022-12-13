@@ -38,7 +38,7 @@ rels.forEach((element) => {
     console.log(`${dot} ${element}`);
     linkElements.forEach((el) => console.log(el));
 });
-)()
+})()
 ``` 
 
 
@@ -84,6 +84,8 @@ rels.forEach((element) => {
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 

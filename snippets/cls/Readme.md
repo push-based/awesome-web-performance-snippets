@@ -69,7 +69,7 @@ function findShifts(threshold) {
     });
 }
 findShifts(0.05).observe({ entryTypes: ["layout-shift"] });
-)()
+})()
 ``` 
 
 
@@ -134,6 +134,8 @@ findShifts(0.05).observe({ entryTypes: ["layout-shift"] });
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 

@@ -276,7 +276,7 @@ javascript:(() => {function index() {
             return console.table(getAllComponentsSummary(appPrefixes));
     }
 }
-)()
+})()
 ``` 
 
 
@@ -561,6 +561,8 @@ function index() {
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 

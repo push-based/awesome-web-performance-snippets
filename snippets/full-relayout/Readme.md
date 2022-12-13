@@ -47,7 +47,7 @@ You can use it as a base measurement to compare against global CSS improvements.
 
 javascript:(() => {const b = document.body;
 b.style.zoom === '1' ? b.style.zoom = '1.01' : b.style.zoom = '1';
-)()
+})()
 ``` 
 
 
@@ -80,6 +80,8 @@ b.style.zoom === '1' ? b.style.zoom = '1.01' : b.style.zoom = '1';
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 

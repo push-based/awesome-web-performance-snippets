@@ -138,7 +138,7 @@ javascript:(() => {function index(root = document.body) {
         ...summary,
     ]);
 }
-)()
+})()
 ``` 
 
 
@@ -273,6 +273,8 @@ function index(root = document.body) {
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 

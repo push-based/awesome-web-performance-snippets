@@ -245,7 +245,7 @@ script[async], script[defer], script[type=module] {
     ct.classList.add('ct');
     document.head.appendChild(ct);
 }());
-)()
+})()
 ``` 
 
 
@@ -499,6 +499,8 @@ script[async], script[defer], script[type=module] {
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 
