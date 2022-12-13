@@ -34,7 +34,7 @@ export function getUsabilityTable(techniques: Technique[]): string {
 }
 
 function wrapBookmarkIIFE(js: string): string {
-    return `javascript:(() => {${js})()`;
+    return `javascript:(() => {${js}})()`;
 }
 
 function wrapJsMd(js: string): string {
