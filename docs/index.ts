@@ -17,7 +17,7 @@ import {SNIPPETS_DIST, toConsoleSnippet} from "../snippets";
                 // join with proper forward slash for url
                 .join('/');
 
-            const h2 = `## [${title}](https://github.com/push-based/web-performance-tools/tree/master/${folder})` + NEW_LINE;
+            const h2 = `## [${title}](https://github.com/push-based/web-performance-tools/tree/main/${folder})` + NEW_LINE;
             const snippet = toConsoleSnippet(javascript)
             return h2 + snippet;
         }).join('');

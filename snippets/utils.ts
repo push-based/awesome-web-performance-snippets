@@ -24,10 +24,10 @@ export function getUsabilityTable(techniques: Technique[]): string {
         table += `
 | Technique   | Is Usable  |
 | ----------- | ---------- |
-| [Bookmark](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-bookmarks) |      ${techniques.includes('bookmark') ? '✔' : '❌'}    | 
-| [Console Tab](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-console-tab.md) |      ${techniques.includes('console-tab') ? '✔' : '❌'}    | 
-| [Sources Tab](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-sources-tab.md) |      ${techniques.includes('sources-tab') ? '✔' : '❌'}    | 
-| [Chromium](https://github.com/push-based/web-performance-tools/blob/master/docs/how-to-use-it-with-chromium.md)       |      ${techniques.includes('chromium') ? '✔' : '❌'}    |
+| [Bookmark](https://github.com/push-based/web-performance-tools/blob/main/docs/how-to-use-it-with-bookmarks) |      ${techniques.includes('bookmark') ? '✔' : '❌'}    | 
+| [Console Tab](https://github.com/push-based/web-performance-tools/blob/main/docs/how-to-use-it-with-console-tab.md) |      ${techniques.includes('console-tab') ? '✔' : '❌'}    | 
+| [Sources Tab](https://github.com/push-based/web-performance-tools/blob/main/docs/how-to-use-it-with-sources-tab.md) |      ${techniques.includes('sources-tab') ? '✔' : '❌'}    | 
+| [Chromium](https://github.com/push-based/web-performance-tools/blob/main/docs/how-to-use-it-with-chromium.md)       |      ${techniques.includes('chromium') ? '✔' : '❌'}    |
     `
     }
     return table + NEW_LINE + NEW_LINE;
