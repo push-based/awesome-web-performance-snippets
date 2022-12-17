@@ -171,6 +171,8 @@ function getDOMEventListeners() {
     ]);
 }
 
+getDOMEventListeners();
+
 ``` 
 
 
