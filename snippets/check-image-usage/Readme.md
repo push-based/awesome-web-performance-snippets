@@ -158,7 +158,7 @@ function findImagesAndLoadingAttribute(doc) {
         // Ignore images without URL since they might be handled by custom javaScript lazy loading technique.
         if (!url)
             return;
-        const isLazy = tag.attributes.loading === 'lazy';
+        const isLazy = tag.attributes.loading?.value === 'lazy';
         if (isLazy && inViewPort) {
             lazyLoadedAboveTheFoldNodes.set(url, tag);
             lazyLoadedAboveTheFoldNames.add(url);
@@ -242,7 +242,7 @@ function enrichData() {
 }
 const d = enrichData();
 highlightElements(d);
-fixUsage(d);
+// fixUsage(d);
 enrichSizeUsage(d).then(console.table);
 })()
 ``` 
@@ -275,7 +275,8 @@ const msgDontUseBgDataImage = "❌ don't use data:<format>";
 const msgNotDisplayed = "⚠ fetched but not displayed";
 const msgUnknown = "⚠ Case not implemented";
 const msgOk = "🆗";
-function fixUsage(imgs) {
+function 
+(imgs) {
     let l = '';
     imgs.forEach(i => {
         switch (i.error) {
@@ -386,7 +387,7 @@ function findImagesAndLoadingAttribute(doc) {
         // Ignore images without URL since they might be handled by custom javaScript lazy loading technique.
         if (!url)
             return;
-        const isLazy = tag.attributes.loading === 'lazy';
+        const isLazy = tag.attributes.loading?.value === 'lazy';
         if (isLazy && inViewPort) {
             lazyLoadedAboveTheFoldNodes.set(url, tag);
             lazyLoadedAboveTheFoldNames.add(url);
@@ -470,7 +471,7 @@ function enrichData() {
 }
 const d = enrichData();
 highlightElements(d);
-fixUsage(d);
+// fixUsage(d);
 enrichSizeUsage(d).then(console.table);
 
 ``` 
