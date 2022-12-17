@@ -171,8 +171,6 @@ function getDOMEventListeners() {
     ]);
 }
 
-getDOMEventListeners();
-
 ``` 
 
 
@@ -184,6 +182,8 @@ getDOMEventListeners();
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 
