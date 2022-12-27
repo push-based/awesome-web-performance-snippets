@@ -82,7 +82,7 @@ function highlightElements(imgs) {
     });
 }
 function isInViewPort(tag) {
-    tag.offsetTop < window.innerHeight &&
+    return tag.offsetTop < window.innerHeight &&
         tag.offsetTop > -tag.offsetHeight &&
         tag.offsetLeft > -tag.offsetWidth &&
         tag.offsetLeft < window.innerWidth;
@@ -310,7 +310,7 @@ function highlightElements(imgs) {
     });
 }
 function isInViewPort(tag) {
-    tag.offsetTop < window.innerHeight &&
+    return tag.offsetTop < window.innerHeight &&
         tag.offsetTop > -tag.offsetHeight &&
         tag.offsetLeft > -tag.offsetWidth &&
         tag.offsetLeft < window.innerWidth;
@@ -484,6 +484,8 @@ enrichSizeUsage(d).then(console.table);
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 
