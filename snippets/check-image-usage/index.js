@@ -50,7 +50,7 @@ function highlightElements(imgs) {
 }
 
 function isInViewPort(tag) {
-    tag.offsetTop < window.innerHeight &&
+    return tag.offsetTop < window.innerHeight &&
     tag.offsetTop > -tag.offsetHeight &&
     tag.offsetLeft > -tag.offsetWidth &&
     tag.offsetLeft < window.innerWidth
