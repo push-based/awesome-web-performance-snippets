@@ -31,7 +31,7 @@ document.body.appendChild(svgDomCache);
 let reusedDomNodes = 0;
 const cachedSvgContent = new Set();
 document.querySelectorAll('svg').forEach(svg => {
-    if (svg.children[0].tagName === 'use') {
+    if (svg.children[0].tagName !== 'use') {
         if (!cachedSvgContent.has(svg.innerHTML)) {
             nextCachedSvgId++;
             cachedSvgContent.add(svg.innerHTML);
