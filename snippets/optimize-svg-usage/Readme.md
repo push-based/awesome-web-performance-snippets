@@ -7,7 +7,9 @@ This scripts mimics the usage of [ngx-fast-svg](https://github.com/push-based/ng
 ## How to use it
 
 1. Count DOM nodes od all SVG elements  
-`console.log('Number of SVG elements inc content', document.querySelectorAll('svg, svg *').length)`  
+```javascript
+console.log('Number of SVG elements inc content', document.querySelectorAll('svg, svg *').length)
+```  
 1.1. Additionally measure Layouting cost [full-relayout](https://github.com/push-based/awesome-web-performance-snippets/tree/main/snippets/full-relayout) 
 2. run script  
 3. Remeasure 1. and 1.1.   
