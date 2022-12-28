@@ -6,7 +6,7 @@ This scripts mimics the usage of [ngx-fast-svg](https://github.com/push-based/ng
 
 ## How to use it
 
-1. Count DOM nodes od all SVG elements  
+1. Count DOM nodes of all SVG elements  
 ```javascript
 console.log('Number of SVG elements inc content', document.querySelectorAll('svg, svg *').length)
 ```  
@@ -158,8 +158,6 @@ console.log('Reused DOM nodes: ', reusedDomNodes);
 
 
 <!-- END-HOW_TO -->
-
-
 
 
 
