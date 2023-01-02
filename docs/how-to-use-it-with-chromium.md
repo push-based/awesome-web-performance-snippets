@@ -3,11 +3,11 @@
 To use is as bookmarks in a fresh chromium:
 
 1. run `npm i`
-2. run: `npm run bookmarks`;
+2. run: `npm run chromium:serve`;
 <img width="645" alt="chromuim" src="https://user-images.githubusercontent.com/10064416/206263783-ed33ef31-767d-4262-a777-2f0982450aca.PNG">
 
 Optionally pass a parameter to provide a initial URL:
-run: `npm run bookmarks --url http://www.push-based.io`;
+run: `npm run chromium:serve --url http://www.push-based.io`;
 <img width="780" alt="bookmarks" src="https://user-images.githubusercontent.com/10064416/206263791-80589110-8527-41aa-894a-cabd70c7bb70.PNG">
 
 3. (optionally) Show bookmarks
