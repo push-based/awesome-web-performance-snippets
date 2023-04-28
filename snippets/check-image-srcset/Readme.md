@@ -22,6 +22,13 @@ It prints changes in the current src and logs the current url and clientWidth.
 <!-- START-HOW_TO[] -->
 
 
+| Technique   | Is Usable  |
+| ----------- | ---------- |
+| [Bookmark](https://github.com/push-based/web-performance-tools/blob/main/docs/how-to-use-it-with-bookmarks) |      ❌    | 
+| [Console Tab](https://github.com/push-based/web-performance-tools/blob/main/docs/how-to-use-it-with-console-tab.md) |      ❌    | 
+| [Sources Tab](https://github.com/push-based/web-performance-tools/blob/main/docs/how-to-use-it-with-sources-tab.md) |      ❌    | 
+| [Chromium](https://github.com/push-based/web-performance-tools/blob/main/docs/how-to-use-it-with-chromium.md)       |      ❌    |
+    
 
 
 ### Bookmark Snippet
@@ -47,18 +54,50 @@ javascript:(() => {function checkImgSrcset(selector) {
             if (lastSrc !== img.currentSrc) {
                 lastSrc = img.currentSrc;
                 lastSrc && loadImg(lastSrc).then(i => {
-                    switches.push({ clientWidth: clientWidth + 'px', src: lastSrc, imgWith: i.width + 'px', element: el });
-                    console.clear();
-                    console.table(switches.map(({ element, ...inTable }) => inTable));
-                    console.log(switches);
+                    switches.push({
+                        clientWidth,
+                        element: el,
+                        src: lastSrc,
+                        intrinsicWith: i.width,
+                        intrinsicHeight: i.height,
+                        renderedWith: el.clientWidth,
+                        renderedHeight: el.clientHeight,
+                        sizeDiff: ((i.width * i.height) / (el.clientWidth * el.clientHeight))
+                    });
+                    logData(switches);
                 });
-                console.clear();
-                console.table(switches.map(({ element, ...inTable }) => inTable));
-                console.log(switches);
+                logData(switches);
             }
+            highlightElement(switches);
         }
     });
     resizeObserver.observe(el);
+}
+function logData(data) {
+    console.clear();
+    console.table(prepareTable(data));
+    console.log(data);
+}
+function highlightElement(arr) {
+    arr.forEach(o => {
+        const { element, intrinsicWith, intrinsicHeight } = o;
+        if (element && intrinsicWith && intrinsicHeight) {
+            const d = ((intrinsicWith * intrinsicHeight) / (element.clientWidth * element.clientHeight));
+            element.style.border = (1 * d).toFixed(2) + 'px solid red';
+            element.style.opacity = 0.5 * d;
+        }
+    });
+}
+function prepareTable(arr) {
+    return arr
+        .map(({ element, ...inTable }) => ({
+        dpr: window.devicePixelRatio,
+        clientWidth: inTable.clientWidth + 'px',
+        src: inTable.src,
+        intrinsicSize: inTable.intrinsicWith + 'x' + inTable.intrinsicHeight + 'px',
+        renderedSize: inTable.renderedWith + 'x' + inTable.renderedHeight + 'px',
+        sizeDiff: inTable.sizeDiff.toFixed(2)
+    }));
 }
 function loadImg(url) {
     return new Promise((resolve, reject) => {
@@ -103,18 +142,50 @@ function checkImgSrcset(selector) {
             if (lastSrc !== img.currentSrc) {
                 lastSrc = img.currentSrc;
                 lastSrc && loadImg(lastSrc).then(i => {
-                    switches.push({ clientWidth: clientWidth + 'px', src: lastSrc, imgWith: i.width + 'px', element: el });
-                    console.clear();
-                    console.table(switches.map(({ element, ...inTable }) => inTable));
-                    console.log(switches);
+                    switches.push({
+                        clientWidth,
+                        element: el,
+                        src: lastSrc,
+                        intrinsicWith: i.width,
+                        intrinsicHeight: i.height,
+                        renderedWith: el.clientWidth,
+                        renderedHeight: el.clientHeight,
+                        sizeDiff: ((i.width * i.height) / (el.clientWidth * el.clientHeight))
+                    });
+                    logData(switches);
                 });
-                console.clear();
-                console.table(switches.map(({ element, ...inTable }) => inTable));
-                console.log(switches);
+                logData(switches);
             }
+            highlightElement(switches);
         }
     });
     resizeObserver.observe(el);
+}
+function logData(data) {
+    console.clear();
+    console.table(prepareTable(data));
+    console.log(data);
+}
+function highlightElement(arr) {
+    arr.forEach(o => {
+        const { element, intrinsicWith, intrinsicHeight } = o;
+        if (element && intrinsicWith && intrinsicHeight) {
+            const d = ((intrinsicWith * intrinsicHeight) / (element.clientWidth * element.clientHeight));
+            element.style.border = (1 * d).toFixed(2) + 'px solid red';
+            element.style.opacity = 0.5 * d;
+        }
+    });
+}
+function prepareTable(arr) {
+    return arr
+        .map(({ element, ...inTable }) => ({
+        dpr: window.devicePixelRatio,
+        clientWidth: inTable.clientWidth + 'px',
+        src: inTable.src,
+        intrinsicSize: inTable.intrinsicWith + 'x' + inTable.intrinsicHeight + 'px',
+        renderedSize: inTable.renderedWith + 'x' + inTable.renderedHeight + 'px',
+        sizeDiff: inTable.sizeDiff.toFixed(2)
+    }));
 }
 function loadImg(url) {
     return new Promise((resolve, reject) => {
@@ -140,6 +211,26 @@ checkImgSrcset();
 
 
 <!-- END-HOW_TO -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
