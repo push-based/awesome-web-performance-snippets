@@ -465,6 +465,9 @@ function checkImgSrcset(selector) {
     let lastSrc = '';
     const switches = [];
     const el = document.querySelector(selector);
+    if (!el) {
+        throw (`Could not fnd any element with selector ${selector}`);
+    }
     const resizeObserver = new ResizeObserver((entries) => {
         const clientWidth = document.body.clientWidth;
         for (const entry of entries) {
@@ -485,9 +488,9 @@ function checkImgSrcset(selector) {
                     highlightElement(switches);
                     logData(switches);
                 });
+                highlightElement(switches);
                 logData(switches);
             }
-            highlightElement(switches);
         }
     });
     resizeObserver.observe(el);
@@ -502,6 +505,7 @@ function highlightElement(arr) {
         const { element, intrinsicWith, intrinsicHeight } = o;
         if (element && intrinsicWith && intrinsicHeight) {
             const d = ((intrinsicWith * intrinsicHeight) / (element.clientWidth * element.clientHeight));
+            // for over-size border for under-size opacity?
             element.style.border = 1 + 'px solid red';
             element.style.opacity = 0.5 * d;
         }
@@ -1928,6 +1932,12 @@ new PerformanceObserver((entryList) => {
 
 
 <!-- END-SNIPPETS -->
+
+
+
+
+
+
 
 
 
