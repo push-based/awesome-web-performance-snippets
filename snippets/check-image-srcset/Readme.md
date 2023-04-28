@@ -64,6 +64,7 @@ javascript:(() => {function checkImgSrcset(selector) {
                         renderedHeight: el.clientHeight,
                         sizeDiff: ((i.width * i.height) / (el.clientWidth * el.clientHeight))
                     });
+                    highlightElement(switches);
                     logData(switches);
                 });
                 logData(switches);
@@ -83,7 +84,7 @@ function highlightElement(arr) {
         const { element, intrinsicWith, intrinsicHeight } = o;
         if (element && intrinsicWith && intrinsicHeight) {
             const d = ((intrinsicWith * intrinsicHeight) / (element.clientWidth * element.clientHeight));
-            element.style.border = (1 * d).toFixed(2) + 'px solid red';
+            element.style.border = 1 + 'px solid red';
             element.style.opacity = 0.5 * d;
         }
     });
@@ -152,6 +153,7 @@ function checkImgSrcset(selector) {
                         renderedHeight: el.clientHeight,
                         sizeDiff: ((i.width * i.height) / (el.clientWidth * el.clientHeight))
                     });
+                    highlightElement(switches);
                     logData(switches);
                 });
                 logData(switches);
@@ -171,7 +173,7 @@ function highlightElement(arr) {
         const { element, intrinsicWith, intrinsicHeight } = o;
         if (element && intrinsicWith && intrinsicHeight) {
             const d = ((intrinsicWith * intrinsicHeight) / (element.clientWidth * element.clientHeight));
-            element.style.border = (1 * d).toFixed(2) + 'px solid red';
+            element.style.border = 1 + 'px solid red';
             element.style.opacity = 0.5 * d;
         }
     });
@@ -211,6 +213,8 @@ checkImgSrcset();
 
 
 <!-- END-HOW_TO -->
+
+
 
 
 
