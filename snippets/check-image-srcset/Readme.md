@@ -58,7 +58,7 @@ javascript:(() => {function checkImgSrcset(selector) {
                 lastSrc = img.currentSrc;
                 lastSrc && loadImg(lastSrc).then(i => {
                     switches.push({
-                        clientWidth,
+                        breakpoint: clientWidth,
                         element: el,
                         src: lastSrc,
                         intrinsicWith: i.width,
@@ -79,17 +79,25 @@ javascript:(() => {function checkImgSrcset(selector) {
 }
 function logData(data) {
     console.clear();
+    console.log(`Element: ${data[0].element}`);
     console.table(prepareTable(data));
-    console.log(data);
+    console.log(data.map(({ element, ...r }) => r));
 }
 function highlightElement(arr) {
     arr.forEach(o => {
         const { element, intrinsicWith, intrinsicHeight } = o;
         if (element && intrinsicWith && intrinsicHeight) {
             const d = ((intrinsicWith * intrinsicHeight) / (element.clientWidth * element.clientHeight));
-            // for over-size border for under-size opacity?
-            element.style.border = 1 + 'px solid red';
-            element.style.opacity = 0.5 * d;
+            element.style.opacity = 1;
+            element.style.border = 0 + 'px solid red';
+            // We use border to visualize oversize
+            if (d > 0) {
+                element.style.border = (d * 5).toFixed() + 'px solid red';
+            }
+            // we use opacity to visualize undersize
+            else {
+                element.style.opacity = 1 * (d);
+            }
         }
     });
 }
@@ -151,7 +159,7 @@ function checkImgSrcset(selector) {
                 lastSrc = img.currentSrc;
                 lastSrc && loadImg(lastSrc).then(i => {
                     switches.push({
-                        clientWidth,
+                        breakpoint: clientWidth,
                         element: el,
                         src: lastSrc,
                         intrinsicWith: i.width,
@@ -172,17 +180,25 @@ function checkImgSrcset(selector) {
 }
 function logData(data) {
     console.clear();
+    console.log(`Element: ${data[0].element}`);
     console.table(prepareTable(data));
-    console.log(data);
+    console.log(data.map(({ element, ...r }) => r));
 }
 function highlightElement(arr) {
     arr.forEach(o => {
         const { element, intrinsicWith, intrinsicHeight } = o;
         if (element && intrinsicWith && intrinsicHeight) {
             const d = ((intrinsicWith * intrinsicHeight) / (element.clientWidth * element.clientHeight));
-            // for over-size border for under-size opacity?
-            element.style.border = 1 + 'px solid red';
-            element.style.opacity = 0.5 * d;
+            element.style.opacity = 1;
+            element.style.border = 0 + 'px solid red';
+            // We use border to visualize oversize
+            if (d > 0) {
+                element.style.border = (d * 5).toFixed() + 'px solid red';
+            }
+            // we use opacity to visualize undersize
+            else {
+                element.style.opacity = 1 * (d);
+            }
         }
     });
 }
@@ -221,6 +237,16 @@ checkImgSrcset();
 
 
 <!-- END-HOW_TO -->
+
+
+
+
+
+
+
+
+
+
 
 
 
