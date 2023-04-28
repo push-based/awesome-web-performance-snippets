@@ -290,6 +290,8 @@ console.table(calculateTimings("first", "REQ_START_UNTIL_RES_END"));
 
 
 
+
+
 # Credits
 
 Author: _Joan León_  
