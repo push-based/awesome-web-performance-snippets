@@ -164,6 +164,22 @@ findShifts(0.05).observe({ entryTypes: ["layout-shift"] });
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Credits
 
 Author: _Joan León_  
