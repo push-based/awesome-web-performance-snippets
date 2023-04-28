@@ -12,16 +12,9 @@ It checks:
 
 ## How to use it
 
-<!-- START-HOW_TO[bookmark,console-tab,sources-tab,chromium] -->
+<!-- START-HOW_TO[] -->
 
 
-| Technique   | Is Usable  |
-| ----------- | ---------- |
-| [Bookmark](https://github.com/push-based/web-performance-tools/blob/main/docs/how-to-use-it-with-bookmarks) |      ✔    | 
-| [Console Tab](https://github.com/push-based/web-performance-tools/blob/main/docs/how-to-use-it-with-console-tab.md) |      ✔    | 
-| [Sources Tab](https://github.com/push-based/web-performance-tools/blob/main/docs/how-to-use-it-with-sources-tab.md) |      ✔    | 
-| [Chromium](https://github.com/push-based/web-performance-tools/blob/main/docs/how-to-use-it-with-chromium.md)       |      ✔    |
-    
 
 
 ### Bookmark Snippet
@@ -484,6 +477,42 @@ enrichSizeUsage(d).then(console.table);
 
 
 <!-- END-HOW_TO -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
