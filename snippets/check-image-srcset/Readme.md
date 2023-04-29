@@ -24,8 +24,7 @@ It prints changes in the current src and logs the current url and clientWidth.
 - resize page
 
 
-
-<!-- START-HOW_TO[] -->
+<!-- START-HOW_TO[bookmark,console-tab] -->
 
 
 | Technique   | Is Usable  |
