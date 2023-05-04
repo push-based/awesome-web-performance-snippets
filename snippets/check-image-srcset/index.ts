@@ -37,7 +37,6 @@ function checkImgSrcset(selector?: string): void {
 function logData(data) {
     console.clear();
     console.table(prepareTable(data));
-    console.log(data);
 }
 
 function highlightElement(arr) {

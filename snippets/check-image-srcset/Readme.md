@@ -24,6 +24,25 @@ It prints changes in the current src and logs the current url and clientWidth.
 - resize page
 - watch console and screen
 
+You will get a output in the console that updates while you resize the screen.
+
+It includes:
+- DPR
+- The element you debug ATM. This is good for debugging because you can just hover the element in the console and there is no need to fiddle in the elements tab
+- A table of breakpoints where the current `src` changed including the intrinsic size, rendered size and the ratio of the 2
+- A log of the data in form od a normal log below the table. This is useful if the table size does not allow to see all information
+
+  <img src="./assets/srcset-script-debugging--console_michael-hladky.png" alt="srcset debugging console output" width="400"/>
+
+As a visual support the selected image will get a couple of styles set to reflect the correctness:
+- oversized images will get a red border where the border width is proportional to the ratio of oversize
+  <img src="./assets/srcset-script-debugging--oversize_michael-hladky.png" alt="srcset debugging oversized images" width="200"/>
+
+- undersized images will get a blue border where the border width is 1px and the opacity is proportional to the undersize
+  <img src="./assets/srcset-script-debugging--undersize_michael-hladky.png" alt="srcset debugging undersized images" width="200"/>
+
+Here a small video to see it in action:
+![srcset debugging video](./assets/srcset-script-debugging__michael-hladky.mp4)
 
 <!-- START-HOW_TO[bookmark,console-tab] -->
 
