@@ -498,7 +498,6 @@ function checkImgSrcset(selector) {
 function logData(data) {
     console.clear();
     console.table(prepareTable(data));
-    console.log(data);
 }
 function highlightElement(arr) {
     arr.forEach(o => {
@@ -1932,6 +1931,7 @@ new PerformanceObserver((entryList) => {
 
 
 <!-- END-SNIPPETS -->
+
 
 
 
