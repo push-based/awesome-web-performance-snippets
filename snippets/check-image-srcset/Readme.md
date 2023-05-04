@@ -42,7 +42,8 @@ As a visual support the selected image will get a couple of styles set to reflec
 | ----------- | ---------- |
 | <img src="./assets/srcset-script-debugging--oversize_michael-hladky.png" alt="srcset debugging oversized images" width="200"/> | <img src="./assets/srcset-script-debugging--undersize_michael-hladky.png" alt="srcset debugging undersized images" width="200"/> | 
 
-Here a small [video to see it in action](./assets/srcset-script-debugging__michael-hladky.mp4).
+Here a small [video to see it in action](./assets/srcset-script-debugging__michael-hladky.mp4):
+[<img src="./assets/srcset-script-debugging__michael-hladky.gif">](./assets/srcset-script-debugging__michael-hladky.mp4)
 
 
 
