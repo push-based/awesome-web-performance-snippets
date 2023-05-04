@@ -36,13 +36,15 @@ It includes:
 
 As a visual support the selected image will get a couple of styles set to reflect the correctness:
 - oversized images will get a red border where the border width is proportional to the ratio of oversize
-  <img src="./assets/srcset-script-debugging--oversize_michael-hladky.png" alt="srcset debugging oversized images" width="200"/>
-
 - undersized images will get a blue border where the border width is 1px and the opacity is proportional to the undersize
-  <img src="./assets/srcset-script-debugging--undersize_michael-hladky.png" alt="srcset debugging undersized images" width="200"/>
 
-Here a small video to see it in action:
-![srcset debugging video](./assets/srcset-script-debugging__michael-hladky.mp4)
+| Oversize    | Undersize  |
+| ----------- | ---------- |
+| <img src="./assets/srcset-script-debugging--oversize_michael-hladky.png" alt="srcset debugging oversized images" width="200"/> | <img src="./assets/srcset-script-debugging--undersize_michael-hladky.png" alt="srcset debugging undersized images" width="200"/> | 
+
+Here a small [video to see it in action](./assets/srcset-script-debugging__michael-hladky.mp4).
+
+
 
 <!-- START-HOW_TO[bookmark,console-tab] -->
 
