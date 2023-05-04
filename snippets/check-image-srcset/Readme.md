@@ -17,11 +17,12 @@ It prints changes in the current src and logs the current url and clientWidth.
 - in the menu select show device pixel ratio
 - use a flexible with
 
-### setup source snippet
+### Use source snippet
 - add snippet
 - open quick Sources panel 
 - execute script
 - resize page
+- watch console and screen
 
 
 <!-- START-HOW_TO[bookmark,console-tab] -->
