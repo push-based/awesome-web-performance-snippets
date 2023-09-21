@@ -200,6 +200,8 @@ console.table(getImgs("encodedBodySize"));
 
 
 
+
+
 # Credits
 
 Author: _Joan León_  
